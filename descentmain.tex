@@ -9,7 +9,8 @@ Still, the statement is very simple and natural, provided that one resorts to th
 
 There is also an abstract notion of ``category in which descent theory works''; the category of pairs consisting of a scheme and a \qc sheaf on it is an example. These categories are known as \emph{stacks}. The general formalism is quite useful, even outside of moduli theory, where the theory of algebraic stacks has become absolutely central (see for example \cite{deligne-mumford}, \cite{artin74} and \cite{laumon-moretbailly}).
 
-These notes were born to accompany my ten lectures on \emph{Grothendieck topologies and descent theory} in the \emph{Advanced School in Basic Algebraic Geometry} that took place at I.C.T.P., 7--18 July 2003. They form the first part of the book \emph{Fundamental Algebraic Geometry: Grothendieck's FGA Explained}, by Barbara Fantechi (SISSA), Lothar G\"ottsche (ICTP), Luc Illusie (Universit\'e Paris-Sud), Steven L. Kleiman (MIT), Nitin Nitsure (Tata Institute of Fundamental Research), and Angelo Vistoli (Universit\`a di Bologna), published by A.M.S..\footnote{The online version, posted at the address \url{http://homepage.sns.it/vistoli/descent.pdf}, will continue to evolve; at the very least, I will correct the errors that are pointed out to me. I hope that it will also grow with the addition of new material.}
+These notes were born to accompany my ten lectures on \emph{Grothendieck topologies and descent theory} in the \emph{Advanced School in Basic Algebraic Geometry} that took place at I.C.T.P., 7--18 July 2003. They form the first part of the book \emph{Fundamental Algebraic Geometry: Grothendieck's FGA Explained}, by Barbara Fantechi (SISSA), Lothar G\"ottsche (ICTP), Luc Illusie (Universit\'e Paris-Sud), Steven L. Kleiman (MIT), Nitin Nitsure (Tata Institute of Fundamental Research), and Angelo Vistoli (Universit\`a di Bologna), published by A.M.S..\footnote{The online version, posted at the address \url%
+{http://homepage.sns.it/vistoli/descent.pdf}, will continue to evolve; at the very least, I will correct the errors that are pointed out to me. I hope that it will also grow with the addition of new material.}
 
 Their purpose is to provide an exposition of descent theory, more complete than the original (still very readable, and highly recommended) article of Grothendieck (\cite{grothendieck-descent}), or than \cite{sga1}. I also use the language of Grothendieck topologies, which is the natural one in this context, but had not been introduced at the time when the two standard sources were written. 
 
@@ -75,6 +76,10 @@ We will follow the terminology of \emph{\'{E}l\'ements de g\'eom\'etrie alg\'ebr
 We start with some finiteness conditions. Recall if $B$ is an algebra over the ring $A$, we say that $B$ is \emph{finitely presented} if it is the quotient of a polynomial ring $A[x_1, \dots, x_n]$ over $A$ by a finitely generated ideal. If $A$ is noetherian, every finitely generated algebra is finitely presented.
 
 If $B$ is finitely presented over $A$, whenever we write $B = A[x_1, \dots, x_n]/I$, $I$ is always finitely generated in $A[x_1, \dots, x_n]$ (\cite[Proposition~1.4.4]{ega4-1}).
+\begin{shaded}
+For a finitely presented $A$-algebra $B$, \emph{any} $A$-algebra generators $x_1,\ldots,x_r$ of $B$ give a finite presented for $B$ as an $A$-algebra.
+\end{shaded}
+
 
 \begin{definition}[See \mbox{\cite[1.4.2]{ega4-1}}]
 A morphism of schemes $f \colon X \arr Y$ is \emph{locally of finite presentation}
@@ -102,9 +107,17 @@ Clearly, if $Y$ is locally noetherian, then $f$ is locally of finite presentatio
 if $X \arr Y$ is locally of finite presentation, so is $X' \arr Y'$.
 \end{enumeratei}
 \end{proposition}
+\begin{shaded}
+Being locally of finite presentation is local on the base and source, and stable under composition and base change.
+
+Being quasi-compact is not local on the base. It is stable under composition and base change.
+\end{shaded}
+
 
 \begin{definition}[See \mbox{\cite[6.6.1]{ega1}}]
-A morphism of schemes $X \arr Y$ is \emph{quasi-compact}\index{morphism of schemes!quasi-compact}\index{quasi-compact morphism of schemes} if the inverse image in $X$ of a quasi-compact open subset of $Y$ is quasi-compact.
+A morphism of schemes $X \arr Y$ is \emph{quasi-compact}%
+\index{morphism of schemes!quasi-compact}%
+\index{quasi-compact morphism of schemes} if the inverse image in $X$ of a quasi-compact open subset of $Y$ is quasi-compact.
 
 An affine scheme is quasi-compact, hence a scheme is quasi-compact if and only if it is the finite union of open affine subschemes; using this, it is easy to prove the following.
 
@@ -153,7 +166,9 @@ if $X \arr Y$ is quasi-compact, so is $X' \arr Y'$.
 Let us turn to flat morphisms. 
 
 \begin{definition}
-A morphism of schemes $f \colon X \arr Y$ is \emph{flat}\index{morphism of schemes!flat}\index{flat morphism of schemes} if for any $x \in X$, the local ring $\cO_{X,x}$ is flat as a module over
+A morphism of schemes $f \colon X \arr Y$ is \emph{flat}%
+\index{morphism of schemes!flat}%
+\index{flat morphism of schemes} if for any $x \in X$, the local ring $\cO_{X,x}$ is flat as a module over
 $\cO_{Y, f(x)}$.
 \end{definition}
 
@@ -169,6 +184,9 @@ Let $f \colon X \arr Y$ be a morphism of schemes. Then the following are equival
 
 \end{enumeratei}
 \end{proposition}
+\begin{shaded}
+Being \textbf{flat} is an affine-local type property, as in (iii) above. Flatness is determined at the stalks. Flat morphisms are stable under composition and base change.
+\end{shaded}
 
 \begin{proposition}[\mbox{\cite[2.1]{ega4-2}}]\hfil
 
@@ -188,7 +206,9 @@ if $X \arr Y$ is flat, so is $X' \arr Y'$.
 \end{proposition}
 
 \begin{definition}
-A morphism of schemes $f \colon X \arr Y$ is \emph{faithfully flat}\index{morphism of schemes!faithfully flat}\index{faithfully flat morphism of schemes} if it is flat and surjective.
+A morphism of schemes $f \colon X \arr Y$ is \emph{faithfully flat}%
+\index{morphism of schemes!faithfully flat}%
+\index{faithfully flat morphism of schemes} if it is flat and surjective.
 \end{definition}
 
 Let $B$ be an algebra over $A$. We say that $B$ is faithfully flat if the associated morphism of schemes $\spec B \arr \spec A$ is faithfully flat.
@@ -289,13 +309,18 @@ We will assume that the reader is familiar with the concepts of category, functo
 
 We will not distinguish between small and large categories. More generally, we will ignore any set-theoretic difficulties. These can be overcome with standard arguments using universes.
 
-If $F \colon \cA \arr \cB$ is a functor, recall that $F$ is called \emph{fully faithful}\index{functor!fully faithful}\index{fully faithful functor} when for any two objects $A$ and $A'$ of $\cA$, the function
+If $F \colon \cA \arr \cB$ is a functor, recall that $F$ is called \emph{fully faithful}%
+\index{functor!fully faithful}%
+\index{fully faithful functor} when for any two objects $A$ and $A'$ of $\cA$, the function
    \[
    \hom_{\cA}(A, A') \arr \hom_{\cB}(FA, FA')
    \]
-defined by $F$ is a bijection. $F$ is called \emph{essentially surjective}\index{functor!essentially surjective}\index{essentially surjective functor} if every object of $\cB$ is isomorphic to the image of an object of $\cA$.
+defined by $F$ is a bijection. $F$ is called \emph{essentially surjective}%
+\index{functor!essentially surjective}%
+\index{essentially surjective functor} if every object of $\cB$ is isomorphic to the image of an object of $\cA$.
 
-Recall also that $F$ is called an \emph{equivalence}\index{equivalence!of categories} when there exists a functor $G \colon \cB \arr \cA$, such that the composite $GF \colon \cA \arr \cA$ is isomorphic to $\id_{\cA}$, and $FG \colon \cB \arr \cB$ is isomorphic to $\id_{\cB}$.
+Recall also that $F$ is called an \emph{equivalence}%
+\index{equivalence!of categories} when there exists a functor $G \colon \cB \arr \cA$, such that the composite $GF \colon \cA \arr \cA$ is isomorphic to $\id_{\cA}$, and $FG \colon \cB \arr \cB$ is isomorphic to $\id_{\cB}$.
 
 The composite of two equivalences is again an equivalence. In particular, ``being equivalent'' is an equivalence relation among categories.
 
@@ -325,7 +350,8 @@ Also for any functor $F \colon \cB \arr \cB'$ we get an induced functor
    \]
 obtained by the obvious variants of the definitions above.
 
-The  reader should also recall that a \emph{groupoid}\index{groupoid} is a category in which every arrow is invertible.
+The  reader should also recall that a \emph{groupoid}%
+\index{groupoid} is a category in which every arrow is invertible.
 
 We will also make considerable use of the notions of fibered product and cartesian diagram in an arbitrary category. We will manipulate some cartesian diagrams. In particular the reader will encounter diagrams of the type
    \[
@@ -334,7 +360,12 @@ We will also make considerable use of the notions of fibered product and cartesi
    A\ar[r] & B \ar[r] & C\hsmash{;}
    }
    \]
-we will say that this is cartesian when both squares are cartesian. This is equivalent to saying that the right hand square and the square
+we will say that this is cartesian when both squares are cartesian.
+\begin{shaded}
+In a diagram such as this, suppose that the right hand square is cartesian. Then the outer square is cartesian \Iff the left hand square is cartesian.
+\end{shaded}
+
+This is equivalent to saying that the right hand square and the square
    \[
    \xymatrix{
    A'\ar[r]\ar[d] & C'\ar[d]\\
@@ -344,7 +375,9 @@ we will say that this is cartesian when both squares are cartesian. This is equi
 obtained by composing the rows, are cartesian. There will be other statements of the type ``there is a cartesian diagram \dots''. These should all be straightforward to check.
 
 
-For any category $\cC$ and any object $X$ of $\cC$ we denote by $(\cC/X)$ the \emph{comma category}\index{category!comma}\index{comma!category}, whose objects are arrows $U \arr X$ in $\cC$, and whose arrows are commutative diagrams
+For any category $\cC$ and any object $X$ of $\cC$ we denote by $(\cC/X)$ the \emph{comma category}%
+\index{category!comma}%
+\index{comma!category}, whose objects are arrows $U \arr X$ in $\cC$, and whose arrows are commutative diagrams
    \[
    \xymatrix@-15pt{
    U\ar[rr]\ar[rd] &&V\ar[ld]\\
@@ -352,7 +385,11 @@ For any category $\cC$ and any object $X$ of $\cC$ we denote by $(\cC/X)$ the \e
    }
    \]
 
-We also denote by $\cC\op$ the \emph{opposite category}\index{category!opposite} \index{opposite category} of $\cC$, in which the objects are the same, and the arrows are also the same, but sources and targets are switched. A \emph{contravariant functor}\index{functor!contravariant}\index{contravariant functor} from $\cC$ to another category $\cD$ is a functor $\cC\op \arr \cD$.
+We also denote by $\cC\op$ the \emph{opposite category}%
+\index{category!opposite}%
+\index{opposite category} of $\cC$, in which the objects are the same, and the arrows are also the same, but sources and targets are switched. A \emph{contravariant functor}%
+\index{functor!contravariant}%
+\index{contravariant functor} from $\cC$ to another category $\cD$ is a functor $\cC\op \arr \cD$.
 
 Whenever we have a fibered product $X_1 \times_Y X_2$ in a category, we denote by $\pr_1 \colon X_1 \times_Y X_2 \arr X_1$ and $\pr_2 \colon X_1 \times_Y X_2 \arr X_2$ the two projections. We will also use a similar notation for the product of three or more objects: for example, we will denote by
    \[
@@ -366,7 +403,8 @@ the projection into the product of the $i\th$ and  $j\th$ factor.
 
 Recall that a category has finite products if and only if it has a terminal object (the product of $0$ objects) and products of two objects.
 
-Suppose that $\cC$ and $\cD$ are categories with finite products; denote their terminal objects by $\pt_{\cC}$ and $\pt_{\cD}$. A functor $F \colon \cC \arr \cD$ is said to \emph{preserve finite products}\index{functor!preserving finite products} if the following holds. Suppose that we have objects $U_1$, \dots,~$U_r$ of $\cC$: the projections $U_1 \times \dots \times U_r \arr U_i$ induce arrows $F(U_1 \times \dots \times U_r) \arr F U_i$. Then the corresponding arrow
+Suppose that $\cC$ and $\cD$ are categories with finite products; denote their terminal objects by $\pt_{\cC}$ and $\pt_{\cD}$. A functor $F \colon \cC \arr \cD$ is said to \emph{preserve finite products}%
+\index{functor!preserving finite products} if the following holds. Suppose that we have objects $U_1$, \dots,~$U_r$ of $\cC$: the projections $U_1 \times \dots \times U_r \arr U_i$ induce arrows $F(U_1 \times \dots \times U_r) \arr F U_i$. Then the corresponding arrow
    \[
    F(U_1 \times \dots \times U_r) \arr F U_1 \times \dots \times F U_r
    \]
@@ -420,7 +458,8 @@ to the category of sets, which sends an object $U$ of $\cC$ to the set
    \[
    \h_X U = \hom_\cC(U, X).
    \] If $\alpha
-\colon U' \arr U$ is an arrow in $\cC$, then $\h_X \alpha  \colon \h_X U \arr \h_X U'$ is defined to be composition with $\alpha$. (When $\cC$ is the category of schemes over a fixed base scheme, $\h_{X}$ is often called the \emph{functor of points of $X$}\index{functor!of points})
+\colon U' \arr U$ is an arrow in $\cC$, then $\h_X \alpha  \colon \h_X U \arr \h_X U'$ is defined to be composition with $\alpha$. (When $\cC$ is the category of schemes over a fixed base scheme, $\h_{X}$ is often called the \emph{functor of points of $X$}%
+\index{functor!of points})
 
 Now, an arrow $f \colon X \arr Y$ yields a function $\h_f U \colon \h_X U \arr \h_Y U$\index{$\h_{f}$} for each object $U$ of $\cC$, obtained by composition with $f$. This defines a morphism $\h_X \arr \h_Y$, that is, for all arrows $\alpha\colon U' \arr U$ the diagram
    \[
@@ -450,7 +489,9 @@ that sends $f \colon X \arr Y$ to $\h_f \colon \h_X \arr \h_Y$ is bijective.
 
 In other words, the functor $\cC \arr \func{\cC}$ is fully faithful. It fails to be an equivalence of categories, because in general it will not be essentially surjective. This means that not every functor $\cC\op \arr \catset$ is isomorphic to a functor of the form $\h_X$. However, if we restrict to the full subcategory of $\func{\cC}$ consisting of functors $\cC\op \arr \catset$ which are isomorphic to a functor of the form $\h_X$, we do get a category which is equivalent to $\cC$.
 
-\begin{definition} A \emph{representable functor}\index{functor!representable}\index{representable!functor} on the category $\cC$ is a functor
+\begin{definition} A \emph{representable functor}%
+\index{functor!representable}%
+\index{representable!functor} on the category $\cC$ is a functor
    \[
    F \colon \cC\op \arr \catset
    \] which is isomorphic to a functor of the form $\h_X$ for some object $X$ of $\cC$. 
@@ -494,7 +535,9 @@ One way to think about Yoneda's lemma is as follows. The weak form says that the
 
 We can use Yoneda's lemma to give a very important characterization of representable functors.
 
-\begin{definition} Let $F \colon \cC\op \arr \catset$ be a functor. A \emph{universal object}\index{object!universal}\index{universal!object} for $F$ is a pair $(X, \xi)$ consisting of an object $X$ of $\cC$, and an element $\xi \in F X$, with the property that for each object $U$ of $\cC$ and each $\sigma\in F U$, there is a unique arrow $f \colon U \arr X$ such that $F f(\xi) = \sigma \in F U$.
+\begin{definition} Let $F \colon \cC\op \arr \catset$ be a functor. A \emph{universal object}%
+\index{object!universal}%
+\index{universal!object} for $F$ is a pair $(X, \xi)$ consisting of an object $X$ of $\cC$, and an element $\xi \in F X$, with the property that for each object $U$ of $\cC$ and each $\sigma\in F U$, there is a unique arrow $f \colon U \arr X$ such that $F f(\xi) = \sigma \in F U$.
 \end{definition}
 
 In other words: the pair $(X, \xi)$ is a universal object if the morphism $\h_X \arr F$ defined by $\xi$ is an isomorphism. Since every natural transformation $\h_X \arr F$ is defined by some object $\xi \in F X$, we get the following.
@@ -645,16 +688,20 @@ This can be viewed as the functor $\h_X \colon (\cC\op)\op \arr \catset$; hence,
 In this section the category $\cC$ will have finite products; we will denote a terminal object by $\pt$.
 
 \begin{definition}
-A \emph{group object}\index{group object} of $\cC$ is an object $G$ of $\cC$, together with a functor $\cC\op \arr \catgrp$ into the category of groups, whose composite with the forgetful functor $\catgrp \arr \catset$ equals $\h_G$.
+A \emph{group object}%
+\index{group object} of $\cC$ is an object $G$ of $\cC$, together with a functor $\cC\op \arr \catgrp$ into the category of groups, whose composite with the forgetful functor $\catgrp \arr \catset$ equals $\h_G$.
 
-A group object in the category of topological spaces is called a \emph{topological group}\index{topological!group}. A group object in the category of schemes over a scheme $S$ is called a \emph{group scheme over $S$}\index{group scheme}.
+A group object in the category of topological spaces is called a \emph{topological group}%
+\index{topological!group}. A group object in the category of schemes over a scheme $S$ is called a \emph{group scheme over $S$}%
+\index{group scheme}.
 \end{definition}
 
 Equivalently: a group object is an object $G$, together with a group structure on $G(U)$ for each object $U$ of $\cC$, so that the function $f^* \colon G(V) \arr G(U)$ associated with an arrow $f \colon U \arr V$ in $\cC$ is always a homomorphism of groups.
 
 This can be restated using Yoneda's lemma.
 
-\begin{proposition}\index{group object!characterization via diagrams}
+\begin{proposition}%
+\index{group object!characterization via diagrams}
 To give a group object structure on an object $G$ of $\cC$ is equivalent to assigning three arrows $\mul_G \colon G \times G \arr G$ (the multiplication), $\inv_G \colon G \arr G$ (the inverse), and $\iden_G \colon \pt \arr G$ (the identity), such that the following diagrams commute.
 
 \begin{enumeratei}
@@ -723,7 +770,9 @@ There are various subschemes of $\GL_{n,S}$ that are group schemes. For example,
 We leave it to the reader to define the orthogonal group scheme $\rO_{n,S}$ and the symplectic group scheme $\mathrm{Sp}_{n,S}$.
 
 \begin{definition}
-If $G$ and $H$ are group objects, we define a \emph{homomorphism}\index{group object!homomorphism of group objects}\index{homomorphism of group objects} of group objects as an arrow $G \arr H$ in $\cC$, such that for each object $U$ of $\cC$ the induced function $G(U) \arr H(U)$ is a group homomorphism.
+If $G$ and $H$ are group objects, we define a \emph{homomorphism}%
+\index{group object!homomorphism of group objects}%
+\index{homomorphism of group objects} of group objects as an arrow $G \arr H$ in $\cC$, such that for each object $U$ of $\cC$ the induced function $G(U) \arr H(U)$ is a group homomorphism.
 
 Equivalently, a homomorphism is an arrow $f \colon G \arr H$ such that the diagram
    \[
@@ -756,7 +805,8 @@ We leave it to the reader to check that this gives $FG$ the structure of a group
 
 There is an obvious notion of left action of a functor into groups on a functor into sets.
 
-\begin{definition}\index{action!of a functor into groups on a functor into sets}
+\begin{definition}%
+\index{action!of a functor into groups on a functor into sets}
 A left action $\alpha$ of a functor $G \colon \cC\op \arr \catgrp$ on a functor $F \colon \cC\op \arr \catset$ is a natural transformation $G \times F \arr F$, such that for any object $U$ of $\cC$, the induced function $G(U) \times F(U) \arr F(U)$ is an action of the group $G(U)$ on the set $F(U)$.
 \end{definition}
 
@@ -809,7 +859,9 @@ It is immediate to check that, if $\cC$ is the category of sets, the commutativi
 
 
 \begin{definition}
-Let $X$ and $Y$ be objects of $\cC$ with an action of $G$, an arrow $f \colon X \arr Y$ is called \emph{$G$-equivariant}\index{equivariant!arrow}\index{arrow!equivariant} if for all objects $U$ of $\cC$ the  induced function $X(U) \arr Y(U)$ is $G(U)$-equivariant.
+Let $X$ and $Y$ be objects of $\cC$ with an action of $G$, an arrow $f \colon X \arr Y$ is called \emph{$G$-equivariant}%
+\index{equivariant!arrow}%
+\index{arrow!equivariant} if for all objects $U$ of $\cC$ the  induced function $X(U) \arr Y(U)$ is $G(U)$-equivariant.
 \end{definition}
 
 Equivalently, $f$ is $G$-equivariant if the diagram
@@ -857,7 +909,8 @@ commute. This gives a function from the set $\End_{V}(V \times X)$ to $\End_{U}(
 
 This construction is a very particular case of that of Section~\ref{sec:func-arrows}.
 
-\begin{proposition}\label{prop:action-homo}\index{action!of a group object on an object!as a group homomorphism}
+\begin{proposition}\label{prop:action-homo}%
+\index{action!of a group object on an object!as a group homomorphism}
 Let $G \colon \cC\op \arr \catgrp$ a functor, $X$ an object of $\cC$. To give an action of $G$ on $X$ is equivalent to giving a natural transformation $G \arr \underaut_{\cC}(X)$ of functors $\cC\op \arr \catgrp$.
 \end{proposition}
 
@@ -892,9 +945,12 @@ There is a standard notion of action of a group on an object of a category: a gr
 In many concrete cases, a category of geometric objects has objects that can be called \emph{discrete}. For example in the category of topological spaces we have discrete spaces: these are spaces with the discrete topology, or, in other words, disjoint unions of points. In the category $\catsch{S}$ of schemes over $S$ an object should be called discrete when it is the disjoint union of copies of $S$. In categorical terms, a disjoint union is a coproduct; thus a discrete object of $\catsch{S}$ is a scheme $U$ over $S$, with the property that the functor $\hom_S(U, -) \colon \catsch{S} \arr \catset$ is the product of copies of $\hom_S(S, -)$.
 
 \begin{definition}\call{def:has-discrete-objects}
-Let $\cC$ be a category. We say that $\cC$ \emph{has discrete objects}\index{category!with discrete objects} if it has a terminal object $\pt$, and for any set $I$ the coproduct $\coprod_{i \in I} \pt$ exists.
+Let $\cC$ be a category. We say that $\cC$ \emph{has discrete objects}%
+\index{category!with discrete objects} if it has a terminal object $\pt$, and for any set $I$ the coproduct $\coprod_{i \in I} \pt$ exists.
 
-An object of $\cC$ that is isomorphic to one of the form $\coprod_{i \in I} \pt$ for some set $I$ is called a \emph{discrete object}\index{object!discrete}\index{discrete!object}.
+An object of $\cC$ that is isomorphic to one of the form $\coprod_{i \in I} \pt$ for some set $I$ is called a \emph{discrete object}%
+\index{object!discrete}%
+\index{discrete!object}.
 \end{definition}
 
 Suppose that $\cC$ has discrete objects. If $I$ and $J$ are two sets and $\phi \colon I \arr J$ is a function, we get a collection of arrows $\pt \arr \coprod_{j \in J} \pt$ parametrized by $I$: with each $i \in I$ we associate the tautological arrow $\pt \arr \coprod_{j \in J} \pt$ corresponding to the element $\phi(i) \in J$. In this way we have defined an arrow
@@ -908,7 +964,10 @@ It is immediate to check that if $\phi \colon I \arr J$ and $\psi \colon J \arr 
    \coprod_{i \in I}\pt \arr \coprod_{k \in K}\pt.
    \]
 In this way we have defined a functor $\Delta \colon \catset \arr
-\cC$ that sends a set $I$ to $\coprod_{i \in I} \pt$. This is called \emph{the discrete object functor}\index{discrete object functor}\index{functor!discrete object}\index{discrete!object functor}. By construction, it is a left adjoint to the functor $\hom_{\cC}(\pt, -)$. Recall that this means that for every set $I$ and every object $U$ of $\cC$ one has a bijective correspondence between $\hom_{\cC}(\Delta I, U)$ and the set of functions $I \arr \hom_{\cC}(\pt, U)$; furthermore this bijective correspondence is functorial in $I$ and $U$.
+\cC$ that sends a set $I$ to $\coprod_{i \in I} \pt$. This is called \emph{the discrete object functor}%
+\index{discrete object functor}%
+\index{functor!discrete object}%
+\index{discrete!object functor}. By construction, it is a left adjoint to the functor $\hom_{\cC}(\pt, -)$. Recall that this means that for every set $I$ and every object $U$ of $\cC$ one has a bijective correspondence between $\hom_{\cC}(\Delta I, U)$ and the set of functions $I \arr \hom_{\cC}(\pt, U)$; furthermore this bijective correspondence is functorial in $I$ and $U$.
 
 Conversely, if we assume that $\cC$ has a terminal object $\pt$, and that $\Delta \colon \catset \arr \cC$ is a left adjoint to the functor $\hom_{\cC}(\pt, -)$, then it is easy to see for each set $I$ the object $\Delta I$ is a coproduct $\coprod_{i \in I} \pt$.
 
@@ -920,7 +979,8 @@ Notice the following fact. Let $I$ be a set, $U$ an object of
 $\cC$. If $i \in I$ then $\Delta\{i\}$ is a terminal object of $\cC$, hence there is a canonical isomorphism $U \simeq \Delta\{i\} \times U$ (the inverse of the projection $\Delta \{i\} \times U \arr U$). On the other hand the embedding $\iota_i \colon \{i\} \into I$ induces an arrow $\Delta\iota_i \times \id_U \colon \Delta\{i\} \times U \arr \Delta I \times U$. By composing these $\Delta\iota_i$ with the isomorphisms $U \simeq \Delta\{i\} \times U$ we obtain a set of arrows $U \arr \Delta I \times U$ parametrized by $I$, hence an arrow $I \times U \arr \Delta I \times U$.
 
 \begin{definition}\call{def:has-discrete-groups}
-A category $\cC$ \emph{has discrete group objects}\index{category!with discrete group object} when the following conditions are satisfied.
+A category $\cC$ \emph{has discrete group objects}%
+\index{category!with discrete group object} when the following conditions are satisfied.
 
 \begin{enumeratei}
 
@@ -937,11 +997,15 @@ For example, in the category $\cattop$ a terminal object is a point (in other wo
 
 
 \begin{proposition}\label{prop:has-discrete-groups}
-If $\cC$ has discrete group objects, then the discrete object functor $\Delta \colon \catset \arr \cC$ preserves finite products.\index{discrete object functor!preserves finite products}\index{functor!discrete object!preserves finite products}\index{discrete!object functor!preserves finite products}
+If $\cC$ has discrete group objects, then the discrete object functor $\Delta \colon \catset \arr \cC$ preserves finite products.\index{discrete object functor!preserves finite products}%
+\index{functor!discrete object!preserves finite products}%
+\index{discrete!object functor!preserves finite products}
 \end{proposition}
 
 
-So, by Remark~\ref{rmk:preserve-products->preserve-groups}, when the category $\cC$ has discrete group object the functor $\Delta \colon \catset \arr \cC$ gives a functor, also denoted by $\Delta \colon \catgrp \arr \catgrpover{\cC}$, from the category of groups to the category of group objects in $\cC$. A group object in $\cC$ is called \emph{discrete}\index{group object!discrete}\index{discrete!group object} when it isomorphic to one of the form $\Delta\Gamma$, where $\Gamma$ is a group.
+So, by Remark~\ref{rmk:preserve-products->preserve-groups}, when the category $\cC$ has discrete group object the functor $\Delta \colon \catset \arr \cC$ gives a functor, also denoted by $\Delta \colon \catgrp \arr \catgrpover{\cC}$, from the category of groups to the category of group objects in $\cC$. A group object in $\cC$ is called \emph{discrete}%
+\index{group object!discrete}%
+\index{discrete!group object} when it isomorphic to one of the form $\Delta\Gamma$, where $\Gamma$ is a group.
 
 \begin{proof}
 
@@ -962,7 +1026,8 @@ If we compose this isomorphism $\Delta(I \times J) \simeq I \times \Delta J$ wit
 
 An action of a group is the same as an action of the associated discrete group object.
 
-\begin{proposition}\label{prop:action-discrete-group}\index{action!of a discrete group object}
+\begin{proposition}\label{prop:action-discrete-group}%
+\index{action!of a discrete group object}
 Suppose that $\cC$ has finite group objects. Let $X$ be an object of $\cC$, $\Gamma$ a group, $\Delta\Gamma$ the associated discrete group object of $\cC$. Then giving an action of $\Gamma$ on $X$, that is, giving a group homomorphism $\Gamma \arr \aut_{\cC}(X)$, is equivalent to giving an action of the group object $\Delta\Gamma$ on $X$.
 \end{proposition}
 
@@ -992,7 +1057,10 @@ There is a very general notion of  sheaf in a Grothendieck topology; in this Sec
 In a Grothendieck topology the ``open sets'' of a space are \emph{maps} into this space; instead of intersections we have to look at fibered products, while unions play no role. The axioms do not describe the ``open sets'', but the coverings of a space.
 
 \begin{definition}\call{def:grothtop}
-Let $\cC$ be a category. A \emph{Grothendieck topology}\index{topology!Grothendieck}\index{Grothendieck!topology} on $\cC$ is the assignment to each object $U$ of $\cC$ of a collection of sets of arrows $\{U_i \to U\}$, called \emph{coverings of $U$}\index{covering}, so that the following conditions are satisfied.
+Let $\cC$ be a category. A \emph{Grothendieck topology}%
+\index{topology!Grothendieck}%
+\index{Grothendieck!topology} on $\cC$ is the assignment to each object $U$ of $\cC$ of a collection of sets of arrows $\{U_i \to U\}$, called \emph{coverings of $U$}%
+\index{covering}, so that the following conditions are satisfied.
 
 \begin{enumeratei}
 
@@ -1004,30 +1072,37 @@ Let $\cC$ be a category. A \emph{Grothendieck topology}\index{topology!Grothendi
 
 \end{enumeratei}
 
-A category with a Grothendieck topology is called a \emph{site}\index{site}.
+A category with a Grothendieck topology is called a \emph{site}%
+\index{site}.
 \end{definition}
 
 
 Notice that from \refpart{def:grothtop}{2} and \refpart{def:grothtop}{3} it follows that if $\{U_i \to U\}$ and $\{V_j \to U\}$ are two coverings of the same object, then $\{U_i \times_U V_j \arr U\}$ is also a covering.
 
 \begin{remark}
-In fact what we have defined here is what is called a \emph{pretopology}\index{pretopology} in \cite{sga4}; a pretopology defines a topology, and very different pretopologies can define the same topology. The point is that the sheaf theory only depends on the topology, and not on the pretopology. Two pretopologies induce the same topology if and only if they are equivalent, in the sense of Definition~\ref{def:same-sheaves}.
+In fact what we have defined here is what is called a \emph{pretopology}%
+\index{pretopology} in \cite{sga4}; a pretopology defines a topology, and very different pretopologies can define the same topology. The point is that the sheaf theory only depends on the topology, and not on the pretopology. Two pretopologies induce the same topology if and only if they are equivalent, in the sense of Definition~\ref{def:same-sheaves}.
 
 Despite its unquestionable technical advantages, I do not find the notion of topology, as defined in \cite{sga4}, very intuitive, so I prefer to avoid its use (just a question of habit, undoubtedly). 
 
 However, \emph{sieves}, the objects that intervene in the definition of a topology, are quite useful, and will be used extensively.
 \end{remark}
 
-Here are some examples of Grothendieck topologies. In what follows, a set $\{U_{i} \arr U\}$ of functions, or morphisms of schemes, is called \emph{jointly surjective}\index{jointy surjective} when the set-theoretic union of their images equals $U$.
+Here are some examples of Grothendieck topologies. In what follows, a set $\{U_{i} \arr U\}$ of functions, or morphisms of schemes, is called \emph{jointly surjective}%
+\index{jointy surjective} when the set-theoretic union of their images equals $U$.
 
 \begin{example}[The site of a topological space]
-\label{ex:classical-topology}\index{classical topology}\index{topology!classical}
+\label{ex:classical-topology}%
+\index{classical topology}%
+\index{topology!classical}
 Let $X$ be a topological space; denote by $X\cl$ the category in which the objects are the open subsets of $X$, and the arrows are given by inclusions. Then we get a Grothendieck topology on $X\cl$ by associating with each open subset $U \subseteq X$ the set of open coverings of $U$.
 
 In this case, if $U_1 \arr U$ and $U_2 \arr U$ are arrows, the fibered product $U_1 \times_U U_2$ is the intersection $U_1 \cap U_2$.
 \end{example}
 
-\begin{example}[The global classical topology]\label{ex:global-classical}\index{global!classical topology}\index{topology!classical!global}
+\begin{example}[The global classical topology]\label{ex:global-classical}%
+\index{global!classical topology}%
+\index{topology!classical!global}
 Here $\cC$ is the category $\cattop$ of topological spaces. If $U$ is a topological space, then a covering of $U$ will be a jointly surjective collection of open embeddings $U_i \arr U$.
 
 Notice here we must interpret ``open embedding'' as meaning an open continuous injective map $V \arr U$; if by an open embedding we mean the inclusion of an open subspace, then condition \refpart{def:grothtop}{1} of Definition~\ref{def:grothtop} is not satisfied.
@@ -1079,7 +1154,8 @@ The  abbreviation fppf stands for ``fid\`element plat et de pr\'esentation finie
 
 \subsection{The fpqc topology}\label{subsec:fpqc}
 
-It is sometimes useful to consider coverings that are not locally finitely presented. One can define a topology on $\catsch{S}$ simply by taking all collections of morphisms $\{U_i \to U\}$ such that the resulting morphism $\coprod_i U_i \arr U$ is faithfully flat\index{wild flat topology}\index{topology!wild flat}. Unfortunately, this topology is not well behaved (see Remarks \ref{rmk:need-finiteness} and \ref{rmk:really-need-finiteness}). One needs some finiteness condition in order to get a reasonable topology. 
+It is sometimes useful to consider coverings that are not locally finitely presented. One can define a topology on $\catsch{S}$ simply by taking all collections of morphisms $\{U_i \to U\}$ such that the resulting morphism $\coprod_i U_i \arr U$ is faithfully flat\index{wild flat topology}%
+\index{topology!wild flat}. Unfortunately, this topology is not well behaved (see Remarks \ref{rmk:need-finiteness} and \ref{rmk:really-need-finiteness}). One needs some finiteness condition in order to get a reasonable topology. 
 
 For example, one could define a covering as a collection of morphisms $\{U_i \to U\}$ such that the resulting morphism $\{\coprod_i U_i \arr U\}$ is faithfully flat and quasi-compact, as I did in the first version of these notes; but then Zariski covers would not be included, and the resulting topology would not be comparable with the Zariski topology. The definition of the fpqc topology that follows, suggested by Steve Kleiman, gives the correct sheaf theory.
 
@@ -1114,7 +1190,9 @@ We only have left to prove that \refpart{prop:eq-quasicompact}{2} implies \refpa
 \end{proof}
 
 \begin{definition}
-An \emph{fpqc morphism of schemes}\index{morphism of schemes!fpqc}\index{fpqc!morphism of schemes} is a faithfully flat morphism that satisfies the equivalent conditions of Proposition~\ref{prop:eq-quasicompact}.
+An \emph{fpqc morphism of schemes}%
+\index{morphism of schemes!fpqc}%
+\index{fpqc!morphism of schemes} is a faithfully flat morphism that satisfies the equivalent conditions of Proposition~\ref{prop:eq-quasicompact}.
 \end{definition}
 
 The  abbreviation fpqc stands for ``fid\`element plat et quasi-compact''.
@@ -1123,7 +1201,8 @@ Here are some properties of fpqc morphisms.
 
 \begin{proposition}\call{prop:properties-fpqc}\hfil
 
-\begin{enumeratei} \index{morphism of schemes!fpqc!properties of}\index{fpqc!morphism of schemes!properties of}
+\begin{enumeratei} \index{morphism of schemes!fpqc!properties of}%
+\index{fpqc!morphism of schemes!properties of}
 
 \itemref{1} The composite of fpqc morphisms is fpqc.
 
@@ -1159,7 +1238,9 @@ Let us prove \refpart{prop:properties-fpqc}{6}. Let $A$ be a subset of $Y$ whose
 
 
 
-The \emph{fpqc topology}\index{topology!fpqc}\index{fpqc!topology} on the category $\catsch{S}$ is the topology in which the coverings $\{U_i \to U\}$ are collections of morphisms, such that the induced morphism $\coprod U_i \arr U$ is fpqc.
+The \emph{fpqc topology}%
+\index{topology!fpqc}%
+\index{fpqc!topology} on the category $\catsch{S}$ is the topology in which the coverings $\{U_i \to U\}$ are collections of morphisms, such that the induced morphism $\coprod U_i \arr U$ is fpqc.
 
 Let us verify that this is indeed a topology, by checking the three conditions of Definition~\ref{def:grothtop}. Condition~\refpart{def:grothtop}{1} is obvious, because an isomorphism is fpqc.
 
@@ -1172,7 +1253,9 @@ The fpqc topology is finer than the fppf topology, which is finer than the \'eta
 
 Many properties of morphisms are local on the codomain in the fpqc topology.
 
-\begin{proposition}\label{prop:local-fpqc}\index{topology!fpqc!local properties in the}\index{fpqc!topology!local properties in the}
+\begin{proposition}\label{prop:local-fpqc}%
+\index{topology!fpqc!local properties in the}%
+\index{fpqc!topology!local properties in the}
 Let $X \arr Y$ be a morphism of schemes, $\{Y_i \arr Y\}$ an fpqc covering. Suppose that for each $i$ the projection $Y_i \times_{Y} X \arr Y_i$ has one of the following properties:
 
 \begin{enumeratei}
@@ -1222,11 +1305,14 @@ Let $\cC$ be a site, $F \colon \cC\op \arr
 
 \begin{enumeratei}
 
-\item $F$ is \emph{separated}\index{functor!separated}\index{separated functor} if, given a covering $\{U_i \to U\}$ and two sections $a$ and $b$ in $F U$ whose pullbacks to each $F U_i$ coincide, it follows that $a = b$.
+\item $F$ is \emph{separated}%
+\index{functor!separated}  \index{separated functor} if, given a covering $\{U_i \to U\}$ and two sections $a$ and $b$ in $F U$ whose pullbacks to each $F U_i$ coincide, it follows that $a = b$.
 
-\item $F$ is a \emph{sheaf}\index{sheaf} if the following condition is satisfied. Suppose that we are given a covering $\{U_i \to U\}$ in $\cC$, and a set of elements $a_i \in F U_i$. Denote by $\pr_1 \colon U_i \times_U U_j \arr U_i$ and $\pr_2 \colon U_i \times_U U_j \arr U_j$ the first and second projection respectively, and assume that $\pr_1^* a_i = \pr_2^* a_j \in F(U_i \times_U U_j)$ for all $i$ and $j$. Then there is a unique section $a \in F U$ whose pullback to $F U_i$ is $a_i$ for all $i$.
+\item $F$ is a \emph{sheaf}%
+\index{sheaf} if the following condition is satisfied. Suppose that we are given a covering $\{U_i \to U\}$ in $\cC$, and a set of elements $a_i \in F U_i$. Denote by $\pr_1 \colon U_i \times_U U_j \arr U_i$ and $\pr_2 \colon U_i \times_U U_j \arr U_j$ the first and second projection respectively, and assume that $\pr_1^* a_i = \pr_2^* a_j \in F(U_i \times_U U_j)$ for all $i$ and $j$. Then there is a unique section $a \in F U$ whose pullback to $F U_i$ is $a_i$ for all $i$.
 
-If $F$ and $G$ are sheaves on a site $\cC$, a \emph{morphism of sheaves}\index{morphism of sheaves} $F \arr G$ is simply a natural transformation of functors.
+If $F$ and $G$ are sheaves on a site $\cC$, a \emph{morphism of sheaves}%
+\index{morphism of sheaves} $F \arr G$ is simply a natural transformation of functors.
 
 \end{enumeratei}
 \end{definition}
@@ -1246,7 +1332,8 @@ Let $A$, $B$ and $C$ be sets, and suppose that we are given a diagram
    A\ar[r]^f & B\ar@<3pt>[r]^g \ar@<-3pt>[r]_h &C.
    }
    \]
-(that is, we are given a function $f \colon A \arr B$ and two functions $g, h \colon B \arr C$). We say that the diagram is an \emph{equalizer}\index{equalizer} if $f$ is injective, and maps $A$ surjectively onto the subset $\{b \in B \mid g(b) = h(b)\} \subseteq B$.
+(that is, we are given a function $f \colon A \arr B$ and two functions $g, h \colon B \arr C$). We say that the diagram is an \emph{equalizer}%
+\index{equalizer} if $f$ is injective, and maps $A$ surjectively onto the subset $\{b \in B \mid g(b) = h(b)\} \subseteq B$.
 
 Equivalently, the diagram is an equalizer if $g \circ f = h \circ f$, and every function $p \colon D \arr B$ such that $g \circ p = h \circ p$ factors uniquely through $A$.
 
@@ -1275,10 +1362,12 @@ One immediately sees that $F$ is a sheaf if and only if the diagram (\ref{eq:equ
 \subsection{Sieves}
 
 
-Given an object $U$ in a category $\cC$ and a set of arrows $\cU = \{U_i \to U\}$ in $\cC$, we define a subfunctor $\h_{\cU}  \subseteq \h_U$\index{$\h_{\cU}$}, by taking $\h_{\cU}(T)$ to be the set of arrows $T \arr U$ with the property that for some $i$ there is a factorization $T \arr U_i \arr U$. In technical terms, $\h_{\cU}$ is the \emph{sieve}\index{sieve!associated with a set of arrows} associated with the covering $\cU$. The term is suggestive: think of the $U_{i}$ as holes on $U$. Then an arrow $T \arr U$ is in $\h_{\cU}T$ when it goes through one of the holes. So a sieve is determined by what goes through it.
+Given an object $U$ in a category $\cC$ and a set of arrows $\cU = \{U_i \to U\}$ in $\cC$, we define a subfunctor $\h_{\cU}  \subseteq \h_U$\index{$\h_{\cU}$}, by taking $\h_{\cU}(T)$ to be the set of arrows $T \arr U$ with the property that for some $i$ there is a factorization $T \arr U_i \arr U$. In technical terms, $\h_{\cU}$ is the \emph{sieve}%
+\index{sieve!associated with a set of arrows} associated with the covering $\cU$. The term is suggestive: think of the $U_{i}$ as holes on $U$. Then an arrow $T \arr U$ is in $\h_{\cU}T$ when it goes through one of the holes. So a sieve is determined by what goes through it.
 
 \begin{definition}
-Let $U$ be an object of a category $\cC$. A \emph{sieve}\index{sieve} on $U$ is a subfunctor of $\h_{U} \colon \cC\op \arr \catset$.
+Let $U$ be an object of a category $\cC$. A \emph{sieve}%
+\index{sieve} on $U$ is a subfunctor of $\h_{U} \colon \cC\op \arr \catset$.
 \end{definition}
 
 Given a subfunctor $S \subseteq \h_{U}$, we get a collection $\cS$ of arrows $T \arr U$ (consisting of union of the $ST$  with $T$ running through all objects of $\cC$), with the property that every time an arrow $T \arr U$ is in $\cS$, every composite $T' \arr T \arr U$ is in $\cS$. Conversely, from such a collection we get a subfunctor $S \subseteq \h_{U}$, in which $ST$ is the set of all arrows $T \arr U$ that are in $\cS$.
@@ -1330,14 +1419,18 @@ is bijective. Furthermore, $F$ is separated if and only if this function is alwa
 This characterization can be sharpened.
 
 \begin{definition}
-Let $\cT$ be a Grothendieck topology on a category $\cC$. A sieve $S \subseteq \h_{U}$ on an object $U$ of $\cC$ is said to \emph{belong to $\cT$}\index{sieve!belonging to a topology} if there exists a covering $\cU$ of $U$ such that $\h_{\cU} \subseteq S$.
+Let $\cT$ be a Grothendieck topology on a category $\cC$. A sieve $S \subseteq \h_{U}$ on an object $U$ of $\cC$ is said to \emph{belong to $\cT$}%
+\index{sieve!belonging to a topology} if there exists a covering $\cU$ of $U$ such that $\h_{\cU} \subseteq S$.
 \end{definition}
 
 If $\cC$ is a site, we will talk about the \emph{sieves of $\cC$} to mean the sieves belonging to the topology of $\cC$.
 
 The importance of the following characterization will be apparent after the proof of Proposition~\ref{prop:same-sheaves}.
 
-\begin{proposition}\label{prop:funnychar-sheaves}\index{sheaf!characterization via sieves}\index{separated functor!characterization via sieves}\index{functor!separated!characterization via sieves}
+\begin{proposition}\label{prop:funnychar-sheaves}%
+\index{sheaf!characterization via sieves}%
+\index{separated functor!characterization via sieves}%
+\index{functor!separated!characterization via sieves}
 A functor $F \colon \cC\op \arr \catset$ is a sheaf in a topology $\cT$ if and only if for any sieve $S$ belonging to $\cT$ the induced function
    \[
    FU \simeq \hom(\h_U, F) \arr  \hom(S, F)
@@ -1399,30 +1492,38 @@ We conclude with a remark. Suppose that $\cU = \{U_{i}\to U\}$ and $\cV = \{V_{j
 Sometimes two different to\-pol\-ogies on the same category define the same sheaves.
 
 \begin{definition}
-Let $\cC$ be a category, $\{U_i \to U\}_{i \in I}$ a set of arrows. A \emph{refinement}\index{refinement} $\{V_a \arr U\}_{a \in A}$ is a set of arrows such that for each index $a \in A$ there is some index $i \in I$ such that $V_a \arr U$ factors through $U_i \arr U$.
+Let $\cC$ be a category, $\{U_i \to U\}_{i \in I}$ a set of arrows. A \emph{refinement}%
+\index{refinement} $\{V_a \arr U\}_{a \in A}$ is a set of arrows such that for each index $a \in A$ there is some index $i \in I$ such that $V_a \arr U$ factors through $U_i \arr U$.
 \end{definition}
 
 Notice that the choice of factorizations $V_a \arr U_i \arr U$ is \emph{not} part of the data, we simply require their existence.
 
 This relation between sets of arrows is most easily expressed in terms of sieves. The following fact is immediate.
 
-\begin{proposition}\label{prop:funnychar-refinement}\index{refinement!characterization via sieves}
+\begin{proposition}\label{prop:funnychar-refinement}%
+\index{refinement!characterization via sieves}
 Let there be given two sets of arrows $\cU = \{U_i \to U\}$ and $\cV = \{V_a \arr U\}$. Then $\cV$ is a refinement of $\cU$ if and only if $\h_{\cV} \subseteq \h_{\cU}$.
 \end{proposition}
 
 A refinement of a refinement is obviously a refinement. Also, any covering is a refinement of itself: thus, the relation of being a refinement is a pre-order on the set of coverings of an object $U$.
 
 \begin{definition}\label{def:same-sheaves}
-Let $\cC$ be a category, $\cT$ and $\cT'$ two topologies on $\cC$. We say that $\cT$ is \emph{subordinate}\index{topology!subordinate}\index{subordinate topology} to $\cT'$, and write $\cT \prec \cT'$, if every covering in $\cT$ has a refinement that is a covering in $\cT'$.
+Let $\cC$ be a category, $\cT$ and $\cT'$ two topologies on $\cC$. We say that $\cT$ is \emph{subordinate}%
+\index{topology!subordinate}%
+\index{subordinate topology} to $\cT'$, and write $\cT \prec \cT'$, if every covering in $\cT$ has a refinement that is a covering in $\cT'$.
 
-If $\cT \prec \cT'$ and $\cT' \prec \cT$, we say that $\cT$ and $\cT'$ are \emph{equivalent}\index{topology!equivalent}\index{equivalent topologies}, and write $\cT \equiv \cT'$.
+If $\cT \prec \cT'$ and $\cT' \prec \cT$, we say that $\cT$ and $\cT'$ are \emph{equivalent}%
+\index{topology!equivalent}%
+\index{equivalent topologies}, and write $\cT \equiv \cT'$.
 \end{definition}
 
 Being a refinement is a relation between sets of arrows into $U$ that is transitive and reflexive. Therefore being subordinate is a transitive and reflexive relation between topologies on $\cC$, and being equivalent is an equivalence relation.
 
 This relation between topologies is naturally expressed in terms of sieves.
 
-\begin{proposition}\label{prop:funnychar-subordinate}\index{topology!subordinate!characterization via sieves}\index{subordinate topology!characterization via sieves}
+\begin{proposition}\label{prop:funnychar-subordinate}%
+\index{topology!subordinate!characterization via sieves}%
+\index{subordinate topology!characterization via sieves}
 Let $\cT$ and $\cT'$ be topologies on a category $\cC$. Then $\cT \prec \cT'$ if and only if every sieve belonging to $\cT$ also belongs to $\cT'$.
 
 In particular, two topologies are equivalent if and only if they have the same sieves.
@@ -1447,16 +1548,22 @@ The global classical topology on $\cattop$ (Example~\ref{ex:global-classical}), 
 \end{example}
 
 \begin{example}
-If $S$ is a base scheme, there is another topology that we can define over the category $\catsch{S}$, the \emph{smooth topology}\index{topology!smooth}\index{smooth!topology}, in which a covering $\{U_{i}\to U\}$ is a jointly surjective set of smooth morphisms locally of finite presentation.
+If $S$ is a base scheme, there is another topology that we can define over the category $\catsch{S}$, the \emph{smooth topology}%
+\index{topology!smooth}%
+\index{smooth!topology}, in which a covering $\{U_{i}\to U\}$ is a jointly surjective set of smooth morphisms locally of finite presentation.
 
 By \cite[Corollaire~17.16.3]{ega4-4}, given a smooth covering $\{U_{i}\to U\}$ we can find an \'etale surjective morphism $V \arr U$ that factors through the disjoint union $\coprod_{i}U_{i} \arr U$; given such a factorization, if $V_{i}$ is the inverse image of $U_{i}$ in $V$, we have that $\{V_{i} \to U\}$ is an \'etale covering that is a refinement of $\{U_{i}\to U\}$. This means that the smooth topology is subordinate to the \'etale topology. Since obviously every \'etale covering is a smooth cover, the two topologies are equivalent.
 \end{example}
 
 
 \begin{definition}\label{def:saturation}
-A topology $\cT$ on a category $\cC$ is called \emph{saturated}\index{topology!saturated}\index{saturated topology} if a set of arrows $\{U_{i} \arr U\}$ which has a refinement that is in $\cT$ is also in $\cT$.
+A topology $\cT$ on a category $\cC$ is called \emph{saturated}%
+\index{topology!saturated}%
+\index{saturated topology} if a set of arrows $\{U_{i} \arr U\}$ which has a refinement that is in $\cT$ is also in $\cT$.
 
-If $\cT$ is a topology of $\cC$, the \emph{saturation}\index{topology!saturation of a}\index{saturation of a topology} $\overline{\cT}$ of $\cT$ is the set of sets of arrows which have a refinement in $\cT$.
+If $\cT$ is a topology of $\cC$, the \emph{saturation}%
+\index{topology!saturation of a}%
+\index{saturation of a topology} $\overline{\cT}$ of $\cT$ is the set of sets of arrows which have a refinement in $\cT$.
 \end{definition}
 
 
@@ -1513,9 +1620,12 @@ A representable functor on $\catsch{S}$ is a sheaf in the fpqc topology.
 
 So, in particular, it is also a sheaf in the \'etale and in the fppf topologies.
 
-Here is another way of expressing this result. Recall that in a category $\cC$ an arrow $f \colon V \arr U$ is called an \emph{epimorphism}\index{epimorphism} if, whenever we have two arrows $U \double X$ with the property that the two composites $V \arr U \double X$ coincide, then the two arrows are equal. In other words, we require that the function $\hom_{\cC}(U,X) \arr \hom_{\cC}(V,X)$ be injective for any object $X$ of $\cC$.
+Here is another way of expressing this result. Recall that in a category $\cC$ an arrow $f \colon V \arr U$ is called an \emph{epimorphism}%
+\index{epimorphism} if, whenever we have two arrows $U \double X$ with the property that the two composites $V \arr U \double X$ coincide, then the two arrows are equal. In other words, we require that the function $\hom_{\cC}(U,X) \arr \hom_{\cC}(V,X)$ be injective for any object $X$ of $\cC$.
 
-On the other hand, $V \arr U$ is called an \emph{effective epimorphism}\index{epimorphism!effective}\index{effective!epimorphism} if for any object $X$ of $\cC$, any arrow $V \arr X$ with the property that the two composites
+On the other hand, $V \arr U$ is called an \emph{effective epimorphism}%
+\index{epimorphism!effective}%
+\index{effective!epimorphism} if for any object $X$ of $\cC$, any arrow $V \arr X$ with the property that the two composites
    \[
    V \times_U V \doublelong{\pr_1}{\pr_2} V \arr X
    \]
@@ -1542,18 +1652,26 @@ We can form a (very non-separated) scheme $X$ by gluing together all the $V_p$ a
 \end{remark}
 
 \begin{definition}\label{def:subcanonical}
-A topology $\cT$ on a category $\cC$ is called \emph{subcanonical}\index{topology!subcanonical}\index{subcanonical!topology} if every representable functor on $\cC$ is a sheaf with respect to $\cT$.
+A topology $\cT$ on a category $\cC$ is called \emph{subcanonical}%
+\index{topology!subcanonical}%
+\index{subcanonical!topology} if every representable functor on $\cC$ is a sheaf with respect to $\cT$.
 
-A \emph{subcanonical site}\index{site!subcanonical}\index{subcanonical!site} is a category endowed with a subcanonical topology.
+A \emph{subcanonical site}%
+\index{site!subcanonical}%
+\index{subcanonical!site} is a category endowed with a subcanonical topology.
 \end{definition}
 
 There are examples of sites that are not subcanonical (we have just seen one in Remark~\ref{rmk:really-need-finiteness}), but I have never had dealings with any of them.
 
-The name ``subcanonical'' comes from the fact that on a category $\cC$ there is a topology, known as the \emph{canonical topology}\index{topology!canonical}\index{canonical!topology}, which is the finest topology in which every representable functor is a sheaf. We will not need this fact.
+The name ``subcanonical'' comes from the fact that on a category $\cC$ there is a topology, known as the \emph{canonical topology}%
+\index{topology!canonical}%
+\index{canonical!topology}, which is the finest topology in which every representable functor is a sheaf. We will not need this fact.
 
 
 \begin{definition}\label{def:comma-topology}
-Let $\cC$ be a site, $S$ an object of $\cC$. We define the \emph{comma topology} \index{topology!comma}\index{comma!topology} on the comma category $(\cC/S)$ as the topology in which a covering of  an object $U \arr S$ of $(\cC/S)$ is a collection of arrows
+Let $\cC$ be a site, $S$ an object of $\cC$. We define the \emph{comma topology}%
+\index{topology!comma}%
+\index{comma!topology} on the comma category $(\cC/S)$ as the topology in which a covering of  an object $U \arr S$ of $(\cC/S)$ is a collection of arrows
    \[
    \xymatrix@-15pt{
    U_i\ar[rr]^{f_i}\ar[rd] && U\ar[ld]\\
@@ -1805,7 +1923,8 @@ The proof of Theorem~\ref{thm:rep-fppf} is now complete.
 The usual construction of the sheafification of a presheaf of sets on a topological space carries over to this more general context.
 
 \begin{definition}\label{def:sheafification}
-Let $\cC$ be a site, $F \colon \cC\op \arr \catset$ a functor. A \emph{sheafification}\index{sheafification} of $F$ is a sheaf $F\ass \colon \cC\op \arr \catset$, together with a natural transformation $F \arr F\ass$, such that:
+Let $\cC$ be a site, $F \colon \cC\op \arr \catset$ a functor. A \emph{sheafification}%
+\index{sheafification} of $F$ is a sheaf $F\ass \colon \cC\op \arr \catset$, together with a natural transformation $F \arr F\ass$, such that:
 
 \begin{enumeratei}
 
@@ -1881,7 +2000,9 @@ We will draw several commutative diagrams involving objects of $\cC$ and $\cF$; 
    \]
 will mean that $\p_{\cF} \phi = f$.
 
-\begin{definition} Let $\cF$ be a category over $\cC$. An arrow  $\phi\colon \xi \arr \eta$ of $\cF$ is \emph{cartesian}\index{arrow!cartesian}\index{cartesian arrow} if for any arrow $\psi\colon \zeta \arr \eta$ in $\cF$ and any arrow $h \colon \p_{\cF} \zeta \arr \p_{\cF} \xi$ in $\cC$ with $\p_{\cF} \phi \circ  h = \p_{\cF} \psi$, there exists a unique arrow $\theta \colon \zeta \arr \xi$ with $\p_{\cF} \theta  = h$ and $\phi\circ \theta = \psi$, as in the commutative diagram
+\begin{definition} Let $\cF$ be a category over $\cC$. An arrow  $\phi\colon \xi \arr \eta$ of $\cF$ is \emph{cartesian}%
+\index{arrow!cartesian}%
+\index{cartesian arrow} if for any arrow $\psi\colon \zeta \arr \eta$ in $\cF$ and any arrow $h \colon \p_{\cF} \zeta \arr \p_{\cF} \xi$ in $\cC$ with $\p_{\cF} \phi \circ  h = \p_{\cF} \psi$, there exists a unique arrow $\theta \colon \zeta \arr \xi$ with $\p_{\cF} \theta  = h$ and $\phi\circ \theta = \psi$, as in the commutative diagram
    \[
    \xymatrix@R=6pt{
    {\zeta}\ar@{|->}[dd] \ar@{-->}[rd]_\theta
@@ -1895,7 +2016,8 @@ will mean that $\p_{\cF} \phi = f$.
    \]
 
 
-If $\xi \arr \eta$ is a cartesian arrow of $\cF$ mapping to an arrow $U \arr V$ of $\cC$, we also say that $\xi$ is \emph{a pullback of $\eta$ to $U$}\index{pullback}.
+If $\xi \arr \eta$ is a cartesian arrow of $\cF$ mapping to an arrow $U \arr V$ of $\cC$, we also say that $\xi$ is \emph{a pullback of $\eta$ to $U$}%
+\index{pullback}.
 \end{definition}
 
 \begin{remark}\label{rmk:unique-pullback}
@@ -1938,16 +2060,22 @@ The following facts are easy to prove, and are left to the reader.
 \end{enumeratei}
 \end{proposition}
 
-\begin{definition} A \emph{fibered category over $\cC$}\index{category!fibered}\index{fibered!category} is a category $\cF$ over $\cC$, such that given an arrow $f \colon U \arr V$ in $\cC$ and an object $\eta$ of $\cF$ mapping to $V$, there is a cartesian arrow $\phi\colon \xi \arr \eta$ with $\p_{\cF} \phi = f$.
+\begin{definition} A \emph{fibered category over $\cC$}%
+\index{category!fibered}%
+\index{fibered!category} is a category $\cF$ over $\cC$, such that given an arrow $f \colon U \arr V$ in $\cC$ and an object $\eta$ of $\cF$ mapping to $V$, there is a cartesian arrow $\phi\colon \xi \arr \eta$ with $\p_{\cF} \phi = f$.
 \end{definition}
 
 In other words, in a fibered category $\cF \arr \cC$  we can pull back objects of $\cF$ along any arrow of $\cC$.
 
 \begin{definition}
-If $\cF$ and $\cG$ are fibered categories over $\cC$, then a \emph{morphism of fibered categories}\index{category!fibered!morphism of}\index{morphism!of fibered categories} $F \colon \cF \arr \cG$ is a functor such that:
+If $\cF$ and $\cG$ are fibered categories over $\cC$, then a \emph{morphism of fibered categories}%
+\index{category!fibered!morphism of}%
+\index{morphism!of fibered categories} $F \colon \cF \arr \cG$ is a functor such that:
 
 \begin{enumeratei}
-\item $F$ is \emph{base-preserving}\index{functor!base-preserving}\index{base-preserving!functor}, that is, $\p_{\cG} \circ F = \p_{\cF}$; \item $F$ sends cartesian arrows to cartesian arrows.
+\item $F$ is \emph{base-preserving}%
+\index{functor!base-preserving}%
+\index{base-preserving!functor}, that is, $\p_{\cG} \circ F = \p_{\cF}$; \item $F$ sends cartesian arrows to cartesian arrows.
 \end{enumeratei}
 \end{definition}
 
@@ -1964,7 +2092,9 @@ This follows from Proposition~\refall{prop:comp-cartesian}{2}.
 
 \subsection{Fibered categories as pseudo-functors}
 
-\begin{definition} Let $\cF$ be a fibered category over $\cC$. Given an object $U$ of $\cC$, the \emph{fiber}\index{category!fibered!fiber of}\index{fiber of a fibered category} $\cF(U)$ of $\cF$ over $U$ is the subcategory of $\cF$ whose objects are the objects $\xi$ of $\cF$ with $\p_{\cF} \xi = U$, and whose arrows are arrows $\phi$ in $\cF$ with $\p_{\cF} \phi = \id_U$.
+\begin{definition} Let $\cF$ be a fibered category over $\cC$. Given an object $U$ of $\cC$, the \emph{fiber}%
+\index{category!fibered!fiber of}%
+\index{fiber of a fibered category} $\cF(U)$ of $\cF$ over $U$ is the subcategory of $\cF$ whose objects are the objects $\xi$ of $\cF$ with $\p_{\cF} \xi = U$, and whose arrows are arrows $\phi$ in $\cF$ with $\p_{\cF} \phi = \id_U$.
 \end{definition}
 
 By definition, if $F \colon \cF \arr \cG$ is a morphism of fibered categories over $\cC$ and $U$ is an object of $\cC$, the functor $F$ sends $\cF(U)$ to $\cG(U)$, so we have a restriction functor $F_U \colon \cF(U) \arr \cG(U)$.
@@ -1980,7 +2110,8 @@ Let $\cF$ be a category fibered over $\cC$, and $f \colon U \arr V$ an arrow in 
    \] commute.
 
 \begin{definition}
-A \emph{cleavage}\index{cleavage} of a fibered category $\cF \arr \cC$ consists of a class $K$ of cartesian arrows in $\cF$ such that for each arrow $f \colon U \arr V$ in $\cC$ and each object $\eta$ in $\cF(V)$ there exists a unique arrow in $K$ with target $\eta$ mapping to $f$ in $\cC$.
+A \emph{cleavage}%
+\index{cleavage} of a fibered category $\cF \arr \cC$ consists of a class $K$ of cartesian arrows in $\cF$ such that for each arrow $f \colon U \arr V$ in $\cC$ and each object $\eta$ in $\cF(V)$ there exists a unique arrow in $K$ with target $\eta$ mapping to $f$ in $\cC$.
 \end{definition}
 
 By the axiom of choice, every fibered category has a cleavage. Given a fibered category $\cF \arr \cC$ with a cleavage, we associate with each object $U$ of $\cC$ a category $\cF(U)$, and to each arrow $f \colon U \arr V$ a functor $f^* \colon \cF(V) \arr \cF(U)$, constructed as above. It is very tempting to believe that in this way we have defined a functor from $\cC$ to the category of categories; however, this is not quite correct. First of all, pullbacks $\id_U^* \colon \cF(U) \arr \cF(U)$ are not necessarily identities. Of course we could just choose all pullbacks along identities to be identities on the fiber categories: this would certainly work, but it is not very natural, as there are often natural defined pullbacks where this does not happen (in Example~\ref{ex:arrows} and many others). What happens in general is that, when $U$ is an object of $\cC$ and $\xi$ an object of $\cF(U)$, we have the pullback $\isoiden_U(\xi)\colon\id_U^* \xi \arr \xi$ is an isomorphism, because of Proposition~\refall{prop:comp-cartesian}{3}, and this defines an isomorphism  of functors $\isoiden_U\colon \id_U^* \simeq \id_{\cF(U)}$.
@@ -1992,7 +2123,8 @@ So, after choosing a cleavage a fibered category almost gives a functor from $\c
 What we get instead of a functor is what is called a \emph{pseudo-functor}, or, in a more modern terminology, a \emph{lax 2-functor}.
 
 \begin{definition}\label{def:pseudo-functor}
-A \emph{pseudo-functor}\index{pseudo-functor} $\Phi$ on $\cC$ consists of the following data.
+A \emph{pseudo-functor}%
+\index{pseudo-functor} $\Phi$ on $\cC$ consists of the following data.
 
 \begin{enumeratei}
 
@@ -2066,9 +2198,12 @@ commutative. But one sees immediately that both $\isoass_{gf,h}(\zeta) \circ \is
 It is easy to see when a cleavage defines a functor from $\cC$ into the category of categories.
 
 \begin{definition}
-A cleavage on a fibered category is a \emph{splitting}\index{splitting} if it contains all the identities, and it is closed under composition.
+A cleavage on a fibered category is a \emph{splitting}%
+\index{splitting} if it contains all the identities, and it is closed under composition.
 
-A fibered category endowed with a splitting is called \emph{split}\index{category!fibered!split}\index{split fibered category}.
+A fibered category endowed with a splitting is called \emph{split}%
+\index{category!fibered!split}%
+\index{split fibered category}.
 \end{definition}
 
 \begin{proposition}
@@ -2247,7 +2382,9 @@ I claim that $\Arr \cC$ is a fibered category over $\cC$. In fact, it easy to ch
 \end{example}
 
 \begin{definition}\label{def:stable-class}
-A class $\cP$ of arrows in a category $\cC$ is \emph{stable}\index{class of arrows!stable}\index{stable class of arrows} if the following two conditions hold.
+A class $\cP$ of arrows in a category $\cC$ is \emph{stable}%
+\index{class of arrows!stable}%
+\index{stable class of arrows} if the following two conditions hold.
 
 \begin{enumeratea}
 
@@ -2276,7 +2413,8 @@ It is easy to see that this is a fibered category over $\cC$; the cartesian arro
 \end{example}
 
 
-\begin{example}\label{ex:classifying} Let $G$ a topological group. The \emph{classifying stack}\index{classifying stack of a topological group} of $G$ is the fibered category $\cB G \arr \cattop$ over the category of topological spaces, whose objects are principal $G$ bundles $P \arr U$, and whose arrows $(\phi, f)$ from $P \arr U$ to $Q \arr V$  are commutative diagrams
+\begin{example}\label{ex:classifying} Let $G$ a topological group. The \emph{classifying stack}%
+\index{classifying stack of a topological group} of $G$ is the fibered category $\cB G \arr \cattop$ over the category of topological spaces, whose objects are principal $G$ bundles $P \arr U$, and whose arrows $(\phi, f)$ from $P \arr U$ to $Q \arr V$  are commutative diagrams
    \[
    \xymatrix{
    P\ar[r]^\phi\ar[d] & Q\ar[d]\\
@@ -2464,7 +2602,9 @@ There are many variants on  this example. For example, one can define the fibere
 \setcounter{section}{2}
 \section{Categories fibered in groupoids}
 
-\begin{definition} A \emph{category fibered in groupoids over $\cC$}\index{category!fibered!in groupoids}\index{fibered!category!in groupoids} is a category $\cF$ fibered over $\cC$, such that the category $\cF(U)$ is a groupoid for any object $U$ of $\cC$.
+\begin{definition} A \emph{category fibered in groupoids over $\cC$}%
+\index{category!fibered!in groupoids}%
+\index{fibered!category!in groupoids} is a category $\cF$ fibered over $\cC$, such that the category $\cF(U)$ is a groupoid for any object $U$ of $\cC$.
 \end{definition}
 
 In the literature one often finds a different definition of a category fibered in groupoids.
@@ -2503,12 +2643,15 @@ The notion of category generalizes the notion of set: a set can be thought of as
 
 Similarly, fibered categories are generalizations of functors.
 
-\begin{definition} A \emph{category fibered in sets over $\cC$}\index{category!fibered!in sets}\index{fibered!category!in sets} is a category $\cF$ fibered over $\cC$, such that for any object $U$ of $\cC$ the category $\cF(U)$ is a set.
+\begin{definition} A \emph{category fibered in sets over $\cC$}%
+\index{category!fibered!in sets}%
+\index{fibered!category!in sets} is a category $\cF$ fibered over $\cC$, such that for any object $U$ of $\cC$ the category $\cF(U)$ is a set.
 \end{definition}
 
 Here is a useful characterization of categories fibered in sets.
 
-\begin{proposition}\label{prop:characterization-fibered-sets}
+\begin{proposition}%
+\label{prop:characterization-fibered-sets}
 \index{category!fibered!in sets, characterization}
 \index{fibered!category!in sets, characterization}
 Let $\cF$ be a category over $\cC$. Then $\cF$ is fibered in sets if and only if for any object $\eta$ of $\cF$ and any arrow $f \colon U \arr  \p_{\cF} \eta$ of $\cC$, there is a unique arrow $\phi\colon \xi \arr \eta$ of $\cF$ with $\p_{\cF} \phi = f$.
@@ -2604,7 +2747,9 @@ Given a functor $F \colon (\cC/S)\op \arr \catset$, this corresponds to a catego
 
 
 \begin{definition}
-Let $\cF\arr \cC$ be a fibered category. A \emph{fibered subcategory}\index{subcategory!fibered}\index{fibered!subcategory} $\cG$ of $\cF$ is a subcategory of $\cF$, such that the composite $\cG \into \cF \arr \cC$ makes $\cG$ into a fibered category over $\cC$, and such that any cartesian arrow in $\cG$ is also cartesian in $\cF$.
+Let $\cF\arr \cC$ be a fibered category. A \emph{fibered subcategory}%
+\index{subcategory!fibered}%
+\index{fibered!subcategory} $\cG$ of $\cF$ is a subcategory of $\cF$, such that the composite $\cG \into \cF \arr \cC$ makes $\cG$ into a fibered category over $\cC$, and such that any cartesian arrow in $\cG$ is also cartesian in $\cF$.
 \end{definition}
 
 The last condition is equivalent to requiring that the inclusion
@@ -2619,7 +2764,10 @@ So, for example, the category of locally free sheaves is a fibered subcategory o
 Here is an interesting example.
 
 \begin{definition}\label{def:ass-groupoids}
-Let $\cF \arr \cC$ be a fibered category. The \emph{category fibered in groupoids associated with $\cF$}\index{category!fibered!$\cF\cart$}\index{fibered!category!$\cF\cart$}\index{$\cF\cart$} is the subcategory $\cF\cart$ of $\cF$, whose objects are all the objects of $\cF$, and whose arrows are the cartesian arrows of $\cF$.
+Let $\cF \arr \cC$ be a fibered category. The \emph{category fibered in groupoids associated with $\cF$}%
+\index{category!fibered!$\cF\cart$}%
+\index{fibered!category!$\cF\cart$}%
+\index{$\cF\cart$} is the subcategory $\cF\cart$ of $\cF$, whose objects are all the objects of $\cF$, and whose arrows are the cartesian arrows of $\cF$.
 \end{definition}
 
 \begin{proposition}
@@ -2640,7 +2788,9 @@ The proof is immediate from Proposition~\ref{prop:char-fibered-in-groupoids} and
 
 The fact that fibered categories are categories, and not functors, has strong implications, and does cause difficulties. As usual, the main problem is that functors between categories can be isomorphic without being equal; in other words, functors between two fixed categories form a category, the arrows being given by natural transformations.
 
-\begin{definition}\label{def:morfunctors} Let $\cF$ and $\cG$ be two categories fibered over $\cC$, $F$, $G \colon \cF \arr \cG$ two morphisms. A \emph{base-preserving natural transformation}\index{natural transformation!base-preserving} \index{base-preserving!natural transformations} $\alpha\colon F \arr G$ is a natural transformation such that for any object $\xi$ of $\cF$, the arrow $\alpha_\xi \colon F \xi \arr G \xi$ is in $\cG(U)$, where $U \eqdef \p_{\cF} \xi = \p_{\cG}(F \xi) = \p_{\cG}(G \xi)$.
+\begin{definition}\label{def:morfunctors} Let $\cF$ and $\cG$ be two categories fibered over $\cC$, $F$, $G \colon \cF \arr \cG$ two morphisms. A \emph{base-preserving natural transformation}%
+\index{natural transformation!base-preserving}%
+\index{base-preserving!natural transformations} $\alpha\colon F \arr G$ is a natural transformation such that for any object $\xi$ of $\cF$, the arrow $\alpha_\xi \colon F \xi \arr G \xi$ is in $\cG(U)$, where $U \eqdef \p_{\cF} \xi = \p_{\cG}(F \xi) = \p_{\cG}(G \xi)$.
 
 An \emph{isomorphism of $F$ with $G$} is a base-preserving natural transformation $F \arr G$ which is an isomorphism of functors. 
 \end{definition}
@@ -2654,7 +2804,8 @@ There is a category whose objects are the morphism from $\cF$ to $\cG$, and the 
 
 \subsection{Equivalences}
 
-\begin{definition} Let $\cF$ and $\cG$ be two fibered categories over $\cC$. An \emph{equivalence}\index{equivalence!of fibered categories}, of $\cF$ with $\cG$ is a morphism $F \colon \cF \arr \cG$, such that there exists another morphism $G \colon \cG \arr \cF$, together with isomorphisms of $G \circ F$ with $\id_\cF$ and of $F \circ G$ with $\id_\cG$.
+\begin{definition} Let $\cF$ and $\cG$ be two fibered categories over $\cC$. An \emph{equivalence}%
+\index{equivalence!of fibered categories}, of $\cF$ with $\cG$ is a morphism $F \colon \cF \arr \cG$, such that there exists another morphism $G \colon \cG \arr \cF$, together with isomorphisms of $G \circ F$ with $\id_\cF$ and of $F \circ G$ with $\id_\cG$.
 
 We call $G$ simply an \emph{inverse} to $F$.
 \end{definition}
@@ -2695,7 +2846,8 @@ For any object $\xi$ of $\cG$ pick an object $G \xi$ of $\cF(U)$, where $U = \p_
 
 Now, if $\phi\colon \xi \arr \eta$ is an arrow in $\cG$, by the Lemma there is a unique arrow $G \phi \colon G \xi \arr G \eta$ such that $F(G \phi) = \alpha_\eta\circ \phi \circ \alpha_\xi^{-1}$, that is, such that the diagram
    \[
-   \xymatrix@C+8pt{{}\xi\ar[r]^{\phi}\ar[d]^{\alpha_\xi}& 
+   \xymatrix@C+8pt{{}\xi\ar[r]^{\phi}
+    \ar[d]^{\alpha_\xi}& 
    {}\eta\ar[d]^{\alpha_\eta}\\
    F(G \xi)\ar[r]^{F(G \phi)}&F(G \eta)}
    \] commutes.
@@ -2731,12 +2883,15 @@ If a category is equivalent to a set, it is immediate to see that it is an equiv
 
 There is an analogous result for fibered categories.
 
-\begin{definition} A category $\cF$ over $\cC$ is a \emph{quasi-functor}\index{quasi-functor}, or is \emph{fibered in equivalence relations}\index{category!fibered!in equivalence relations}, if it is fibered, and each fiber $\cF(U)$ is an equivalence relation.
+\begin{definition} A category $\cF$ over $\cC$ is a \emph{quasi-functor}%
+\index{quasi-functor}, or is \emph{fibered in equivalence relations}%
+\index{category!fibered!in equivalence relations}, if it is fibered, and each fiber $\cF(U)$ is an equivalence relation.
 \end{definition}
 
 We have the following characterization of quasi-functors.
 
-\begin{proposition}\label{prop:characterization-quasifunctors} A category $\cF$ over $\cC$ is a quasi-functor if and only if the following two conditions hold.
+\begin{proposition}%
+\label{prop:characterization-quasifunctors} A category $\cF$ over $\cC$ is a quasi-functor if and only if the following two conditions hold.
 
 \begin{enumeratei}
 \item Given an object $\eta$ of $\cF$ and an arrow $f \colon U \arr \p_ \cF \eta$ of $\cC$, there exists an arrow $\phi \colon \xi \arr \eta$ of $\cF$ with $\p_{\cF} \phi = f$. Furthermore, given any other arrow $\phi'\colon \xi' \arr \eta$ with $\p_{\cF}\phi' = f$, there exists $\alpha\colon \xi \arr \xi'$ in $\cF(U)$ such that $\phi'\alpha = \phi$.
@@ -2800,12 +2955,15 @@ of $(\cC/X)$ to the commutative diagram obtained by composing both sides with $f
 This is the 2-categorical version of the weak Yoneda lemma.
 
 \begin{named}{The weak 2-Yoneda Lemma}
-\index{2-Yoneda Lemma!weak version}\index{Lemma!2-Yoneda!weak version}
+\index{2-Yoneda Lemma!weak version}%
+\index{Lemma!2-Yoneda!weak version}
 The function that sends each arrow $f \colon X \arr Y$ to the morphism $(\cC/f) \colon (\cC/X) \arr (\cC/Y)$ is a bijection.
 \end{named}
 
 \begin{definition}
-A fibered category over $\cC$ is \emph{representable}\index{category!fibered!representable}\index{representable!fibered category} if it is equivalent to a category of the form $(\cC/X)$.
+A fibered category over $\cC$ is \emph{representable}%
+\index{category!fibered!representable}%
+\index{representable!fibered category} if it is equivalent to a category of the form $(\cC/X)$.
 \end{definition}
 
 So a representable category is necessarily a quasi-functor, by Proposition~\ref{prop:equivalent-functor}. However, we should be careful: if $\cF$ and $\cG$ are fibered categories, equivalent to $(\cC/X)$ and $(\cC/Y)$ for two objects $X$ and $Y$ of $\cC$, then
@@ -2852,7 +3010,8 @@ in $(\cC/X)$ we associate the only arrow $\theta \colon \phi^* \xi \arr \psi^* \
 commutative. We leave it to the reader to check that $F_\xi$ is indeed a functor.
 
 \begin{named}{2-Yoneda Lemma}\label{2-yoneda}
-\index{2-Yoneda Lemma!strong version}\index{Lemma!2-Yoneda!strong version}
+\index{2-Yoneda Lemma!strong version}%
+\index{Lemma!2-Yoneda!strong version}
 The two functors above define an equivalence of categories
    \[
    \hom_{\cC}\bigl((\cC/X), \cF\bigr)
@@ -2929,7 +3088,8 @@ Suppose that $\cF \arr \cC$ is a fibered category; if $U$ is an object in $\cC$ 
 
 Let $\xi$ and $\eta$ be two objects of $\cF$ over the same object $S$ of $\cC$. Let $u_1 \colon U_1 \arr S$  and $u_2 \colon U_2 \arr S$ be arrows in $\cC$; these are objects of the comma category $(\cC/S)$. Suppose that $\xi_i \arr \xi$ and $\eta_i \arr \eta$ are pullbacks along $u_i \colon U_i \arr S$ for $i=1$, 2. For each arrow $f \colon U_1 \arr U_2$ in $(\cC/S)$, by definition of pullback there are two arrows, each unique,  $\alpha_f \colon \xi_1 \arr \xi_2$ and $\beta_f \colon \eta_1 \arr \eta_2$, such that and the two diagrams
    \[
-   \xymatrix@-15pt{\xi_1\ar[rr]^{\alpha_f}\ar[rd]
+   \xymatrix@-15pt{\xi_1\ar[rr]^{\alpha_f}
+   \ar[rd]
    && \xi_2 \ar[ld]\\ &\xi &}\qquad
    \text{and}\qquad
    \xymatrix@-15pt{\eta_1 \ar[rr]^{\beta_f}\ar[rd]
@@ -3010,7 +3170,8 @@ The notion of an equivariant sheaf of modules on a scheme with the action of a g
 Let $G \colon \cC\op \arr \catgrp$ be a functor, $\cF \arr \cC$ a fibered category, $X$ an object of $\cC$ with an action of $G$ (see \S\ref{subsec:actions}).
 
 \begin{definition}\call{def:equivariant-object}
-A \emph{$G$-equivariant object}\index{equivariant!object} of $\cF(X)$ is an object $\rho$ of $\cF(X)$, together with an action of $G(U)$ on the set $\hom_{\cF}(\xi, \rho)$ for any $\xi \in \cF(U)$, such that the following two conditions are satisfied.
+A \emph{$G$-equivariant object}%
+\index{equivariant!object} of $\cF(X)$ is an object $\rho$ of $\cF(X)$, together with an action of $G(U)$ on the set $\hom_{\cF}(\xi, \rho)$ for any $\xi \in \cF(U)$, such that the following two conditions are satisfied.
 \begin{enumeratei}
 
 \itemref{1} For any arrow  $\phi \colon \xi \arr \eta$ of $\cF$ mapping to an arrow $f \colon U \arr V$, the induced function $\phi^* \colon \hom_{\cF}(\eta, \rho) \arr \hom_{\cF}(\xi, \rho)$ is equivariant with respect to the group homomorphism $f^* \colon G(V) \arr G(U)$.
@@ -3235,7 +3396,8 @@ Given a covering $\{\sigma \colon U_i \arr U\}$, set $U_{ij} = U_i \times_U U_j$
 
 \begin{definition}
 
-Let $\cU = \{\sigma_i \colon U_i \arr U\}$ be a covering in $\cC$. An \emph{object with descent data}\index{descent data!object with} $(\{\xi_i\}, \{\phi_{ij}\})$ on $\cU$, is a collection of objects $\xi_i \in \cF(U_i)$, together with isomorphisms $\phi_{ij} \colon \pr_2^* \xi_j \simeq \pr_1^* \xi_i$ in $\cF(U_i \times_U U_j)$, such that the following cocycle condition is satisfied.
+Let $\cU = \{\sigma_i \colon U_i \arr U\}$ be a covering in $\cC$. An \emph{object with descent data}%
+\index{descent data!object with} $(\{\xi_i\}, \{\phi_{ij}\})$ on $\cU$, is a collection of objects $\xi_i \in \cF(U_i)$, together with isomorphisms $\phi_{ij} \colon \pr_2^* \xi_j \simeq \pr_1^* \xi_i$ in $\cF(U_i \times_U U_j)$, such that the following cocycle condition is satisfied.
 
 For any triple of indices $i$, $j$ and $k$, we have the equality
    \[
@@ -3245,7 +3407,8 @@ For any triple of indices $i$, $j$ and $k$, we have the equality
    \]
 where the $\mathrm{pr}_{ab}$ and $\pr_a$ are projections on the $a\th$ and $b\th$ factor, or the $a\th$ factor respectively.
 
-The isomorphisms $\phi_{ij}$ are called \emph{transition isomorphisms}\index{transition isomorphisms} of the object with descent data.
+The isomorphisms $\phi_{ij}$ are called \emph{transition isomorphisms}%
+\index{transition isomorphisms} of the object with descent data.
 
 An arrow between objects with descent data
    \[
@@ -3538,9 +3701,11 @@ where the first functor is the equivalence of the 2-Yoneda Lemma.
 
 \begin{enumeratei}
 
-\item $\cF$ is a \emph{prestack}\index{prestack} over $\cC$ if for each covering $\{U_i \to U\}$ in $\cC$, the functor $\cF(U) \arr \cF(\{U_i \to U\})$ is fully faithful.
+\item $\cF$ is a \emph{prestack}%
+\index{prestack} over $\cC$ if for each covering $\{U_i \to U\}$ in $\cC$, the functor $\cF(U) \arr \cF(\{U_i \to U\})$ is fully faithful.
 
-\item $\cF$ is a \emph{stack}\index{stack} over $\cC$ if for each covering $\{U_i \to U\}$ in $\cC$, the functor $\cF(U) \arr \cF(\{U_i \to U\})$ is an equivalence of categories.
+\item $\cF$ is a \emph{stack}%
+\index{stack} over $\cC$ if for each covering $\{U_i \to U\}$ in $\cC$, the functor $\cF(U) \arr \cF(\{U_i \to U\})$ is an equivalence of categories.
 
 \end{enumeratei}
 \end{definition}
@@ -3563,7 +3728,8 @@ The proof of the opposite implication is similar, and left to the reader.
 \end{proof}
 
 \begin{definition}
-An object with descent data $(\{\xi_i\}, \{\phi_{ij}\})$ in $\cF(\{U_i \to U\})$ is \emph{effective}\index{object with descent data!effective} if it is isomorphic to the image of an object of $\cF(U)$.
+An object with descent data $(\{\xi_i\}, \{\phi_{ij}\})$ in $\cF(\{U_i \to U\})$ is \emph{effective}%
+\index{object with descent data!effective} if it is isomorphic to the image of an object of $\cF(U)$.
 \end{definition}
 
 Here is another way of saying this: an object with descent data $(\{\xi_i\}, \{\phi_{ij}\})$ in $\cF(\{U_i \to U\})$ is effective if there exists an object $\xi$ of $\cF(U)$, together with cartesian arrows $\xi_i \arr \xi$ over $\sigma_i \colon U_i \arr U$, such that the diagram
@@ -3724,7 +3890,7 @@ This functor is essentially independent of the function $\mu\colon I' \arr I$, t
       \\
    (f_{i'}, g_{i'})^{*}\pr_{1}^{*}\xi_{\mu(i')}
          \ar[r]^-{(f_{i'}, g_{i'})^{*}\phi_{ij}} & 
-      (f_{i'}, g_{i'})^{*}\pr_{2}^{*}\xi_{\nu(i')}\ar[u]_{\simeq}
+      (f_{i'}, g_{i'})^{*}\pr_{2}^{*}\xi_{\nu(i')} \ar[u]_{\simeq}
    }
    \]
 The cocycle condition ensures that this gives an isomorphism of descent data between $(\{f_{i'}^{*}\xi_{\mu(i')}\}, \{f_{i'}^{*}\phi_{\mu(i')\mu(j')}\})$ and $(\{g_{i'}^{*}\xi_{\nu(i')}\}, \{g_{i'}^{*}\phi_{\nu(i')\nu(j')}\})$ (we leave the details to the reader). It is easy to check that this gives an isomorphism of functors.
@@ -3739,7 +3905,8 @@ To check this, we may change the factorizations $W_{i''} \xrightarrow{h_{i''}} U
    \]
 of $\cF\cW$, while its image under the composite $\cF\cU \arr \cF\cV \arr \cF\cV \arr \cF\cW$ is the object
    \[
-   \bigl(\{g_{i''}^{*}f_{\nu(i'')}^{*}\xi_{i''}\},
+   \bigl(\{g_{i''}^{*}%
+   f_{\nu(i'')}^{*}\xi_{i''}\},
       \{g_{i''}^{*}f_{\nu(i'')}^{*}
       \phi_{\nu\mu(i'')\,\nu\mu(j'')}\}\bigr).
    \]
@@ -3866,7 +4033,8 @@ If $\cF$ is a prestack on a site, $\cU$ and $\cV$ two coverings of an object $U$
 
 
 \begin{definition}
-Let $\cC$ be a site, $\cF \arr \cC$ a stack. A \emph{substack}\index{substack} of $\cF$ is a fibered subcategory that is a stack.
+Let $\cC$ be a site, $\cF \arr \cC$ a stack. A \emph{substack}%
+\index{substack} of $\cF$ is a fibered subcategory that is a stack.
 \end{definition}
 
 \begin{example}
@@ -4123,7 +4291,8 @@ Let $S$ be a scheme. The fibered category $\catqc{S}$ over $\catsch{S}$ is stack
 
 
 \begin{remark}\label{rmk:really-really-need-finiteness}
-\index{wild flat topology}\index{topology!wild flat}
+\index{wild flat topology}%
+\index{topology!wild flat}
 This would fail in the ``wild'' flat topology of Remark~\ref{rmk:really-need-finiteness}: in this topology $\catqc{S}$ is not even a prestack.
 
 Take the covering $\{V_p \arr U\}$ defined there, and the \qc sheaf $\oplus_p \cO_p$, the direct sum of the structure sheaves of all the closed points. The restriction of $\oplus_p \cO_p$ to each $V_p$ is the structure sheaf $\cO_p$ of the closed point, since pullbacks commute with direct sums, and the restriction of each $\cO_q$ to $V_p$ is zero for $p \neq q$. For each $p$ consider the projection $\pi_p \colon \cO_{V_p} \arr \cO_p$; it easy to see that $\pr_1^* \pi_p = \pr_2^* \pi_q \colon \cO_{V_p \times_U V_q} \arr f_{p,q}^* (\oplus_{p} \cO_p)$, where $f_{p,q} \colon V_p \times_U V_q \arr U$ is the obvious morphism.
@@ -4307,7 +4476,8 @@ and
    \]
 are isomorphic. Since $\catmod{A} \arr \catmod{A \arr B}$ is an equivalence, this finishes the proof of Theorem~\ref{thm:main}.
 
-Here is an interesting question. Let us call a morphism of schemes $V \arr U$ a  \emph{descent morphism}\index{descent morphism} if the functor $\qcoh{U} \arr \qcoh{V \to U}$ is an equivalence.
+Here is an interesting question. Let us call a morphism of schemes $V \arr U$ a  \emph{descent morphism}%
+\index{descent morphism} if the functor $\qcoh{U} \arr \qcoh{V \to U}$ is an equivalence.
 
 Suppose that a morphism of schemes $V \arr U$ has local sections in the fpqc topology, that is, there exists an fpqc covering $\{U_{i} \to U\}$ with sections $U_{i} \to V$. This is equivalent to saying that $V \to U$ is a covering in the saturation of the fpqc topology, so, by Theorem~\ref{thm:main} and Proposition~\ref{prop:same-stacks}, it is a descent morphism.
 
@@ -4446,7 +4616,9 @@ However, in general $\cP$ will not be a stack. It is easy to see that $\cP$ cann
 
 
 \begin{definition}\label{def:local-class}
-A class of arrows $\cP$ in $\cC$ is \emph{local}\index{class of arrows!local}\index{local class of arrows} if it is stable (Definition~\ref{def:stable-class}), and the following condition holds. Suppose that you are given a covering $\{U_i \to U\}$ in $\cC$ and an arrow $X \arr U$. Then, if the projections $U_i \times_U X \arr U_i$ are in $\cP$ for all $i$, $X \arr U$ is also in $\cP$.
+A class of arrows $\cP$ in $\cC$ is \emph{local}%
+\index{class of arrows!local}%
+\index{local class of arrows} if it is stable (Definition~\ref{def:stable-class}), and the following condition holds. Suppose that you are given a covering $\{U_i \to U\}$ in $\cC$ and an arrow $X \arr U$. Then, if the projections $U_i \times_U X \arr U_i$ are in $\cP$ for all $i$, $X \arr U$ is also in $\cP$.
 \end{definition}
 
 Still, a local class of arrow does not form a stack in general, effectiveness of descent data is not guaranteed, not even when $\cP$ is the class of all arrows. Consider the following example. Take $\cC$ to be the class of all schemes locally of finite type over a field $k$, of bounded dimension, with the arrows being morphisms of schemes over $k$. Let us equip it with the Zariski topology, and let $\cP$ be the class of all arrows. Call $U = U_1 \coprod U_2 \coprod U_3 \coprod U_4 \coprod \ldots$ the union of countably many copies of $U_1 = \spec k$. The collection of inclusions $\{U_i \into U\}$ forms a covering. Over each $U_i$ consider the scheme $\AA^i_k$. Obviously $U_{ij} = \emptyset$ if $i \neq j$, and $U_{ij} = \spec k$ if $i = j$, so we define transition isomorphisms in the only possible way as the identity $\phi_{ii} = \id_{\AA^i_k} \colon \AA^i_k \arr \AA^i_k$, and as the identity $\id_{\emptyset} \colon \emptyset \arr \emptyset$ when $i \neq j$. These obviously satisfy the cocycle condition, being all identities. On the other hand there cannot be a scheme of bounded dimension over $U$, whose pullback to each $U_i$ is $\AA^i_{k}$.
@@ -4522,7 +4694,8 @@ that is defined as follows. First of all, start from the natural adjunction homo
    \eta_*\cL \arr \eta_*f_*f^* \cL =
    \phi_*\xi_* f^* \cL.
    \]
-Then $\beta_{f, \phi}(\cL)$ corresponds to this homomorphism under the adjunction isomorphism\index{base-change!map}\index{base-change!homomorphism}
+Then $\beta_{f, \phi}(\cL)$ corresponds to this homomorphism under the adjunction isomorphism\index{base-change!map}%
+\index{base-change!homomorphism}
    \[
    \hom_U(\phi^*\eta_* \cL, \xi_*f^* \cL) \simeq
    \hom_V(\eta_* \cL, \phi_*\xi_*f^* \cL).
@@ -5083,7 +5256,9 @@ The examples that we have in mind are $\cC = \cattop$, endowed with the global c
 
 \subsection{Torsors}
 
-Torsors are what in other fields of mathematics are called \emph{principal bundles}. Suppose that we have an object $X$ of $\cC$, with a left action $\alpha \colon G \times X \arr X$ of $G$. An arrow $f\colon X \arr Y$ is called \emph{invariant}\index{invariant arrow}\index{arrow!invariant} if for each object $U$ of $\cC$ the induced function $X(U) \arr Y(U)$ is invariant with respect to the action of $G(U)$ on $X(U)$. Another way of saying this is that the composites of $f\colon X \arr Y$ with the two arrows $\alpha$ and $\pr_2$ from $G \times X$ to $X$ are equal (the equivalence with the definition above follows from Yoneda's lemma).
+Torsors are what in other fields of mathematics are called \emph{principal bundles}. Suppose that we have an object $X$ of $\cC$, with a left action $\alpha \colon G \times X \arr X$ of $G$. An arrow $f\colon X \arr Y$ is called \emph{invariant}%
+\index{invariant arrow}%
+\index{arrow!invariant} if for each object $U$ of $\cC$ the induced function $X(U) \arr Y(U)$ is invariant with respect to the action of $G(U)$ on $X(U)$. Another way of saying this is that the composites of $f\colon X \arr Y$ with the two arrows $\alpha$ and $\pr_2$ from $G \times X$ to $X$ are equal (the equivalence with the definition above follows from Yoneda's lemma).
 
 Yet another equivalent definition is that the arrow $f$ is $G$-equivariant, when $Y$ is given the trivial $G$-action $\pr_2 \colon G \times Y \arr Y$.
 
@@ -5095,7 +5270,9 @@ The first example of a torsor is the \emph{trivial torsor}. For each object $Y$ 
    \]
 for all objects $U$ of $\cC$, all $g$ and $h$ in $G(U)$ and all $y$ in $Y(U)$.
 
-More generally, a \emph{trivial torsor}\index{torsor!trivial}\index{trivial torsor} consists of an object $X$ of $\cC$ with a left action of $G$, together with an invariant arrow $f \colon X \arr Y$, such that there is a $G$-equivariant isomorphism $\phi \colon G \times Y \simeq X$ making the diagram
+More generally, a \emph{trivial torsor}%
+\index{torsor!trivial}%
+\index{trivial torsor} consists of an object $X$ of $\cC$ with a left action of $G$, together with an invariant arrow $f \colon X \arr Y$, such that there is a $G$-equivariant isomorphism $\phi \colon G \times Y \simeq X$ making the diagram
    \[
    \xymatrix@-15pt{
    G \times Y\ar[rr]^{\phi} \ar[rd]_-{\pr_2} &&
@@ -5108,7 +5285,8 @@ commute. (The isomorphism itself is not part of the data, only its existence is 
 A $G$-torsor is an object $X$ of $\cC$ with an action of $G$ and an invariant arrow\ $\pi\colon X \arr Y$ that locally on $Y$ is a trivial torsor. Here is the precise definition.
 
 \begin{definition}
-A \emph{$G$-torsor}\index{torsor} in $\cC$ consists of an object $X$ of $\cC$ with an action of $G$ and an invariant arrow\ $\pi \colon X \arr Y$, such that there exists a covering $\{Y_i \arr Y\}$ of $Y$ with the property that for each $i$ the arrow $\pr_1 \colon Y_i \times_Y X \arr Y_i$ is a trivial torsor.
+A \emph{$G$-torsor}%
+\index{torsor} in $\cC$ consists of an object $X$ of $\cC$ with an action of $G$ and an invariant arrow\ $\pi \colon X \arr Y$, such that there exists a covering $\{Y_i \arr Y\}$ of $Y$ with the property that for each $i$ the arrow $\pr_1 \colon Y_i \times_Y X \arr Y_i$ is a trivial torsor.
 \end{definition}
 
 Here is an important characterization of torsors. Notice that every time we have an action $\alpha \colon G \times X \arr X$ of $G$ on an object $X$ and an invariant arrow $f \colon X \arr Y$, we get an arrow $\delta_\alpha \colon G \times X \arr X \times_Y X$, defined as a natural transformation by the formula $(g, x) \mapsto (gx, x)$ for any object $U$ of $\cC$ and any $g \in G(U)$ and $x \in X(U)$.
@@ -5294,7 +5472,8 @@ such that $f$ is invariant under the action of $\mathrm{C}_2$ on $Y$. Take an op
 Another counterexample, already mentioned in Example~\ref{ex:stacks-curves}, is in \cite[XIII 3.2]{raynaudample}.
 
 \begin{remark}\label{rmk:algebraic-spaces}
-There is an extension of the theory of schemes, the theory of \emph{algebraic spaces}\index{algebraic space}, due to Michael Artin (see \cite{artin-algspaces}, \cite{artinrep} and \cite{knutson}). An algebraic space over a scheme $S$ is an \'etale sheaf $\catsch{S}\op \arr \catset$, that is, in some sense, \'etale locally a scheme. The category of algebraic stacks contains the category of schemes over $S$ with quasi-compact diagonal; furthermore, by a remarkable result of Artin, it is a stack in the fppf topology (it is probably also a stack in the fpqc topology, but I do not know this for sure: however, for most applications fppf descent is what is needed). Also, most of the concepts and techniques that apply to schemes extend to algebraic spaces. This is obvious for properties of schemes, and morphisms of schemes, such us being Cohen--Macaulay, smooth, or flat, that are local in the \'etale topology (on the domain). Global properties, such as properness, require more work.
+There is an extension of the theory of schemes, the theory of \emph{algebraic spaces}%
+\index{algebraic space}, due to Michael Artin (see \cite{artin-algspaces}, \cite{artinrep} and \cite{knutson}). An algebraic space over a scheme $S$ is an \'etale sheaf $\catsch{S}\op \arr \catset$, that is, in some sense, \'etale locally a scheme. The category of algebraic stacks contains the category of schemes over $S$ with quasi-compact diagonal; furthermore, by a remarkable result of Artin, it is a stack in the fppf topology (it is probably also a stack in the fpqc topology, but I do not know this for sure: however, for most applications fppf descent is what is needed). Also, most of the concepts and techniques that apply to schemes extend to algebraic spaces. This is obvious for properties of schemes, and morphisms of schemes, such us being Cohen--Macaulay, smooth, or flat, that are local in the \'etale topology (on the domain). Global properties, such as properness, require more work.
 
 So, in many contexts, when some descent data in the fppf topology fail to define a scheme, an algebraic space appears as a result. Also, algebraic spaces can be used to define stacks in situations when descent for schemes fails. For example, if we redefine that stack $\cF_{1,S}$ of Example~\ref{ex:stacks-curves} so that the objects are proper smooth morphisms $X \arr U$ whose fibers are curves of genus~$1$, where $U$ is an $S$-scheme and $X$ is an algebraic space, then $\cF_{1,S}$ is a stack in the fppf topology.
 \end{remark}
