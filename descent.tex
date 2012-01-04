@@ -1,0 +1,514 @@
+\documentclass[10pt, openany]{amsbook}
+\usepackage{mathpazo}
+%\usepackage{fourier}
+%\usepackage[scaled=0.875]{helvet} % ss
+%\renewcommand{\ttdefault}{lmtt} %tt
+
+\usepackage{amssymb, enumerate, xspace, graphicx, url,version}
+\usepackage[all]{xy}
+\SelectTips{cm}{}
+
+
+
+\excludeversion{FRONTMATTER}
+\excludeversion{0   INTRODUCTION}
+\includeversion{1   PRELIMINARY NOTIONS}
+\excludeversion{1.1 Algebraic geometry}
+\includeversion{1.2 Category theory}
+\includeversion{2   CONTRAVARIANT FUNCTORS}
+\excludeversion{2.1 Yoneda Lemma}
+\excludeversion{2.2 Group objects}
+\excludeversion{2.3 Sheaves in Grothendieck topologies}
+\includeversion{3   FIBERED CATEGORIES}
+\excludeversion{3.1 Fibered categories}
+\excludeversion{3.2 Examples of fibered categories}
+\excludeversion{3.3 Categories fibered in groupoids}
+\includeversion{3.4 Functors and cats fibered in sets}
+\excludeversion{3.5 Equivalences of fibered categories}
+\excludeversion{3.6 Objects as fibcats and the 2-Yoneda}
+\excludeversion{3.7 The functors of arrows of a fibcat}
+\excludeversion{3.8 Equivariant objects in fibcats}
+\includeversion{4   STACKS}
+\excludeversion{4.1 Descent of objects of fibcats}
+\excludeversion{4.2 Descent for quasi-coherent sheaves}
+\includeversion{4.3 Descent for morphisms of schemes}
+\excludeversion{4.4 Descent along torsors}
+\excludeversion{ENDMATTER}
+
+
+\input{MichaelsPartialmacros.tex}
+
+%\def\excludeversion#1{\includeversion{#1}}
+
+\hyphenation{Groth-en-dieck}
+%\CompileMatrices
+\makeindex
+
+%\usepackage[notcite, notref]{showkeys}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\numberwithin{equation}{section}
+
+\setcounter{tocdepth}2
+
+\numberwithin{subsection}{section}
+
+\numberwithin{section}{chapter}
+
+\renewcommand\qedsymbol{{\ensuremath{\spadesuit}}}
+
+%\renewcommand\bibname{References}
+%\renewcommand\indexname{Index of definitions}
+\allowdisplaybreaks[1]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{enumeratea}
+{\begin{enumerate}[\upshape (a)]}
+{\end{enumerate}}
+
+\newenvironment{enumeratei}
+{\begin{enumerate}[\upshape (i)]}
+{\end{enumerate}}
+
+\newtheorem*{namedtheorem}{\theoremname}
+\newcommand{\theoremname}{testing}
+\newenvironment{named}[1]{\renewcommand\theoremname{#1}
+\begin{namedtheorem}}
+{\end{namedtheorem}}
+
+\newtheorem{maintheorem}{Theorem}
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{proposition-definition}[theorem]
+{Proposition-Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{examples}[theorem]{Examples}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+
+\newtheorem{namedtheoremr}[theorem]{\theoremnamer}
+\newcommand{\theoremnamer}{testing}
+\newenvironment{namedr}[1]{\renewcommand\theoremnamer{#1}
+\begin{namedtheoremr}}
+{\end{namedtheoremr}}
+
+
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+
+
+\newcounter{steps}
+\newcommand\steps{\setcounter{steps}0}
+\newcommand\step[1][\relax]{\addtocounter{steps}1
+\subsubsection*{Step \thesteps #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\nome{testing}
+\newcommand\call[1]{\label{#1}\renewcommand\nome{#1}}
+\newcommand\itemref[1]{\item\label{\nome;#1}}
+\newcommand\refall[2]{\ref{#1}~(\ref{#1;#2})}
+\newcommand\refpart[2]{(\ref{#1;#2})}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\cA{\mathcal{A}}
+\newcommand\cB{\mathcal{B}}
+\newcommand\cC{\mathcal{C}}
+\newcommand\cD{\mathcal{D}}
+\newcommand\cE{\mathcal{E}}
+\newcommand\cF{\mathcal{F}}
+\newcommand\cG{\mathcal{G}}
+\newcommand\cH{\mathcal{H}}
+\newcommand\cI{\mathcal{I}}
+\newcommand\cJ{\mathcal{J}}
+\newcommand\cK{\mathcal{K}}
+\newcommand\cL{\mathcal{L}}
+\newcommand\cM{\mathcal{M}}
+\newcommand\cN{\mathcal{N}}
+\newcommand\cO{\mathcal{O}}
+\newcommand\cP{\mathcal{P}}
+\newcommand\cQ{\mathcal{Q}}
+\newcommand\cR{\mathcal{R}}
+\newcommand\cS{\mathcal{S}}
+\newcommand\cT{\mathcal{T}}
+\newcommand\cU{\mathcal{U}}
+\newcommand\cV{\mathcal{V}}
+\newcommand\cW{\mathcal{W}}
+\newcommand\cX{\mathcal{X}}
+\newcommand\cY{\mathcal{Y}}
+\newcommand\cZ{\mathcal{Z}}
+
+\renewcommand\AA{\mathbb{A}}
+\newcommand\BB{\mathbb{B}}
+\newcommand\CC{\mathbb{C}}
+\newcommand\DD{\mathbb{D}}
+\newcommand\EE{\mathbb{E}}
+\newcommand\FF{\mathbb{F}}
+\newcommand\GG{\mathbb{G}}
+\newcommand\HH{\mathbb{H}}
+\newcommand\II{\mathbb{I}}
+\newcommand\JJ{\mathbb{J}}
+\newcommand\KK{\mathbb{K}}
+\newcommand\LL{\mathbb{L}}
+\newcommand\MM{\mathbb{M}}
+\newcommand\NN{\mathbb{N}}
+\newcommand\OO{\mathbb{O}}
+\newcommand\PP{\mathbb{P}}
+\newcommand\QQ{\mathbb{Q}}
+\newcommand\RR{\mathbb{R}}
+\renewcommand\SS{\mathbb{S}}
+\newcommand\TT{\mathbb{T}}
+\newcommand\UU{\mathbb{U}}
+\newcommand\VV{\mathbb{V}}
+\newcommand\WW{\mathbb{W}}
+\newcommand\XX{\mathbb{X}}
+\newcommand\YY{\mathbb{Y}}
+\newcommand\ZZ{\mathbb{Z}}
+
+\newcommand\bA{\mathbf{A}}
+\newcommand\bB{\mathbf{B}}
+\newcommand\bC{\mathbf{C}}
+\newcommand\bD{\mathbf{D}}
+\newcommand\bE{\mathbf{E}}
+\newcommand\bF{\mathbf{F}}
+\newcommand\bG{\mathbf{G}}
+\newcommand\bH{\mathbf{H}}
+\newcommand\bI{\mathbf{I}}
+\newcommand\bJ{\mathbf{J}}
+\newcommand\bK{\mathbf{K}}
+\newcommand\bL{\mathbf{L}}
+\newcommand\bM{\mathbf{M}}
+\newcommand\bN{\mathbf{N}}
+\newcommand\bO{\mathbf{O}}
+\newcommand\bP{\mathbf{P}}
+\newcommand\bQ{\mathbf{Q}}
+\newcommand\bR{\mathbf{R}}
+\newcommand\bS{\mathbf{S}}
+\newcommand\bT{\mathbf{T}}
+\newcommand\bU{\mathbf{U}}
+\newcommand\bV{\mathbf{V}}
+\newcommand\bW{\mathbf{W}}
+\newcommand\bX{\mathbf{X}}
+\newcommand\bY{\mathbf{Y}}
+\newcommand\bZ{\mathbf{Z}}
+
+\newcommand\rA{\mathrm{A}}
+\newcommand\rB{\mathrm{B}}
+\newcommand\rC{\mathrm{C}}
+\newcommand\rD{\mathrm{D}}
+\newcommand\rE{\mathrm{E}}
+\newcommand\rF{\mathrm{F}}
+\newcommand\rG{\mathrm{G}}
+\newcommand\rH{\mathrm{H}}
+\newcommand\rI{\mathrm{I}}
+\newcommand\rJ{\mathrm{J}}
+\newcommand\rK{\mathrm{K}}
+\newcommand\rL{\mathrm{L}}
+\newcommand\rM{\mathrm{M}}
+\newcommand\rN{\mathrm{N}}
+\newcommand\rO{\mathrm{O}}
+\newcommand\rP{\mathrm{P}}
+\newcommand\rQ{\mathrm{Q}}
+\newcommand\rR{\mathrm{R}}
+\newcommand\rS{\mathrm{S}}
+\newcommand\rT{\mathrm{T}}
+\newcommand\rU{\mathrm{U}}
+\newcommand\rV{\mathrm{V}}
+\newcommand\rW{\mathrm{W}}
+\newcommand\rX{\mathrm{X}}
+\newcommand\rY{\mathrm{Y}}
+\newcommand\rZ{\mathrm{Z}}
+
+\newcommand\rma{\mathrm{a}}
+\newcommand\rmb{\mathrm{b}}
+\newcommand\rmc{\mathrm{c}}
+\newcommand\rmd{\mathrm{d}}
+\newcommand\rme{\mathrm{e}}
+\newcommand\rmf{\mathrm{d}}
+\newcommand\rmg{\mathrm{g}}
+\newcommand\rmh{\mathrm{h}}
+\newcommand\rmi{\mathrm{i}}
+\newcommand\rmj{\mathrm{j}}
+\newcommand\rmk{\mathrm{k}}
+\newcommand\rml{\mathrm{l}}
+\newcommand\rmm{\mathrm{m}}
+\newcommand\rmn{\mathrm{n}}
+\newcommand\rmo{\mathrm{o}}
+\newcommand\rmp{\mathrm{p}}
+\newcommand\rmq{\mathrm{q}}
+\newcommand\rmr{\mathrm{r}}
+\newcommand\rms{\mathrm{s}}
+\newcommand\rmt{\mathrm{t}}
+\newcommand\rmu{\mathrm{u}}
+\newcommand\rmv{\mathrm{v}}
+\newcommand\rmw{\mathrm{w}}
+\newcommand\rmx{\mathrm{x}}
+\newcommand\rmy{\mathrm{y}}
+\newcommand\rmz{\mathrm{z}}
+
+\newcommand\bfa{\mathbf{a}}
+\newcommand\bfb{\mathbf{b}}
+\newcommand\bfc{\mathbf{c}}
+\newcommand\bfd{\mathbf{d}}
+\newcommand\bfe{\mathbf{e}}
+\newcommand\bff{\mathbf{d}}
+\newcommand\bfg{\mathbf{g}}
+\newcommand\bfh{\mathbf{h}}
+\newcommand\bfi{\mathbf{i}}
+\newcommand\bfj{\mathbf{j}}
+\newcommand\bfk{\mathbf{k}}
+\newcommand\bfl{\mathbf{l}}
+\newcommand\bfm{\mathbf{m}}
+\newcommand\bfn{\mathbf{n}}
+\newcommand\bfo{\mathbf{o}}
+\newcommand\bfp{\mathbf{p}}
+\newcommand\bfq{\mathbf{q}}
+\newcommand\bfr{\mathbf{r}}
+\newcommand\bfs{\mathbf{s}}
+\newcommand\bft{\mathbf{t}}
+\newcommand\bfu{\mathbf{u}}
+\newcommand\bfv{\mathbf{v}}
+\newcommand\bfw{\mathbf{w}}
+\newcommand\bfx{\mathbf{x}}
+\newcommand\bfy{\mathbf{y}}
+\newcommand\bfz{\mathbf{z}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\arr{\ifinner\to\else\longrightarrow\fi}
+
+\newcommand\xarr{\xrightarrow}
+
+\newcommand\into{\hookrightarrow}
+
+\newcommand\larr{\longrightarrow}
+
+\newcommand\larrowsim{\overset{\sim}\longrightarrow}
+
+\newcommand\noqed{\renewcommand\qed{}}
+
+\renewcommand\H{\operatorname{H}}
+
+\newcommand\cechH{\operatorname{\check H}}
+
+\newcommand\op{^{\mathrm{op}}}
+
+\newcommand\eqdef{\overset{\mathrm{\scriptscriptstyle def}} =}
+
+\newcommand\im{\operatorname{im}}
+
+\renewcommand\th{^\text{th}}
+
+\def\displaytimes_#1{\mathrel{\mathop{\times}\limits_{#1}}}
+
+\def\displayotimes_#1{\mathrel{\mathop{\bigotimes}\limits_{#1}}}
+
+\renewcommand\hom{\operatorname{Hom}}
+
+\newcommand\curshom
+{\mathop{\mathcal{H}\hskip -.8pt om}\nolimits}
+
+\newcommand\End{\operatorname{End}}
+
+\newcommand\ext{\operatorname{Ext}}
+
+\newcommand\isom{\operatorname{Isom}}
+
+\newcommand\aut{\operatorname{Aut}}
+
+\newcommand\tor{\operatorname{Tor}}
+
+\newcommand\pic{\operatorname{Pic}}
+
+\newcommand\spec{\operatorname{Spec}}
+
+\newcommand\codim{\operatorname{codim}}
+
+\newcommand{\proj}{\operatorname{Proj}}
+
+\newcommand\generate[1]{\langle #1 \rangle}
+
+\newcommand{\GL}{\operatorname{GL}}
+
+\newcommand{\PGL}{\operatorname{PGL}}
+
+\newcommand{\SL}{\operatorname{SL}}
+
+\newcommand\M{\mathrm{M}}
+
+\newcommand\rk{\operatorname{rk}}
+
+\newcommand\id{\mathrm{id}}
+
+\newcommand\pr{\operatorname{pr}}
+
+\newcommand\indlim{\varinjlim}
+
+\renewcommand\projlim{\varprojlim}
+
+\newcommand\arrtotimes{\overset{\scriptscriptstyle
+\mathrm{L}}\otimes}
+
+\newlength{\ignora}
+\newcommand{\hsmash}[1]{\settowidth{\ignora}{#1}#1\hspace{-\ignora}}
+
+\newcommand\dash{\nobreakdash-\hspace{0pt}}
+%this defines a dash that will not break,
+%but allows the next word to be hyphenated
+
+\newdir{ >}{{}*!/-5pt/@{>}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand\cat[1]{(\mathrm{#1})}
+
+\newcommand\catset{\cat{Set}}
+
+\newcommand\cattop{\cat{Top}}
+
+\newcommand\catover[2]{({\mathrm{#1}/#2})}
+
+\newcommand\catsch[1]{\catover{Sch}{#1}}
+
+\newcommand\catgrpover[1]{\mathrm{Grp}(#1)}
+
+\newcommand\aff{\operatorname{Aff}}
+
+\newcommand\cataff[1]{\catover{Aff}{#1}}
+
+\newcommand\catsh[1]{\catover{Sh}{#1}}
+
+\newcommand\qcoh[1]{\operatorname{QCoh}(#1)}
+
+\newcommand\catmod[1]{\mathrm{Mod}_{#1}}
+
+\newcommand\catqc[1]{\catover{QCoh}{#1}}
+
+\newcommand\qcohalg{\operatorname{QCohComm}}
+
+\newcommand\catqcalg[1]{\catover{QCohComm}{#1}}
+
+\newcommand\catgrp{\cat{Grp}}
+
+\newcommand\sh{\operatorname{Sh}}
+
+\newcommand\curssheaves{{\mathcal{S}h}}
+
+\newcommand\h{\mathrm{h}}
+
+\newcommand\func[1]{\mathrm{Hom}\bigl(#1\op, \catset\bigr)}
+
+\newcommand\ass{^\mathrm{a}}
+
+\newcommand\sep{^\mathrm{s}}
+
+\newcommand\cursspec{\mathop{\mathcal{S}pec}}
+
+\newcommand\sym{\operatorname{Sym}}
+
+\newcommand\sou{\mathrm{s}}
+
+\newcommand\p{\mathrm{p}}
+
+\newcommand\tar{\mathrm{t}}
+
+\newcommand\iden{\mathrm{e}}
+
+\newcommand\mul{\mathrm{m}}
+
+\newcommand\inv{\mathrm{i}}
+
+\newcommand\et{_\text{\rm \'et}}
+
+\newcommand\cl{_\mathrm{cl}}
+
+\newcommand\pt{\mathrm{pt}}
+
+\newcommand\cart{_\mathrm{cart}}
+
+\def\naive{\overset{\text{\rm\Tiny naive}}\times}
+
+\newcommand{\underhom}
+{\mathop{\underline{\mathrm{Hom}}}\nolimits}
+
+\newcommand{\underisom}
+{\mathop{\underline{\mathrm{Isom}}}\nolimits}
+
+\newcommand{\underaut}
+{\mathop{\underline{\mathrm{Aut}}}\nolimits}
+
+
+\newcommand\double{\mathbin{\rightrightarrows}}
+
+\newcommand\doublelong[2]{\mathbin{\xymatrix{{}\ar@<3pt>[r]^{#1}
+\ar@<-3pt>[r]_{#2}&}}}
+
+\newcommand\isoiden{\epsilon}
+
+\newcommand\isoass{\alpha}
+
+\newcommand\Arr{\operatorname{Arr}}
+
+\newcommand\tba{{\bf TO BE ADDED}}
+
+\newcommand\gm[1][S]{\mathbb{G}_{\mathrm{m}, #1}}
+
+\newcommand\qc{quasi-coherent\xspace}
+
+\newcommand\comp{_{\mathrm{comp}}}
+
+\newcommand\desc{_{\mathrm{desc}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hyphenation{sub-scheme}
+
+\renewcommand\indexname{Index of Definitions}
+
+\begin{document}
+
+
+
+\title{Notes on Grothendieck topologies,\\
+fibered categories\\
+and descent theory\\\ \\{\rm\small Version of May 17, 2007}}
+
+\author[Angelo Vistoli]{Angelo Vistoli}
+
+\address{Scuola Normale Superiore\\Piazza dei Cavalieri 7\\
+56126\\Pisa\\Italy}
+\email{angelo.vistoli@sns.it}
+
+%\date{February 16, 2007}
+
+\begin{FRONTMATTER}
+\maketitle
+
+\tableofcontents
+\end{FRONTMATTER}
+
+\include{descentmain}
+
+\begin{ENDMATTER}
+\bibliographystyle{amsalpha}
+\bibliography{mrabbrev,VistoliRefs}
+
+\printindex
+\end{ENDMATTER}
+\end{document}
