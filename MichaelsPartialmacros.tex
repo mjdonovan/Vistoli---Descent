@@ -1,0 +1,434 @@
+% !TEX root = descent.tex
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<      Fields, etc.      <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+\DeclareMathSymbol{\N}{\mathbin}{AMSb}{"4E}
+\DeclareMathSymbol{\Octonions}{\mathbin}{AMSb}{"4F}
+\DeclareMathSymbol{\Z}{\mathbin}{AMSb}{"5A}
+%\DeclareMathSymbol{\R}{\mathbin}{AMSb}{"52}
+\DeclareMathSymbol{\Q}{\mathbin}{AMSb}{"51}
+%\DeclareMathSymbol{\PP}{\mathbin}{AMSb}{"50}
+\DeclareMathSymbol{\I}{\mathbin}{AMSb}{"49}
+\DeclareMathSymbol{\C}{\mathbin}{AMSb}{"43}
+\DeclareMathSymbol{\A}{\mathbin}{AMSb}{"41}
+\DeclareMathSymbol{\F}{\mathbin}{AMSb}{"46}
+\DeclareMathSymbol{\G}{\mathbin}{AMSb}{"47}
+\DeclareMathSymbol{\Quaternions}{\mathbin}{AMSb}{"48}
+
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<       Operators        <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\DeclareMathOperator{\ad}{\textbf{ad}}
+\DeclareMathOperator{\coker}{coker}
+\renewcommand{\ker}{\textup{ker}\,}
+%\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+%\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Maps}{Maps}
+%\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\Rad}{Rad}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\ArfInvariant}{Arf}
+\DeclareMathOperator{\KervaireInvariant}{Ker}
+%\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coim}{coim}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\ann}{ann}
+%\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\SPEC}{\textbf{Spec}}
+%\DeclareMathOperator{\proj}{Proj}
+\DeclareMathOperator{\PROJ}{\textbf{Proj}}
+\DeclareMathOperator{\fiber}{F}
+\DeclareMathOperator{\cofiber}{C}
+\DeclareMathOperator{\cone}{cone}
+\DeclareMathOperator{\skel}{sk}
+\DeclareMathOperator{\coskel}{cosk}
+\DeclareMathOperator{\conn}{conn}
+%\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\limit}{lim}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\GrthGrp}{GrthGp}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Prob}{\mathbb{P}}
+\DeclareMathOperator{\Exp}{\mathbb{E}}
+\DeclareMathOperator{\GeomMean}{\mathbb{G}}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+%\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Seq}{Seq}
+\DeclareMathOperator{\Cyl}{Cyl}
+\DeclareMathOperator{\Ev}{Ev}
+%\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\intHom}{\underline{Hom}}
+\DeclareMathOperator{\Frac}{frac}
+
+
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<   Cohomology Theories  <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\DeclareMathOperator{\KR}{{K\R}}
+\DeclareMathOperator{\KO}{{KO}}
+\DeclareMathOperator{\K}{{K}}
+\DeclareMathOperator{\OmegaO}{{\Omega_{\Octonions}}}
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<   Algebraic Geometry   <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+%\DeclareMathOperator{\Sing}{Sing}
+\DeclareMathOperator{\shfHom}{\mathscr{H}\textit{\!\!om}}
+\DeclareMathOperator{\WeilDivisors}{{Div}}
+\DeclareMathOperator{\CartierDivisors}{{CaDiv}}
+\DeclareMathOperator{\PrincipalWeilDivisors}{{PrDiv}}
+\DeclareMathOperator{\LocallyPrincipalWeilDivisors}{{LPDiv}}
+\DeclareMathOperator{\PrincipalCartierDivisors}{{PrCaDiv}}
+\DeclareMathOperator{\DivisorClass}{{Cl}}
+\DeclareMathOperator{\CartierClass}{{CaCl}}
+\DeclareMathOperator{\Picard}{{Pic}}
+\DeclareMathOperator{\Frob}{Frob}
+
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<  Mathematical Objects  <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\newcommand{\sll}{\mathfrak{sl}}
+\newcommand{\gl}{\mathfrak{gl}}
+%\newcommand{\GL}{\mbox{GL}}
+%\newcommand{\PGL}{\mbox{PGL}}
+%\newcommand{\SL}{\mbox{SL}}
+\newcommand{\Mat}{\mbox{Mat}}
+\newcommand{\Gr}{\textup{Gr}}
+\newcommand{\Squ}{\textup{Sq}}
+\newcommand{\catSet}{\textit{Sets}}
+\newcommand{\RP}{{\R\PP}}
+\newcommand{\CP}{{\C\PP}}
+\newcommand{\Steen}{\mathscr{A}}
+\newcommand{\Orth}{\textup{\textbf{O}}}
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<  Mathematical Symbols  <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\newcommand{\DASH}{\textup{---}}
+%\newcommand{\op}{\textup{op}}
+\newcommand{\CW}{\textup{CW}}
+\newcommand{\ob}{\textup{ob}\,}
+\newcommand{\ho}{\textup{ho}}
+\newcommand{\st}{\textup{st}}
+%\newcommand{\id}{\textup{id}}
+\newcommand{\Bullet}{\ensuremath{\bullet} }
+\newcommand{\sprod}{\wedge}
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<      Some Arrows       <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\newcommand{\nt}{\Longrightarrow}
+\let\shortmapsto\mapsto
+\let\mapsto\longmapsto
+\newcommand{\mapsfrom}{\,\reflectbox{$\mapsto$}\ }
+\newcommand{\bigrightsquig}{\scalebox{2}{\ensuremath{\rightsquigarrow}}}
+\newcommand{\bigleftsquig}{\reflectbox{\scalebox{2}{\ensuremath{\rightsquigarrow}}}}
+
+%\newcommand{\cofibration}{\xhookrightarrow{\phantom{\ \,{\sim\!}\ \ }}}
+%\newcommand{\fibration}{\xtwoheadrightarrow{\phantom{\sim\!}}}
+%\newcommand{\acycliccofibration}{\xhookrightarrow{\ \,{\sim\!}\ \ }}
+%\newcommand{\acyclicfibration}{\xtwoheadrightarrow{\sim\!}}
+%\newcommand{\leftcofibration}{\xhookleftarrow{\phantom{\ \,{\sim\!}\ \ }}}
+%\newcommand{\leftfibration}{\xtwoheadleftarrow{\phantom{\sim\!}}}
+%\newcommand{\leftacycliccofibration}{\xhookleftarrow{\ \ {\sim\!}\,\ }}
+%\newcommand{\leftacyclicfibration}{\xtwoheadleftarrow{\sim\!}}
+%\newcommand{\weakequiv}{\xrightarrow{\ \,\sim\,\ }}
+%\newcommand{\leftweakequiv}{\xleftarrow{\ \,\sim\,\ }}
+
+\newcommand{\cofibration}
+{\xhookrightarrow{\phantom{\ \,{\raisebox{-.3ex}[0ex][0ex]{\scriptsize$\sim$}\!}\ \ }}}
+\newcommand{\fibration}
+{\xtwoheadrightarrow{\phantom{\raisebox{-.3ex}[0ex][0ex]{\scriptsize$\sim$}\!}}}
+\newcommand{\acycliccofibration}
+{\xhookrightarrow{\ \,{\raisebox{-.55ex}[0ex][0ex]{\scriptsize$\sim$}\!}\ \ }}
+\newcommand{\acyclicfibration}
+{\xtwoheadrightarrow{\raisebox{-.6ex}[0ex][0ex]{\scriptsize$\sim$}\!}}
+\newcommand{\leftcofibration}
+{\xhookleftarrow{\phantom{\ \,{\raisebox{-.3ex}[0ex][0ex]{\scriptsize$\sim$}\!}\ \ }}}
+\newcommand{\leftfibration}
+{\xtwoheadleftarrow{\phantom{\raisebox{-.3ex}[0ex][0ex]{\scriptsize$\sim$}\!}}}
+\newcommand{\leftacycliccofibration}
+{\xhookleftarrow{\ \ {\raisebox{-.55ex}[0ex][0ex]{\scriptsize$\sim$}\!}\,\ }}
+\newcommand{\leftacyclicfibration}
+{\xtwoheadleftarrow{\raisebox{-.6ex}[0ex][0ex]{\scriptsize$\sim$}\!}}
+\newcommand{\weakequiv}
+{\xrightarrow{\ \,\raisebox{-.3ex}[0ex][0ex]{\scriptsize$\sim$}\,\ }}
+\newcommand{\leftweakequiv}
+{\xleftarrow{\ \,\raisebox{-.3ex}[0ex][0ex]{\scriptsize$\sim$}\,\ }}
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<    xymatrix Arrows     <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\newdir{ >}{{}*!/-5pt/@{>}}
+\newcommand{\xycof}{\ar@{ >->}}
+\newcommand{\xycofib}{\ar@{^{(}->}}
+\newcommand{\xycofibdown}{\ar@{_{(}->}}
+\newcommand{\xyfib}{\ar@{->>}}
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<     Greek Letters      <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%\newcommand{\oldphi}{\phi}
+%\renewcommand{\phi}{\varphi}
+\let\oldphi\phi
+\let\phi\varphi
+\renewcommand{\to}{\longrightarrow}
+\newcommand{\from}{\longleftarrow}
+\newcommand{\eps}{\varepsilon}
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<  1st-4th & parentheses <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\newcommand{\first}{^\text{st}}
+\newcommand{\second}{^\text{nd}}
+\newcommand{\third}{^\text{rd}}
+\newcommand{\fourth}{^\text{th}}
+\newcommand{\ZEROTH}{$0^\text{th}$ }
+\newcommand{\FIRST}{$1^\text{st}$ }
+\newcommand{\SECOND}{$2^\text{nd}$ }
+\newcommand{\THIRD}{$3^\text{rd}$ }
+\newcommand{\FOURTH}{$4^\text{th}$ }
+\newcommand{\iTH}{$i^\text{th}$ }
+\newcommand{\jTH}{$j^\text{th}$ }
+\newcommand{\nTH}{$n^\text{th}$ }
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<    upright commands    <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\newcommand{\upcol}{\textup{:}}
+\newcommand{\upsemi}{\textup{;}}
+\providecommand{\lparen}{\textup{(}}
+\providecommand{\rparen}{\textup{)}}
+\renewcommand{\lparen}{\textup{(}}
+\renewcommand{\rparen}{\textup{)}}
+\newcommand{\Iff}{\emph{iff} }
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<     Environments       <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\newcommand{\squishlist}
+{ %\setlength{\topsep}{100pt} doesn't seem to do anything.
+  \setlength{\itemsep}{.5pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}}
+\newenvironment{itemise}{
+\begin{list}{\textup{$\rightsquigarrow$}}
+   {  \setlength{\topsep}{1mm}
+      \setlength{\itemsep}{1pt}
+      \setlength{\parskip}{0pt}
+      \setlength{\parsep}{0pt}
+   }
+}{\end{list}\vspace{-.1cm}}
+\newcommand{\INDENT}{\textbf{}\phantom{space}}
+\renewcommand{\INDENT}{\rule{.7cm}{0cm}}
+
+\newcommand{\itm}[1][$\rightsquigarrow$]{\item[{\makebox[.5cm][c]{\textup{#1}}}]}
+
+
+%\newcommand{\rednote}[1]{{\color{red}#1}\makebox[0cm][l]{\scalebox{.1}{rednote}}}
+%\newcommand{\bluenote}[1]{{\color{blue}#1}\makebox[0cm][l]{\scalebox{.1}{rednote}}}
+
+\newcommand{\rednote}[1]
+{{\color{red}#1}\makebox[0cm][l]{\scalebox{.1}{\rotatebox{90}{?????}}}}
+\newcommand{\bluenote}[1]
+{{\color{blue}#1}\makebox[0cm][l]{\scalebox{.1}{\rotatebox{90}{?????}}}}
+
+
+\newcommand{\funcdef}[4]{\begin{align*}
+#1&\to #2\\
+#3&\mapsto#4
+\end{align*}}
+
+%\newcommand{\comment}[1]{}
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<       Categories       <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\newcommand{\Ens}{{\mathscr{E}ns}}
+\DeclareMathOperator{\Sheaves}{{\mathsf{Shf}}}
+\DeclareMathOperator{\Presheaves}{{\mathsf{PreShf}}}
+\DeclareMathOperator{\Psh}{{\mathsf{Psh}}}
+\DeclareMathOperator{\Shf}{{\mathsf{Shf}}}
+\DeclareMathOperator{\Varieties}{{\mathsf{Var}}}
+\DeclareMathOperator{\Schemes}{{\mathsf{Sch}}}
+\DeclareMathOperator{\Rings}{{\mathsf{Rings}}}
+\DeclareMathOperator{\AbGp}{{\mathsf{AbGp}}}
+\DeclareMathOperator{\Modules}{{\mathsf{\!-Mod}}}
+\DeclareMathOperator{\fgModules}{{\mathsf{\!-Mod}^{\textup{fg}}}}
+\DeclareMathOperator{\QuasiCoherent}{{\mathsf{QCoh}}}
+\DeclareMathOperator{\Coherent}{{\mathsf{Coh}}}
+\DeclareMathOperator{\GSW}{{\mathcal{SW}^G}}
+\DeclareMathOperator{\Burnside}{{\mathsf{Burn}}}
+\DeclareMathOperator{\GSet}{{G\mathsf{Set}}}
+\DeclareMathOperator{\FinGSet}{{G\mathsf{Set}^\textup{fin}}}
+\DeclareMathOperator{\HSet}{{H\mathsf{Set}}}
+%\DeclareMathOperator{\Cat}{{\mathsf{Cat}}}
+%\DeclareMathOperator{\Fun}{{\mathsf{Fun}}}
+\DeclareMathOperator{\Orb}{{\mathsf{Orb}}}
+%\DeclareMathOperator{\Set}{{\mathsf{Set}}}
+%\DeclareMathOperator{\sSet}{{\mathsf{sSet}}}
+%\DeclareMathOperator{\Top}{{\mathsf{Top}}}
+\DeclareMathOperator{\GSpectra}{{G-\mathsf{Spectra}}}
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<     Script Letters     <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\newcommand{\scrQ}{\mathscr{Q}}
+\newcommand{\scrW}{\mathscr{W}}
+\newcommand{\scrE}{\mathscr{E}}
+\newcommand{\scrR}{\mathscr{R}}
+\newcommand{\scrT}{\mathscr{T}}
+\newcommand{\scrY}{\mathscr{Y}}
+\newcommand{\scrU}{\mathscr{U}}
+\newcommand{\scrI}{\mathscr{I}}
+\newcommand{\scrO}{\mathscr{O}}
+\newcommand{\scrP}{\mathscr{P}}
+\newcommand{\scrA}{\mathscr{A}}
+\newcommand{\scrS}{\mathscr{S}}
+\newcommand{\scrD}{\mathscr{D}}
+\newcommand{\scrF}{\mathscr{F}}
+\newcommand{\scrG}{\mathscr{G}}
+\newcommand{\scrH}{\mathscr{H}}
+\newcommand{\scrJ}{\mathscr{J}}
+\newcommand{\scrK}{\mathscr{K}}
+\newcommand{\scrL}{\mathscr{L}}
+\newcommand{\scrZ}{\mathscr{Z}}
+\newcommand{\scrX}{\mathscr{X}}
+\newcommand{\scrC}{\mathscr{C}}
+\newcommand{\scrV}{\mathscr{V}}
+\newcommand{\scrB}{\mathscr{B}}
+\newcommand{\scrN}{\mathscr{N}}
+\newcommand{\scrM}{\mathscr{M}}
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<     Fractur Letters    <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\newcommand{\frakQ}{\mathfrak{Q}}
+\newcommand{\frakW}{\mathfrak{W}}
+\newcommand{\frakE}{\mathfrak{E}}
+\newcommand{\frakR}{\mathfrak{R}}
+\newcommand{\frakT}{\mathfrak{T}}
+\newcommand{\frakY}{\mathfrak{Y}}
+\newcommand{\frakU}{\mathfrak{U}}
+\newcommand{\frakI}{\mathfrak{I}}
+\newcommand{\frakO}{\mathfrak{O}}
+\newcommand{\frakP}{\mathfrak{P}}
+\newcommand{\frakA}{\mathfrak{A}}
+\newcommand{\frakS}{\mathfrak{S}}
+\newcommand{\frakD}{\mathfrak{D}}
+\newcommand{\frakF}{\mathfrak{F}}
+\newcommand{\frakG}{\mathfrak{G}}
+\newcommand{\frakH}{\mathfrak{H}}
+\newcommand{\frakJ}{\mathfrak{J}}
+\newcommand{\frakK}{\mathfrak{K}}
+\newcommand{\frakL}{\mathfrak{L}}
+\newcommand{\frakZ}{\mathfrak{Z}}
+\newcommand{\frakX}{\mathfrak{X}}
+\newcommand{\frakC}{\mathfrak{C}}
+\newcommand{\frakV}{\mathfrak{V}}
+\newcommand{\frakB}{\mathfrak{B}}
+\newcommand{\frakN}{\mathfrak{N}}
+\newcommand{\frakM}{\mathfrak{M}}
+
+\newcommand{\frakq}{\mathfrak{q}}
+\newcommand{\frakw}{\mathfrak{w}}
+\newcommand{\frake}{\mathfrak{e}}
+\newcommand{\frakr}{\mathfrak{r}}
+\newcommand{\frakt}{\mathfrak{t}}
+\newcommand{\fraky}{\mathfrak{y}}
+\newcommand{\fraku}{\mathfrak{u}}
+\newcommand{\fraki}{\mathfrak{i}}
+\newcommand{\frako}{\mathfrak{o}}
+\newcommand{\frakp}{\mathfrak{p}}
+\newcommand{\fraka}{\mathfrak{a}}
+\newcommand{\fraks}{\mathfrak{s}}
+\newcommand{\frakd}{\mathfrak{d}}
+\newcommand{\frakf}{\mathfrak{f}}
+\newcommand{\frakg}{\mathfrak{g}}
+\newcommand{\frakh}{\mathfrak{h}}
+\newcommand{\frakj}{\mathfrak{j}}
+\newcommand{\frakk}{\mathfrak{k}}
+\newcommand{\frakl}{\mathfrak{l}}
+\newcommand{\frakz}{\mathfrak{z}}
+\newcommand{\frakx}{\mathfrak{x}}
+\newcommand{\frakc}{\mathfrak{c}}
+\newcommand{\frakv}{\mathfrak{v}}
+\newcommand{\frakb}{\mathfrak{b}}
+\newcommand{\frakn}{\mathfrak{n}}
+\newcommand{\frakm}{\mathfrak{m}}
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<  Caligraphic Letters   <<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%\newcommand{\calQ}{\mathcal{Q}}
+%\newcommand{\calW}{\mathcal{W}}
+%\newcommand{\calE}{\mathcal{E}}
+%\newcommand{\calR}{\mathcal{R}}
+%\newcommand{\calT}{\mathcal{T}}
+%\newcommand{\calY}{\mathcal{Y}}
+%\newcommand{\calU}{\mathcal{U}}
+%\newcommand{\calI}{\mathcal{I}}
+%\newcommand{\calO}{\mathcal{O}}
+%\newcommand{\calP}{\mathcal{P}}
+%\newcommand{\calA}{\mathcal{A}}
+%\newcommand{\calS}{\mathcal{S}}
+%\newcommand{\calD}{\mathcal{D}}
+%\newcommand{\calF}{\mathcal{F}}
+%\newcommand{\calG}{\mathcal{G}}
+%\newcommand{\calH}{\mathcal{H}}
+%\newcommand{\calJ}{\mathcal{J}}
+%\newcommand{\calK}{\mathcal{K}}
+%\newcommand{\calL}{\mathcal{L}}
+%\newcommand{\calZ}{\mathcal{Z}}
+%\newcommand{\calX}{\mathcal{X}}
+%\newcommand{\calC}{\mathcal{C}}
+%\newcommand{\calV}{\mathcal{V}}
+%\newcommand{\calB}{\mathcal{B}}
+%\newcommand{\calN}{\mathcal{N}}
+%\newcommand{\calM}{\mathcal{M}}
+
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%<<<<<<<<<DEPRECIATED<<<<<<<<<<
+%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+%%% From Kac's template
+% 1-inch margins, from fullpage.sty by H.Partl, Version 2, Dec. 15, 1988.
+%\topmargin 0pt
+%\advance \topmargin by -\headheight
+%\advance \topmargin by -\headsep
+%\textheight 9.1in
+%\oddsidemargin 0pt
+%\evensidemargin \oddsidemargin
+%\marginparwidth 0.5in
+%\textwidth 6.5in
+%
+%\parindent 0in
+%\parskip 1.5ex
+%%\renewcommand{\baselinestretch}{1.25}
+
+%%% From the net
+%\newcommand{\pullbackcorner}[1][dr]{\save*!/#1+1.2pc/#1:(1,-1)@^{|-}\restore}
+%\newcommand{\pushoutcorner}[1][dr]{\save*!/#1-1.2pc/#1:(-1,1)@^{|-}\restore}
+
+
+
+
+
+
+
+
