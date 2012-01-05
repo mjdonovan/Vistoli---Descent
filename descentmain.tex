@@ -1,4 +1,34 @@
 % !TEX root = descent.tex
+
+%%%%%%%%
+\excludeversion{0   INTRODUCTION}
+%%%%%%%%
+\excludeversion{1   PRELIMINARY NOTIONS}
+\includeversion{1.1 Algebraic geometry}
+\includeversion{1.2 Category theory}
+%%%%%%%%
+\includeversion{2   CONTRAVARIANT FUNCTORS}
+\excludeversion{2.1 Yoneda Lemma}
+\excludeversion{2.2 Group objects}
+\includeversion{2.3 Sheaves in Grothendieck topologies}
+%%%%%%%%
+\excludeversion{3   FIBERED CATEGORIES}
+\excludeversion{3.1 Fibered categories}
+\excludeversion{3.2 Examples of fibered categories}
+\excludeversion{3.3 Categories fibered in groupoids}
+\includeversion{3.4 Functors and cats fibered in sets}
+\excludeversion{3.5 Equivalences of fibered categories}
+\excludeversion{3.6 Objects as fibcats and the 2-Yoneda}
+\excludeversion{3.7 The functors of arrows of a fibcat}
+\excludeversion{3.8 Equivariant objects in fibcats}
+%%%%%%%%
+\excludeversion{4   STACKS}
+\excludeversion{4.1 Descent of objects of fibcats}
+\excludeversion{4.2 Descent for quasi-coherent sheaves}
+\includeversion{4.3 Descent for morphisms of schemes}
+\excludeversion{4.4 Descent along torsors}
+%%%%%%%%
+
 \begin{0   INTRODUCTION}
 \chapter*{Introduction}
 Descent theory has a somewhat formidable reputation among algebraic geometers. In fact, it simply says that under certain conditions homomorphisms between \qc sheaves can be constructed locally and then glued together if they satisfy a compatibility condition, while \qc sheaves themselves can be constructed locally and then glued together via isomorphisms that satisfy a cocycle condition.
@@ -108,9 +138,9 @@ if $X \arr Y$ is locally of finite presentation, so is $X' \arr Y'$.
 \end{enumeratei}
 \end{proposition}
 \begin{shaded}
-Being locally of finite presentation is local on the base and source, and stable under composition and base change.
+Being \textbf{locally of finite presentation} is local on the base and source, and stable under composition and base change.
 
-Being quasi-compact is not local on the base. It is stable under composition and base change.
+Being \textbf{quasi-compact} is not local on the base. It is stable under composition and base change.
 \end{shaded}
 
 
@@ -232,6 +262,12 @@ Let $B$ be an algebra over $A$. The following are equivalent.
 
 \end{enumeratei}
 \end{proposition}
+\begin{shaded}
+A morphism of schemes is \textbf{faithfully flat} if it is flat and surjective.
+
+An $A$-algebra $B$ is faithfully flat if the associated map $\spec B\to\spec A$ is faithfully flat. This occurs if $\DASH\otimes_AB:\mathsf{Mod}_A\to\mathsf{Mod}_B$ preserves and reflects exact sequences.
+\end{shaded}
+
 
 The following fact is very important.
 
@@ -303,7 +339,7 @@ In \cite{ega4-2} all these statements are proved when $Y' \arr Y$ is quasi-compa
 \begin{1.2 Category theory}
 \setcounter{section}{1}
 \section{Category theory}
-
+\setcounter{theorem}{15}
 
 We will assume that the reader is familiar with the concepts of category, functor and natural transformation. The standard reference in category theory, containing a lot more than what we need, is \cite{maclane98}; also very useful are \cite{borceux1}, \cite{borceux2} and \cite{borceux3}.
 
@@ -438,7 +474,7 @@ Finally, we denote by $\catset$ the category of sets, by $\cattop$ the category 
 \begin{2.1 Yoneda Lemma}
 \setcounter{section}{0}
 \section{Representable functors and the Yoneda Lemma}\label{sec:repfunctors}
-
+\setcounter{theorem}{0}
 
 
 \subsection{Representable functors}
@@ -460,6 +496,9 @@ to the category of sets, which sends an object $U$ of $\cC$ to the set
    \] If $\alpha
 \colon U' \arr U$ is an arrow in $\cC$, then $\h_X \alpha  \colon \h_X U \arr \h_X U'$ is defined to be composition with $\alpha$. (When $\cC$ is the category of schemes over a fixed base scheme, $\h_{X}$ is often called the \emph{functor of points of $X$}%
 \index{functor!of points})
+\begin{shaded}
+Define $\h:\calC\to\func{\calC}$ by $X\mapsto\hom_\cC(\DASH,X)$, the Yoneda embedding. The \textbf{weak Yoneda lemma} states that it is a fully faithful functor.
+\end{shaded}
 
 Now, an arrow $f \colon X \arr Y$ yields a function $\h_f U \colon \h_X U \arr \h_Y U$\index{$\h_{f}$} for each object $U$ of $\cC$, obtained by composition with $f$. This defines a morphism $\h_X \arr \h_Y$, that is, for all arrows $\alpha\colon U' \arr U$ the diagram
    \[
@@ -524,6 +563,28 @@ These two functions are inverse to each other, and therefore establish a bijecti
 \end{named}
 
 The proof is easy and left to the reader. Yoneda's lemma is not a deep fact, but its importance cannot be overestimated.
+\begin{shaded}
+Given a object $X$ of $\calC$ and $F\in\func{\calC}$, there is a bijection
+\[\hom(\h_X,F)\simeq FX.\]
+%That is, there is a natural isomorphism $\h_F\h \simeq F$.
+This is the content of the \textbf{Yoneda lemma}. That is, we have a commuting diagram:
+\[\xymatrix{
+\ar[d]^{\h}\calC\op\ar[r]^F&\catset\\
+\func{\calC}\ar[ur]^{h_F}_(.65){\hom(\DASH,F)}&
+}\raisebox{-6mm}{\qquad since\qquad }
+\xymatrix{
+\ar@{|->}[d]X\ar@{|->}[r]&FX\simeq\hom(\h_X,F)\\
+\h_X\ar@{|->}[ur]
+}\]
+In particular, although $F$ need not be representable, it can be extended to the representable functor $\h_F$ on the larger category $\func{\calC}$.
+
+{\small Note that we construct the natural isomorphism as follows:
+\begin{itemize}\squishlist
+\item Given $\tau:\h_X\implies F$, we have $\tau_X:\h_X(X)\to FX$, and we take the image $\tau_X(\id_X)$.
+\item Given $\xi\in F X$, to any $f\in \h_X(Y)$ we must assign an element of $F(Y)$. We take the image of $\xi$ under $F(f):F(X)\to F(Y)$.
+\end{itemize}}
+
+\end{shaded}
 
 Let us see how this form of Yoneda's lemma implies the weak form above. Suppose that $F = \h_Y$: the function $\hom(X,Y) = \h_Y X \arr \hom(\h_X,\h_Y)$ constructed here sends each arrow $f \colon X \arr Y$ to
    \[
@@ -549,6 +610,12 @@ A functor $F \colon \cC\op \arr \catset$ is representable if and only if it has 
 \end{proposition}
 
 Also, if $F$ has a universal object $(X, \xi)$, then $F$ is represented by $X$.
+\begin{shaded}
+A funtor $F:\calC\op\to\catset$ is representable \Iff it has a \textbf{universal object}. That is, if there is an object $X$ and a distinguished element $\xi\in FX$ such that every $\sigma\in FY$ is pulled back from $\xi$ along a unique map $Y\to X$. 
+
+Recall that every cohomology class is pulled back from the universal class $\iota_n\in H^n(K(\pi,n);\pi)$ along a map unique up to homotopy. By the previous comment on universal objects, this states \emph{exactly} that cohomology is a representable functor on the homotopy category.
+\end{shaded}
+
 
 Yoneda's lemma ensures that the natural functor $\cC \arr \func{\cC}$ which sends an object $X$ to the functor $\h_X$ is an equivalence of $\cC$ with the category of representable functors. From now on we will not distinguish between an object $X$ and the functor $\h_X$ it represents. So, if $X$ and $U$ are objects of $\cC$, we will write $X(U)$ for the set  $\h_X U = \hom_{\cC}(U,X)$ of arrows $U \arr X$. Furthermore, if $X$ is an object and $F \colon \cC\op \arr \catset$ is a functor, we will also identify the set $\hom(X, F) = \hom(\h_X, F)$ of morphisms from $\h_X$ to $F$ with $F X$.
 
@@ -572,6 +639,11 @@ Given a subset $\sigma \subseteq S$, there is a unique function $\chi_\sigma \co
    \end{cases}
    \]
 Hence the pair $(\{0,1\}, \{1\})$ is a universal object, and the functor $\rP$ is represented by $\{0,1\}$.
+\begin{shaded}
+The functor $\rP \colon \catset\op \arr \catset$, powersets and inverse images, is represented by $\{0,1\}$.
+
+Something similar happens for the functor $\rF:\cat{Top}\op \arr \catset$ which sends a topological space to its set of open subsets. $\rF$ is represented by the Sierpinski space. $\rF$ is \emph{not} representable when restricted to $\cat{HausTop}\op$.
+\end{shaded}
 
 
 
@@ -607,7 +679,9 @@ Then $x \in \cO(\AA^1_S)$, and given a scheme $U$ over $S$, and an element $f \i
 
 More generally, the affine space $\AA^n_S$ represents the functor $\cO^n$ that sends each scheme $S$ to the ring $\cO(S)^n$.
 \end{example}
-
+\begin{shaded}
+The affine line $\AA^1_S$ represents the global sections functor in $\func{\catsch{S}}$. The multiplicative group $\gm$ represents the functor ``invertible global sections''.
+\end{shaded}
 \begin{example}
 Now we look at $\gm = \AA^1_S \setminus 0_{S} = \spec R[x, x^{-1}]$. Here by $0_S$ we mean the image of the zero-section $S \arr \AA^1_S$. Now, a morphism of $S$-schemes $U \arr \gm$ is determined by the image of $x \in \cO(\gm)$ in $\cO(S)$; therefore $\gm$ represents the functor $\cO^*\colon \catsch{S}\op \arr \catset$ that sends each scheme $U$ to the group $\cO^*(U)$ of invertible sections of the structure sheaf.
 \end{example}
@@ -629,6 +703,9 @@ Another description of the functor $Q_n$ is as follows. Given a scheme $U$ and a
 
 It is a very well-known fact, and, indeed, one of the cornerstones of algebraic geometry, that for any sequence $(\cL, s_0, \ldots, s_n)$ over an $S$-scheme $U$, there it exists a unique morphism $f \colon U \arr \PP^n_S$ such that $(\cL, s_0, \ldots, s_n)$ is equivalent to $(f^*\cO(1), f^*x_0, \ldots, f^*x_n)$. This means precisely that $\PP^n_S$ represents the functor $Q_n$.
 \end{example}
+\begin{shaded}
+Consider the functor in $Q_n\in\func{\catsch{S}}$ which takes an $S$-scheme $U$ to the set of sequences $(\cL, s_0, \ldots, s_n)$ consisting of an invertible sheaf $\calL$, and $s_0,\ldots,s_n\in\calL(U)$ generating $\calL$, up to the obvious equivalence relation. This is represented by $\PP^n_S$, with universal object $(\calO(1),x_0,\ldots,x_n)$.
+\end{shaded}
 
 \begin{example}
 This example is an important generalization of the previous one.
@@ -684,6 +761,7 @@ This can be viewed as the functor $\h_X \colon (\cC\op)\op \arr \catset$; hence,
 \begin{2.2 Group objects}
 \setcounter{section}{1}
 \section{Group objects}\label{sec:group-objects}
+\setcounter{theorem}{10}
 
 In this section the category $\cC$ will have finite products; we will denote a terminal object by $\pt$.
 
@@ -695,6 +773,18 @@ A group object in the category of topological spaces is called a \emph{topologic
 \index{topological!group}. A group object in the category of schemes over a scheme $S$ is called a \emph{group scheme over $S$}%
 \index{group scheme}.
 \end{definition}
+\begin{shaded}
+A group object of $\calC$ is an object $G$ of $\calC$ along with a factorisation of $\h_G$:
+\[\xymatrix@R=.5cm{
+\ar[dr]\calC\op\ar[rr]^{\h_G}&&\catset\\
+&\catgrp\ar[ru]_{\textup{forget}}
+}\]
+It is the same to say that each $G(U):=\hom(U,G)$ is given a group structure, and the induced maps $G(V)\to G(U)$ are group homomorphisms.
+
+To give such compatible group structures is to give natural transformations between various composites of $\h_G$, $\h_{G\times G}$ (i.e.\ $\h_G\times \h_G$) and $\h(\pt)$ (which always returns a one point set). Thus, by the Yoneda lemma, it is equivalent to define a group object as an object $G$ with maps making the `group' diagrams commute.
+
+This is a good time to note that \emph{the Yoneda embedding preserves limits}. It does not preserve colimits.
+\end{shaded}
 
 Equivalently: a group object is an object $G$, together with a group structure on $G(U)$ for each object $U$ of $\cC$, so that the function $f^* \colon G(V) \arr G(U)$ associated with an arrow $f \colon U \arr V$ in $\cC$ is always a homomorphism of groups.
 
@@ -753,10 +843,19 @@ To give a group object structure on an object $G$ of $\cC$ is equivalent to assi
 It is immediate to check that, if $\cC$ is the category of sets, the commutativity of the diagrams above gives the usual group axioms. Hence the result follows by evaluating the diagrams above (considered as diagrams of functors) at any object $U$ of $\cC$.
 \end{proof}
 
+
 Thus, for example, a topological group is simply a group, that has a structure of a topological space, such that the multiplication map and the inverse map are continuous (of course the map from a point giving the identity is automatically continuous).
 
 Let us give examples of group schemes.
+\begin{shaded}
+As examples of group schemes, try:
+\begin{enumerate}\squishlist
+\item  $\AA^n_S$, representing the association $U\mapsto \calO(U)^n$, under addition. Write $\GG_{\rma, S}$ for $\AA^1_S$.
+\item  $\gm = \AA_S^1 \setminus 0_S$, representing the association $U\mapsto \calO^*(U)$, under multiplication.
+\item Various subschemes of $\GL_{n,S}$, where we define $\GL_{n,S}$ to be the preimage of $\gm$ under $\det \colon \M_{n,S} \arr \AA_S^1$. $\GL_{n,S}$ represents the functor $U\mapsto \GL_{n}(\calO(U))$.
+\end{enumerate}
 
+\end{shaded}
 The first examples are the schemes $\AA^n_S \arr S$; these represent the functor $\cO^n $ sending a scheme $U \arr S$ to the set $\cO(U)^n$, which has an evident additive group structure. 
 
 The group scheme $\AA^1_S$ is often denote by $\GG_{\rma, S}$.
@@ -787,9 +886,12 @@ commutes.
 
 The identity is obviously a homomorphism from a group object to itself. Furthermore, the composite of homomorphisms of group objects is still a homomorphism; thus, group objects in a fixed category form a category, which we denote by $\catgrpover{\cC}$.
 
+\begin{shaded}
+Note that the notion of homomorphism of group objects can be defined easily from any of the above viewpoints, and the definitions are equivalent by the Yoneda lemma. Thus we have a category $\catgrpover{\cC}$ of group objects in $\calC$.
 
+Note also that if $F:\calC\to\calD$ is a functor which preserves finite products, it preserves group objects, and thus gives a functor $\catgrpover{\cC}\to\catgrpover{\cD}$.
+\end{shaded}
 \begin{remark}\label{rmk:preserve-products->preserve-groups}
-
 Suppose that $\cC$ and $\cD$ are categories with products and terminal objects $\pt_{\cC}$ and $\pt_{\cD}$. Suppose that $F \colon \cC \arr \cD$ is a functor that preserves finite products, and $G$ is a group object in $\cC$. The arrow $\iden_G \colon \pt_{\cC} \arr G$ yields an arrow $F\iden_G \colon F\pt_{\cC} \arr FG$; this can be composed with the inverse of the unique arrow $F\pt_{\cC} \arr \pt_{\cD}$, which is an isomorphism, because $F\pt_{\cC}$ is a terminal object, to get an arrow $\iden_{FG} \colon \pt_{\cD} \arr FG$. Analogously one uses $F\mul_{G} \colon F(G \times G) \arr FG$ and the inverse of the isomorphism $F(G \times G) \simeq FG \times FG$ to define an arrow $\mul_{FG} \colon FG \times FG \arr FG$. Finally we set $\inv_{FG} \eqdef F\inv_{G} \colon FG \arr FG$.
 
 We leave it to the reader to check that this gives $FG$ the structure of a group object, and this induces a functor from the category of group objects on $\cC$ to the category of group objects on $\cD$.
@@ -811,6 +913,13 @@ A left action $\alpha$ of a functor $G \colon \cC\op \arr \catgrp$ on a functor 
 \end{definition}
 
 In the definition above, we denote by $G \times F$ the functor that sends an object $U$ of $\cC$ to the product of the set underlying the group $GU$ with the set $FU$. In other words, $G \times F$ is the product $\widetilde{G} \times F$, where $\widetilde{G}$ is the composite of $G$ with the forgetful functor $\catgrp \arr \catset$.
+\begin{shaded}
+Given functors 
+\raisebox{3mm}{$\xymatrix@!0@C=2cm@R=.31cm{&\catset\\
+\calC\op\ar[ur]^F\ar[dr]_G\\
+&\catgrp}$}
+an action of $G$ on $F$ is a natural transformation $G\times F\implies F$ which is an action objectwise.
+\end{shaded}
 
 Equivalently, a left action of $G$ on $F$ consists of an action of $G(U)$ on $F(U)$ for all objects $U$ of $\cC$, such that for any arrow $f \colon U \arr V$ in $\cC$, any $g \in G(V)$ and any $x \in F(V)$ we have
    \[
@@ -822,6 +931,9 @@ Right actions are defined analogously.
 We define an action of a group object $G$ on an object $X$ as an action of the functor $\h_G \colon \cC\op \arr \catgrp$ on $\h_X \colon \cC\op \arr \catset$\index{action!of a group object on an object}.
 
 Again, we can reformulate this definition in terms of diagrams.
+\begin{shaded}
+An action of a group object $G$ on another object should be an action of $\h_G$ on $\h_X$, and by Yoneda's lemma, this can be formulated in terms of diagrams. $G$-equivariant maps of objects with $G$-actions can be discussed.
+\end{shaded}
 
 \begin{proposition}\label{prop:diagram-action}
 \index{action!of a group object on an object!characterization via diagrams}
@@ -877,12 +989,36 @@ Equivalently, $f$ is $G$-equivariant if the diagram
 where the rows are given by the actions, commutes (the equivalence of these two definitions follows from Yoneda's lemma).
 
 There is yet another way to define the action of a functor $G \colon \cC\op \arr \catgrp$ on an object $X$ of $\cC$. Given an object $U$ of $\cC$, we denote by $\End_U(U \times X)$ the set of arrows $U \times X \arr U \times X$ that commute with the projection $\pr_1 \colon U \times X \arr U$; this set has the structure of a monoid, the operation being the composition. In other words, $\End_U(U \times X)$ is the monoid of endomorphisms of  $\pr_1 \colon U \times X \arr U$ considered as an object of the comma category $(\cC/U)$. We denote the group of automorphisms in $\End_U(U \times X)$ by $\aut_U(U \times X)$.
+\begin{shaded}
+One is interested in the group $\aut_U(U \times X)$ of automorphisms of $U\times X$ over $U$ --- diagramatically, maps $\phi$ making the following triangle commute:
+\[\xymatrix{
+\ar[dr]_{\pi_1}U\times X\ar[r]^\phi&U\times X\ar[d]^{\pi_1}\\
+&U
+}\]
+Note that ``the triangle commutes'' is a categorical way to say ``$\phi$ leaves the first coordinate unchanged''. One might think of such a $\phi$ as a map $U\to\Aut(X)$, in which case, $U\mapsto \aut_U(U \times X)$ should be a functor $\calC\op\to\catgrp$.
+
+This line of thinking should motivate the following method used to pull $\beta\in\aut_V(V \times X)$ back along a map $f:U\to V$. To give $f^*\beta:U\times X\to U\times X$, it's enough to give maps $U\times X\to U$ and $U\times X\to X$. The former is $\pi_1$, and the latter is the composite:
+\[\xymatrix{
+U\times X\ar[r]^{f\times\id_X}&
+V\times X\ar[r]^{\beta}&
+V\times X\ar[r]^{\pi_1}&X
+}\]
+
+\end{shaded}
+
 
 Let us define a functor
    \[
    \underaut_{\cC}(X) \colon \cC\op \arr \catgrp
    \]
 sending each object $U$ of $\cC$ to the group $\underaut_{\cC}(X)(U) \eqdef \aut_U(U \times X)$. The group $\underaut_{\cC}(X)(\pt)$ is canonically isomorphic to $\aut_{\cC}(X)$.
+\begin{shaded}
+We define the functor
+   \[
+   \underaut_{\cC}(X) \colon \cC\op \arr \catgrp\qquad U\mapsto \aut_U(U \times X),
+   \]
+which may clumsily be thought of as ``automorphisms of $X$ indexed by $U$''. It turns out that to give an action of $G \colon \cC\op \arr \catgrp$ on an object $X$ is equivalent to giving a natural transformation $G \arr \underaut_{\cC}(X)$ of functors $\cC\op \arr \catgrp$.
+\end{shaded}
 
 Consider an arrow $f \colon U \arr V$ in $\cC$; with this we need to associate a group homomorphism $f^* \colon \aut_V(V \times X) \arr \aut_U(U \times X)$. The diagram
    \[
@@ -941,6 +1077,26 @@ We will use Yoneda's lemma once again, and consider $U \times X$ as a functor $U
 \subsection{Discrete groups}\label{subsec:discrete-groups}
 
 There is a standard notion of action of a group on an object of a category: a group $\Gamma$ acts on an object $X$ of $\cC$ when there is given a group homomorphism $\Gamma \arr \aut_{\cC}(X)$. With appropriate hypotheseas, this action can be interpreted as the action of a \emph{discrete group object} on $X$.
+\begin{shaded}
+I haven't really read this yet, but it goes like this.
+\begin{itemize}\squishlist
+\item If $\calC$ admits small coproducts of some terminal object, we say that $\calC$ has discrete objects.
+\item In this case, we obtain a functor $\Delta \colon \catset \arr
+\cC$ in the obvious way, called the \emph{discrete object functor}. It is the left adjoint of the corepresentable functor $\hom_\calC(\pt,\DASH)$:
+\[\xymatrix@R=.3cm@C=2cm{
+\catset  \ar@<.6ex>[r]^{\Delta}&
+\calC  \ar@<.4ex>[l]^{\hom_\calC(\pt,\DASH)}\\
+%X \ar@{|->}[r] & FX\\
+%GY             & Y \ar@{|->}[l]
+}\]
+and is of course determined by this fact.
+\item We say that $\calC$ has \emph{discrete group objects} if $\calC$ has finite products, and if
+for any object $U\in\cC$ and any set $I$, the coproduct $I \times U \eqdef \coprod_{i \in I} U$ exists and is isomorphic to $\Delta I\times U$ via the canonical arrow.
+\item When $\calC$ has discrete group objects, $\Delta$ preserves finite products, and so induces a functor $\Delta:\catgrp\to\catgrpover{\cC}$.
+\item Then, for any group $\Gamma$, giving an action $\Gamma\arr \aut_{\cC}(X)$ of $G$ on $X$ is equivalent to giving an action of the group object $\Delta\Gamma$ on $X$.
+\end{itemize}
+\end{shaded}
+
 
 In many concrete cases, a category of geometric objects has objects that can be called \emph{discrete}. For example in the category of topological spaces we have discrete spaces: these are spaces with the discrete topology, or, in other words, disjoint unions of points. In the category $\catsch{S}$ of schemes over $S$ an object should be called discrete when it is the disjoint union of copies of $S$. In categorical terms, a disjoint union is a coproduct; thus a discrete object of $\catsch{S}$ is a scheme $U$ over $S$, with the property that the functor $\hom_S(U, -) \colon \catsch{S} \arr \catset$ is the product of copies of $\hom_S(S, -)$.
 
@@ -1045,7 +1201,7 @@ However, for discrete group objects to be well behaved we need more than their e
 \begin{2.3 Sheaves in Grothendieck topologies}
 \setcounter{section}{2}
 \section{Sheaves in Grothendieck topologies}\label{sec:sheaves}
-
+\setcounter{theorem}{23}
 \subsection{Grothendieck topologies}
 
 The reader is familiar with the notion of sheaf on a topological space. A presheaf on a topological space $X$ can be considered as a functor. Denote by $X\cl$ the category in which the objects are the open subsets of $X$, and the arrows are given by inclusions. Then a presheaf of sets on $X$ is a functor ${X\cl}\op \arr \catset$; and this is a sheaf when it satisfies appropriate gluing conditions. 
@@ -1075,6 +1231,11 @@ Let $\cC$ be a category. A \emph{Grothendieck topology}%
 A category with a Grothendieck topology is called a \emph{site}%
 \index{site}.
 \end{definition}
+\begin{shaded}
+A Grothendieck topology on a category is the data of a collection of \textit{coverings} $\{U_i\to U\}$ for each $U$ such that the obvious axioms hold. This is actually called a `pretopology' in SGAIV.
+
+A category with a Grothendieck topology is called a \emph{site}.
+\end{shaded}
 
 
 Notice that from \refpart{def:grothtop}{2} and \refpart{def:grothtop}{3} it follows that if $\{U_i \to U\}$ and $\{V_j \to U\}$ are two coverings of the same object, then $\{U_i \times_U V_j \arr U\}$ is also a covering.
@@ -1090,6 +1251,26 @@ However, \emph{sieves}, the objects that intervene in the definition of a topolo
 
 Here are some examples of Grothendieck topologies. In what follows, a set $\{U_{i} \arr U\}$ of functions, or morphisms of schemes, is called \emph{jointly surjective}%
 \index{jointy surjective} when the set-theoretic union of their images equals $U$.
+\begin{shaded}
+Many examples of sites are given.
+\begin{itemize}\squishlist
+\item \textit{The site of a topological space}.
+\item \textit{The global classical topology}: the underlying category is $\cattop$, a covering is a jointly surjective collection of open embeddings.
+\item \textit{The global \'etale topology for topological spaces}: \textbf{finer} than the global classical topology. That is, it has \textbf{more coverings} --- the jointly surjective collections of \emph{local homeomorphisms}. In fact the two turn out to be equivalent, in a sense to appear later.
+\item \textit{The small \'etale site of a scheme $X$}:
+This is a topology on the full subcategory $X_{\textrm{\'et}}$ of $\catsch{X}$ consisting of morphisms $U \arr X$ locally of finite presentation, that are \'etale.
+
+A covering of $U \arr X$ is to be a jointly surjective collection of morphisms $U_i \arr U$.
+ {\small (Note that any arrow $U \arr V$ over $X$ is necessarily \'etale!)}
+\item 
+\textit{The global Zariski topology}: this topology on $\catsch{S}$ is the Zariski analogue of the global classical topology.
+\item
+\textit{The global \'etale topology}: finer than the global Zariski topology --- the coverings are the jointly surjective collections of \'etale maps locally of finite presentation.
+\item \textit{The fppf topology}: finer still --- jointly surjective collections of flat maps locally of finite presentation.
+\item \textit{The fpqc topology}: even finer! he coverings $\{U_i \to U\}$ are collections of morphisms, such that the induced morphism $\coprod U_i \arr U$ is fpqc. (See below.)
+\end{itemize}
+
+\end{shaded}
 
 \begin{example}[The site of a topological space]
 \label{ex:classical-topology}%
@@ -1156,6 +1337,12 @@ The  abbreviation fppf stands for ``fid\`element plat et de pr\'esentation finie
 
 It is sometimes useful to consider coverings that are not locally finitely presented. One can define a topology on $\catsch{S}$ simply by taking all collections of morphisms $\{U_i \to U\}$ such that the resulting morphism $\coprod_i U_i \arr U$ is faithfully flat\index{wild flat topology}%
 \index{topology!wild flat}. Unfortunately, this topology is not well behaved (see Remarks \ref{rmk:need-finiteness} and \ref{rmk:really-need-finiteness}). One needs some finiteness condition in order to get a reasonable topology. 
+\begin{shaded}
+I haven't properly read this section. It defines the property of a map being \emph{fpqc}, and uses it to define the fpqc topology.
+
+It comments that many properties of a morphism $f:X\to Y$ are local on the base in the fpqc topology, which is to say that if they hold for every base change along $Y_i\to Y$ in some fpqc cover of $Y$, then they hold for $f$. This (might be) surprising, as there are so many covers to check in such a fine topology.
+\end{shaded}
+
 
 For example, one could define a covering as a collection of morphisms $\{U_i \to U\}$ such that the resulting morphism $\{\coprod_i U_i \arr U\}$ is faithfully flat and quasi-compact, as I did in the first version of these notes; but then Zariski covers would not be included, and the resulting topology would not be comparable with the Zariski topology. The definition of the fpqc topology that follows, suggested by Steve Kleiman, gives the correct sheaf theory.
 
@@ -1318,6 +1505,9 @@ If $F$ and $G$ are sheaves on a site $\cC$, a \emph{morphism of sheaves}%
 \end{definition}
 
 A sheaf on a site is clearly separated.
+\begin{shaded}
+The definition of a sheaf on a site is the same as the one we're all used to --- either a unique gluing condition, or equivalently we need an equalizer diagram.
+\end{shaded}
 
 Of course one can also define sheaves of groups, rings, and so on, as usual: a functor from $\cC\op$ to the category of groups, or rings, is a sheaf if its composite with the forgetful functor to the category of sets is a sheaf.
 
@@ -1357,9 +1547,44 @@ is defined similarly.
 
 One immediately sees that $F$ is a sheaf if and only if the diagram (\ref{eq:equalizer-sheaves}) is an equalizer for all coverings $\{U_i \to U\}$ in $\cC$.
 
+\begin{shaded}Suppose that $\cU = \{U_{i} \to U\}$ in a set of arrows, and $F \colon \cC\op \arr \catset$ a functor. We define $F\cU$ as the following equaliser. It comes equipped with a map (which I write as `$\textup{split}_\calU$') from $FU$, induced by the restrictions $FU \arr FU_i$:
+\[\textup{split}_\calU:FU\to F\cU\eqdef\textup{eq}\left(\prod_i
+   FU_i\doublelong{\pr_1^*}{\pr_2^*}
+   \prod_{i,j} F(U_i \times_U U_j)\right)\]
+By definition, $F$ is a sheaf \Iff $FU \arr F\cU$ is a bijection for all coverings $\cU$.
+
+\end{shaded}
 
 
 \subsection{Sieves}
+
+\hfil 
+\begin{shaded}
+ A sieve on an object $U$ of $\calC$ is a subfunctor of $\h_{U} \colon \cC\op \arr \catset$.
+\begin{itemize}\squishlist
+\item To give a sieve $S$ on an object $U$ is precisely to giving a collection $\cS$ of arrows to $U$ closed under precomposition by arbitrary maps.  {\small ($S(T)$ equals the set of arrows from $T\to S$ that lie in $\calS$.)}
+\item Given a collection of arrows $\cU = \{U_i \to U\}$ in $\cC$, let $\h_\cU$ be the \emph{sieve associated with $\cU$}. That is, let $\h_\cU(T)$ be the set of maps $T\to U$ which factor through $U_i\to U$ for some $i$.
+\begin{itemize}\squishlist
+\item Note that $\h_\cU$ is the smallest sieve on $U$ containing all the maps in $\cU$.
+\end{itemize}
+\item There is a canonical bijection $R \colon \hom(\h_{\cU}, F) \to F\cU$, defined as follows.
+Suppose $\phi\in\hom(\h_\cU,F)$. Then we have maps:
+\[\phi_{U_i}:h_{\cU}U_i\to FU_i\textup{\qquad giving elements\qquad }\phi(U_i\to U)\in FU_i.\]
+By naturality of $\phi$, these elements agree on restrictions, and thus give an element $R\phi$ of $FU$.
+\end{itemize}
+In fact, we have a commuting square:
+   \[
+   \xymatrix@C=2cm{
+   {}\hom(\h_{U}, F)   \ar[r]^-{\textup{Yoneda}}_-{\simeq} \ar[d]^-{\textup{restriction}}  & FU \ar[d]^-{\textup{split}_\calU} \\
+   {}\hom(\h_{\cU}, F) \ar[r]^-{R}_-{\simeq} & F\cU
+   }
+   \]
+By definition, $F$ is a sheaf \Iff the $\textup{split}_\calU$ is an isomorphism for all coverings $\cU$, so that:
+\begin{itemize}\squishlist
+\item $F$ is a sheaf \Iff for all coverings $\calU$ the restriction map $\hom(\h_{U}, F)  \to \hom(\h_{\cU}, F)  $ is an isomorphism.
+\end{itemize}
+
+\end{shaded}
 
 
 Given an object $U$ in a category $\cC$ and a set of arrows $\cU = \{U_i \to U\}$ in $\cC$, we define a subfunctor $\h_{\cU}  \subseteq \h_U$\index{$\h_{\cU}$}, by taking $\h_{\cU}(T)$ to be the set of arrows $T \arr U$ with the property that for some $i$ there is a factorization $T \arr U_i \arr U$. In technical terms, $\h_{\cU}$ is the \emph{sieve}%
@@ -1988,7 +2213,7 @@ A slicker, but equivalent, definition is as follows. Consider the set $\{S_{i}\}
 \begin{3.1 Fibered categories}
 \setcounter{section}{0}
 \section{Fibered categories}\label{sec:fibered}
-
+\setcounter{theorem}{0}
 \subsection{Definition and first properties}
 
 In this Section we will fix a category $\cC$; the topology will play no role. We will study  categories over $\cC$, that is, categories $\cF$ equipped with a functor $\p_{\cF}\colon \cF \arr \cC$.
@@ -2367,7 +2592,7 @@ On the other hand, since cartesian pullbacks are unique up to a unique isomorphi
 \begin{3.2 Examples of fibered categories}
 \setcounter{section}{1}
 \section{Examples of fibered categories}\label{sec:examples-fibered}
-
+\setcounter{theorem}{14}
 \begin{example}\label{ex:arrows} Assume that $\cC$ has fibered products. Let $\Arr \cC$ be the category of arrows in $\cC$; its objects are the arrows in $\cC$, while an arrow from $f\colon X \arr U$ to $g \colon Y \arr V$ is a commutative diagram
    \[
    \xymatrix{
@@ -2601,7 +2826,7 @@ There are many variants on  this example. For example, one can define the fibere
 \begin{3.3 Categories fibered in groupoids}
 \setcounter{section}{2}
 \section{Categories fibered in groupoids}
-
+\setcounter{theorem}{20}
 \begin{definition} A \emph{category fibered in groupoids over $\cC$}%
 \index{category!fibered!in groupoids}%
 \index{fibered!category!in groupoids} is a category $\cF$ fibered over $\cC$, such that the category $\cF(U)$ is a groupoid for any object $U$ of $\cC$.
@@ -2638,7 +2863,7 @@ Of the examples of Section~\ref{sec:examples-fibered}, \ref{ex:arrows} and \ref{
 \begin{3.4 Functors and cats fibered in sets}
 \setcounter{section}{3}
 \section{Functors and categories fibered in sets}\label{sec:fiberedsets}
-
+\setcounter{theorem}{23}
 The notion of category generalizes the notion of set: a set can be thought of as a category in which every arrow is an identity. Furthermore functors between sets are simply functions.
 
 Similarly, fibered categories are generalizations of functors.
@@ -2783,7 +3008,7 @@ The proof is immediate from Proposition~\ref{prop:char-fibered-in-groupoids} and
 \begin{3.5 Equivalences of fibered categories}
 \setcounter{section}{4}
 \section{Equivalences of fibered categories}
-
+\setcounter{theorem}{32}
 \subsection{Natural transformations of functors}
 
 The fact that fibered categories are categories, and not functors, has strong implications, and does cause difficulties. As usual, the main problem is that functors between categories can be isomorphic without being equal; in other words, functors between two fixed categories form a category, the arrows being given by natural transformations.
@@ -2940,7 +3165,7 @@ In 2-categorical terms, part \refpart{prop:->hom}{3} says that the 2-category of
 \begin{3.6 Objects as fibcats and the 2-Yoneda}
 \setcounter{section}{5}
 \section{Objects as fibered categories and the 2-Yoneda Lemma}
-
+\setcounter{theorem}{42}
 \subsection{Representable fibered categories}
 
 In \S\ref{sec:repfunctors} we have seen how we can embed a category $\cC$ into the functor category $\func{\cC}$, while in \S\ref{sec:fiberedsets} we have seen how to embed the category $\func{\cC}$ into the 2-category of fibered categories over $\cC$. By composing these embeddings we have embedded $\cC$ into the 2-category of fibered categories: an object $X$ of $\cC$ is sent to the fibered category $(\cC/X) \arr \cC$. Furthermore, an arrow $f \colon X \arr Y$ goes to the morphism of fibered categories $(\cC/f) \colon (\cC/X) \arr (\cC/Y)$ that sends an object $U \arr X$ of $(\cC/X)$ to the composite $U \to X \overset f \to Y$. The functor $(\cC/f)$ sends an arrow
@@ -3082,7 +3307,7 @@ It is an interesting exercise to figure out what this construction yields in the
 \setcounter{section}{6}
 \section{The functors of arrows of a fibered category}
 \label{sec:func-arrows}
-
+\setcounter{theorem}{45}
 
 Suppose that $\cF \arr \cC$ is a fibered category; if $U$ is an object in $\cC$ and $\xi$, $\eta$ are objects of $\cF(U)$, we denote by $\hom_U(\xi, \eta)$ the set of arrows from $\xi$ to $\eta$ in $\cF(U)$.
 
@@ -3163,7 +3388,7 @@ This can be proved as follows: the objects of $\underhom_S(\xi, \eta)$, thought 
 \setcounter{section}{7}
 \section{Equivariant objects in fibered categories}
 \label{sec:fibered-actions}
-
+\setcounter{theorem}{45}
 
 The notion of an equivariant sheaf of modules on a scheme with the action of a group scheme, as defined in \cite[Chapter~1, \S~3]{git}, or in \cite{thomason87}), is somewhat involved and counterintuitive. The intuition is that if we are given the action of a group scheme $G$ on a scheme $X$, an equivariant sheaf should be a sheaf $\cF$, together with an action of $G$ on the \emph{pair} $(X, \cF)$, which is compatible with the action of $G$ on $X$. Since the pair $(X, \cF)$ is an object of the fibered category of sheaves of modules, the language of fibered categories is very well suited for expressing this concept.
 
@@ -3337,7 +3562,7 @@ When applied to the fibered category of sheaves of some kind (for example, \qc s
 \begin{4.1 Descent of objects of fibcats}
 \setcounter{section}{0}
 \section{Descent of objects of fibered categories}
-
+\setcounter{theorem}{0}
 \subsection{Gluing continuous maps and topological spaces}
 
 The  following is the archetypal example of descent.
@@ -4095,7 +4320,7 @@ Let $\xi$ and $\eta$ be two objects in some $\cF(U)$. Let $\{U_i \to U\}$ be a c
 \begin{4.2 Descent for quasi-coherent sheaves}
 \setcounter{section}{1}
 \section{Descent theory for quasi-coherent sheaves}
-
+\setcounter{theorem}{20}
 
 
 \subsection{Descent for modules over commutative rings}
@@ -4578,7 +4803,7 @@ Exactly in the same way one can defined fibered categories of sheaves of (not ne
 \setcounter{section}{2}
 \section{Descent for morphisms of schemes}
 \label{sec:descent-morphisms}
-
+\setcounter{theorem}{30}
 Consider a site $\cC$, a stable class $\cP$ of arrows, and the associate fibered category  $\cP \arr \cC$, as in Example~\ref{ex:restrictedarrows}.
 
 The following fact is often useful.
@@ -5244,7 +5469,7 @@ and the definition of $\psi$, show that the two inverse images of $Y \subseteq \
 \begin{4.4 Descent along torsors}
 \setcounter{section}{3}
 \section{Descent along torsors}
-
+\setcounter{theorem}{41}
 One of the most interesting examples of descent is descent for \qc sheaves along fpqc torsors. This can be considered as a vast generalization of the well know equivalence between the category of real vector spaces and the category of complex vector spaces with an anti-linear involution. Torsors are generalizations of principal fiber bundles in topology; and I always find it striking that among the simplest examples of torsors are Galois field extensions (see Example~\ref{ex:galois-extensions}).
 
 Here we only introduce the bare minimum of material that allows us to state and prove the main theorem. For a fuller treatment, see \cite{demazure-gabriel}.
