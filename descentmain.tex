@@ -7,13 +7,13 @@
 \includeversion{1.1 Algebraic geometry}
 \includeversion{1.2 Category theory}
 %%%%%%%%
-\includeversion{2   CONTRAVARIANT FUNCTORS}
-\excludeversion{2.1 Yoneda Lemma}
-\excludeversion{2.2 Group objects}
+\excludeversion{2   CONTRAVARIANT FUNCTORS}
+\includeversion{2.1 Yoneda Lemma}
+\includeversion{2.2 Group objects}
 \includeversion{2.3 Sheaves in Grothendieck topologies}
 %%%%%%%%
-\excludeversion{3   FIBERED CATEGORIES}
-\excludeversion{3.1 Fibered categories}
+\includeversion{3   FIBERED CATEGORIES}
+\includeversion{3.1 Fibered categories}
 \excludeversion{3.2 Examples of fibered categories}
 \excludeversion{3.3 Categories fibered in groupoids}
 \includeversion{3.4 Functors and cats fibered in sets}
@@ -1647,6 +1647,32 @@ This characterization can be sharpened.
 Let $\cT$ be a Grothendieck topology on a category $\cC$. A sieve $S \subseteq \h_{U}$ on an object $U$ of $\cC$ is said to \emph{belong to $\cT$}%
 \index{sieve!belonging to a topology} if there exists a covering $\cU$ of $U$ such that $\h_{\cU} \subseteq S$.
 \end{definition}
+\begin{shaded}
+Suppose that $\calC$ is a site with topology $\calT$.
+Given a seive $S\subseteq \h_U$ on an object $U$ of $\calC$, we say that ``\textbf{$S$ belongs} to $\calT$'', or ``$S$ is a sieve of $\calC$'', if:
+\begin{enumerate}\squishlist
+\item  $\calS$ contains some covering $\calU$ of $U$; or equivalently
+\item for some covering $\calU$ of $U$, we have $\h_\cU\subseteq \calS$.
+\end{enumerate}
+{\small(These are equivalent because $\h_\cU$ is the smallest sieve containing the covering $\cU$.)} Note that when $\calU$ is a covering, the sieve $\h_\calU$ belongs to $\calT$. % By ``the \emph{sieves of $\cC$}'' we mean the sieves belonging to $\cT$.
+
+Suppose that $F \colon \cC\op \arr \catset$ is a contravariant functor. The the following are equivalent:
+\begin{itemize}\squishlist
+\item[(i)] $F$ is a sheaf.
+\item[(ii)] The restriction map $\hom(\h_{U}, F)\to\hom(\h_{\cU}, F)$ is a bijection for all $U\in \calC$ and all covers $\calU$ of $U$.
+\item[(iii)] The restriction map $\hom(\h_{U}, F)\to\hom(S, F)$ is a bijection for all $U\in \calC$ and all sieves $S$ of $U$.
+\end{itemize}
+We discussed why (i) and (ii) are equivalent above. Clearly (iii) is stronger than (ii), so it's enough to show that (i) implies (iii).
+\begin{proof}[Proof that ({\rm i}) implies ({\rm iii})]
+One has subfunctors $\h_{\cU}\subseteq S\subseteq \H_U$, giving restriction maps
+   \[
+   \hom(\h_{U}, F) \arr \hom(S, F) \arr \hom(\h_{\cU}, F)
+   \]
+The composite is bijective, as (i) implies (ii). Moreover, the right hand map is injective whenever $F$ is separated, by Lemma \ref{lem:separated->injective}.
+\end{proof}
+
+\end{shaded}
+
 
 If $\cC$ is a site, we will talk about the \emph{sieves of $\cC$} to mean the sieves belonging to the topology of $\cC$.
 
@@ -1693,6 +1719,14 @@ Since $\{p_{i}\colon T \times_{U} U_{i} \arr T\}$ is a covering and $F$ is a sep
 
 This concludes the proof of Proposition~\ref{prop:funnychar-sheaves}.
 \end{proof}
+\begin{shaded}
+Note that one can take the product $\cU_1\times_U\cU_2$ of coverings of $U$, and that by definition, $h_{\cU_1 \times_{U} \cU_2} = \h_{\cU_1} \cap \h_{\cU_2}$.
+
+Thus, if $S_1$ and $S_2$ are sieves belonging to $\calT$, then $S_1\cap S_2$ belongs to $\calT$. 
+\begin{proof}
+For $1\leq i\leq2$ there is a covering $\cU_i$ of $U$ such that $S_i\supseteq\h_{\cU_i}$. Then $S_1\cap S_2\supseteq\h_{\cU_1}\cap \h_{\cU_2}=\h_{\cU_1\times_U\cU_2}$.
+\end{proof}
+\end{shaded}
 
 We conclude with a remark. Suppose that $\cU = \{U_{i}\to U\}$ and $\cV = \{V_{j}\to U\}$ are coverings. Then $\cU \times_{U} \cV \eqdef \{U_{i}\times_{U} V_{j}\to U\}$ is a covering. An arrow $T \arr U$ factors through $U_{i}\times_{U} V_{j}$ if and only if it factors through $U_{i}$ and through $V_{j}$. This simple observation is easily seen to imply the following fact.
 
@@ -1715,6 +1749,40 @@ We conclude with a remark. Suppose that $\cU = \{U_{i}\to U\}$ and $\cV = \{V_{j
 \subsection{Equivalence of Grothendieck topologies}
 
 Sometimes two different to\-pol\-ogies on the same category define the same sheaves.
+
+\begin{shaded}
+\begin{itemize}\squishlist
+\item A suppose given two sets $\calU$ and $\calV$ of arrows to $U$. The following are (obviously) equivalent:
+\begin{itemize}\squishlist
+\item  Then $\cV$ is a \textbf{refinement} of $\cU$, i.e.\ every arrow in $\cV$ factors through some arrow in $\cU$;
+\item $\h_{\cV} \subseteq \h_{\cU}$.
+\end{itemize}
+\item Suppose that $\calC$ is a category, and $\calT$ and $\calT'$ are two topologies on $\calC$.
+\begin{itemize}\squishlist
+\item We say that $\cT$ is \textbf{subordinate} to $\cT'$ (written $\cT \prec \cT'$) if:
+\begin{enumerate}\squishlist
+\item every covering in $\cT$ has a refinement that is a covering in $\cT'$; or equivalently
+\item every sieve belonging to $\cT$ also belongs to $\cT'$.
+\end{enumerate}
+In view of (2), every sheaf in $\cT'$ is also a sheaf in $\cT$.
+\item We say that $\cT$ is \textbf{equivalent to} to $\cT'$ (written $\cT \equiv \cT'$) if:
+\begin{enumerate}\squishlist
+\item %every covering in $\cT$ has a refinement that is a covering in $\cT'$ and vice versa, i.e.\ 
+$\cT \prec \cT'$ and $\cT' \prec \cT$; or equivalently
+\item The sieves belonging to $\cT$ are exactly those belonging to $\cT'$.
+\end{enumerate}
+In view of (2), the two topologies have the same sheaves.
+\end{itemize}
+
+\end{itemize}
+
+
+
+
+
+
+\end{shaded}
+
 
 \begin{definition}
 Let $\cC$ be a category, $\{U_i \to U\}_{i \in I}$ a set of arrows. A \emph{refinement}%
@@ -1790,6 +1858,12 @@ If $\cT$ is a topology of $\cC$, the \emph{saturation}%
 \index{topology!saturation of a}%
 \index{saturation of a topology} $\overline{\cT}$ of $\cT$ is the set of sets of arrows which have a refinement in $\cT$.
 \end{definition}
+\begin{shaded}
+A topology $\calT$ is called \textbf{saturated} if whenever $\calV$ and $\calU$ are sets of arrows $\calU$ to $U$ such that $\calV\in\calT$, and such that $\calV$ refines $\calU$ (i.e.\!
+$\xymatrix{\calV\ar@{~>}[r]&\calU}$\!), then $\calU\in\calT$.
+
+There is an obvious notion of the \textbf{saturation} $\overline{\cT}$ of $\cT$, and topologies are equivalent \Iff they have the same saturation.
+\end{shaded}
 
 
 \begin{proposition}
@@ -1823,6 +1897,15 @@ We leave the easy proofs to the reader.
 
 
 \subsection{Sheaf conditions on representable functors}
+\hfil
+\begin{shaded}
+It is essentially obvious that \textit{a representable functor $\cattop\op \arr \catset$ is a sheaf in the global classical topology.}
+
+What is more surprising is Theorem \ref{thm:rep-fppf}, due to Grothendieck: 
+\textit{a representable functor on $\catsch{S}$ is a sheaf in the fpqc topology.}
+
+The fpqc topology is the finest of the four topologies mentioned on $\catsch{S}$. It has the most covers, and thus the least sheaves, so that a fortiori, the same is true in the fppf,  and \'etale topologies.
+\end{shaded}
 
 
 \begin{proposition}\label{prop:rep->sheaf}
@@ -2146,6 +2229,11 @@ The proof of Theorem~\ref{thm:rep-fppf} is now complete.
 \subsection{The sheafification of a functor}
 
 The usual construction of the sheafification of a presheaf of sets on a topological space carries over to this more general context.
+
+\begin{shaded}
+See the introductory sentence.
+\end{shaded}
+
 
 \begin{definition}\label{def:sheafification}
 Let $\cC$ be a site, $F \colon \cC\op \arr \catset$ a functor. A \emph{sheafification}%
