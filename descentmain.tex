@@ -13,10 +13,10 @@
 \includeversion{2.3 Sheaves in Grothendieck topologies}
 %%%%%%%%
 \includeversion{3   FIBERED CATEGORIES}
-\includeversion{3.1 Fibered categories}
-\excludeversion{3.2 Examples of fibered categories}
+\excludeversion{3.1 Fibered categories}
+\includeversion{3.2 Examples of fibered categories}
 \excludeversion{3.3 Categories fibered in groupoids}
-\includeversion{3.4 Functors and cats fibered in sets}
+\excludeversion{3.4 Functors and cats fibered in sets}
 \excludeversion{3.5 Equivalences of fibered categories}
 \excludeversion{3.6 Objects as fibcats and the 2-Yoneda}
 \excludeversion{3.7 The functors of arrows of a fibcat}
@@ -107,7 +107,7 @@ We start with some finiteness conditions. Recall if $B$ is an algebra over the r
 
 If $B$ is finitely presented over $A$, whenever we write $B = A[x_1, \dots, x_n]/I$, $I$ is always finitely generated in $A[x_1, \dots, x_n]$ (\cite[Proposition~1.4.4]{ega4-1}).
 \begin{shaded}
-For a finitely presented $A$-algebra $B$, \emph{any} $A$-algebra generators $x_1,\ldots,x_r$ of $B$ give a finite presented for $B$ as an $A$-algebra.
+For a finitely presented $A$-algebra $B$, \emph{any} $A$-algebra generators $x_1,\ldots,x_r$ of $B$ give a finite presentation for $B$ as an $A$-algebra.
 \end{shaded}
 
 
@@ -580,7 +580,7 @@ In particular, although $F$ need not be representable, it can be extended to the
 
 {\small Note that we construct the natural isomorphism as follows:
 \begin{itemize}\squishlist
-\item Given $\tau:\h_X\implies F$, we have $\tau_X:\h_X(X)\to FX$, and we take the image $\tau_X(\id_X)$.
+\item Given $\tau:\h_X\nt F$, we have $\tau_X:\h_X(X)\to FX$, and we take the image $\tau_X(\id_X)$.
 \item Given $\xi\in F X$, to any $f\in \h_X(Y)$ we must assign an element of $F(Y)$. We take the image of $\xi$ under $F(f):F(X)\to F(Y)$.
 \end{itemize}}
 
@@ -918,7 +918,7 @@ Given functors
 \raisebox{3mm}{$\xymatrix@!0@C=2cm@R=.31cm{&\catset\\
 \calC\op\ar[ur]^F\ar[dr]_G\\
 &\catgrp}$}
-an action of $G$ on $F$ is a natural transformation $G\times F\implies F$ which is an action objectwise.
+an action of $G$ on $F$ is a natural transformation $G\times F\nt F$ which is an action objectwise.
 \end{shaded}
 
 Equivalently, a left action of $G$ on $F$ consists of an action of $G(U)$ on $F(U)$ for all objects $U$ of $\cC$, such that for any arrow $f \colon U \arr V$ in $\cC$, any $g \in G(V)$ and any $x \in F(V)$ we have
@@ -2332,6 +2332,34 @@ will mean that $\p_{\cF} \phi = f$.
 If $\xi \arr \eta$ is a cartesian arrow of $\cF$ mapping to an arrow $U \arr V$ of $\cC$, we also say that $\xi$ is \emph{a pullback of $\eta$ to $U$}%
 \index{pullback}.
 \end{definition}
+\begin{shaded}
+An arrow $\phi$ in $\calF$ is \textbf{cartesian} if it has a `unique lifting' type property as above. Given a diagram
+\[\xymatrix@R=.4cm{
+&\eta\xymapsto[d]\\
+U\ar[r]&V
+}\]
+a cartesian arrow $\xi\to\eta$ lying over $U\to V$ may or may not exist. If it does, we call $\xi$ a \textbf{pullback} of $\eta$ to $U$.
+Note that whenever such a pullback it exists, $\xi\to\eta$ is unique up to canonical isomorphism in the category $(\calF/\eta)$. 
+
+We say that $\calF$ is \textbf{fibered over} $\calC$ if the pullback always exists. We define a morphism $\calF\to\calF'$ of fibered categories to be a functor $\calF\to\calF'$ which preserves cartesian arrows, and for which the following diagram \textbf{strictly commutes}:
+\[\xymatrix@R=.6cm{
+\calF\ar[r]^F\ar[dr]_{\p_\calF}&
+\calG\ar[d]^{\p_\calG}\\
+&\calC
+}\qquad \qquad \raisebox{-5mm}{$\p_\calG\circ F=\p_\calF$.}\]
+
+
+In a diagram such as the following, suppose the right hand map is cartesian.
+   \[
+   \xymatrix@R=.4cm{
+   \zeta\ar[r]\xymapsto[d] & \xi \ar[r]\xymapsto[d] & \eta\xymapsto[d]\\
+   U\ar[r] & V \ar[r] & W\hsmash{;}
+   }
+   \]
+Then the composite is cartesian \Iff the left hand map is cartesian.
+
+If $\calF\overset{F}{\to}\calG\overset{\p}{\to}\calC$ are functors, and $\phi\in\textup{Mor}(\calF)$. Then if $\phi$ is cartesian over $F\phi$, and $F\phi$ is cartesian over $\p F\phi$, then $\phi$ is cartesian over $\p F\phi$. This is to say that stacking two cartesian squares on top of each other yields a cartesian rectangle.
+\end{shaded}
 
 \begin{remark}\label{rmk:unique-pullback}
 The definition that we give of cartesian arrow is more restrictive than the definition in \cite{sga1};  our cartesian arrows are called \emph{strongly cartesian} in \cite{gray-fibered}. However, the resulting notions of fibered category coincide.
@@ -2413,6 +2441,42 @@ This follows from Proposition~\refall{prop:comp-cartesian}{2}.
 By definition, if $F \colon \cF \arr \cG$ is a morphism of fibered categories over $\cC$ and $U$ is an object of $\cC$, the functor $F$ sends $\cF(U)$ to $\cG(U)$, so we have a restriction functor $F_U \colon \cF(U) \arr \cG(U)$.
 
 Notice that formally we could give the same definition of a fiber for any functor $\p_{\cF} \colon \cF \arr \cC$, without assuming that $\cF$ is fibered over $\cC$. However, we would end up with a useless notion. For example, it may very well happen that we have two objects $U$ and $V$ of $\cC$ which are isomorphic, but such that $\cF(U)$ is empty while $\cF(V)$ is not. This kind of pathology does not arise for fibered categories, and here is why.
+\begin{shaded}
+We define the \textbf{fiber} $\cF(U)$ of $\cF$ over $U$ to be the subcategory of $\cF$ whose objects are $\p^{-1}(U)$, and whose arrows are $\p^{-1}(\id_U)$. This is only a useful definition when $\calF$ is fibered over $\calC$.
+
+If $\calF$ is fibered, one can \emph{choose} a pullback $f^*\eta\to\eta$ (draw dotted) for each map $f$ and object $\eta$ in:
+\[\xymatrix@R=.4cm{
+f^*\eta\ar@{..>}[r]\ar@{|..>}[d]&\eta\xymapsto[d]\\
+U\ar[r]^f&V
+}\]
+To do this is to choose a \textbf{cleavage}: a class of cartesian arrows in $\calF $ containing exactly one pullback for each pair $(f,\eta)$.
+
+Having chosen a cleavage, we have a functor $f^*:\calF(V)\to\calF(U)$. The map on morphisms is constructed by noting that $f^*\eta'\to\eta'$ is cartesian in the cube:
+\[ \xymatrix@R=.4cm@C=.6cm{
+f^*\eta  \ar@{|->}[dd]\ar[rd]\ar@{-->}[rr]^{f^*\beta}_{\exists !} &&
+f^*\eta'  \ar@{|->}'[d][dd]\ar[rd]\\&
+\eta \ar@{|->}[dd]\ar[rr]^(.3){\beta} &&
+\eta' \ar@{|->}[dd] \\
+U  \ar@{=}'[r][rr]\ar[rd] &&
+U  \ar[rd] \\&
+V \ar@{=}[rr] &&
+V
+}\]
+We would like this to give us a functor from $\calC$ to the category of categories, but we made too many choices. Instead, given a cleavage of $\calF\to\calC$, we obtain a \emph{contavariant lax 2-functor} from $\calC$ to the 2-category of categories (a.k.a.\ a pseudo-functor). That is, 
+\begin{itemize}\squishlist
+\item an object $U$ is sent to the category $\calF(U)$;
+\item a morphism $f:U\to V$ is sent to the functors $f^*:\calF(V)\to\calF(U)$;
+\item there are natural isomorphisms $(\id_U)^*\nt \id_{\calF_U}$ of functors $\calF(U)\to\calF(U)$.
+\item given composable maps $U \xrightarrow{f} V \xrightarrow{g} W$, there is a natural isomorphism
+   $\isoass_{f,g} \colon f^*g^* \nt (gf)^*$
+of functors $\Phi W \arr \Phi U$.
+\item These natural isomorphisms satisfy some compatibilities.
+\end{itemize}
+The pseudo-functor associated with a cleavage is a functor \Iff the cleavage is a \textbf{splitting}: it contains all identities and is closed under composition.
+
+Although an arbitrary fibered category need not support a splitting, every fibered category equivalent to a split fibered category (Theorem~\ref{thm:equivalent-split}).
+\end{shaded}
+
 
 Let $\cF$ be a category fibered over $\cC$, and $f \colon U \arr V$ an arrow in $\cC$. For each object $\eta$ over $V$, we choose a pullback $\phi_\eta \colon f^*\eta \arr \eta$ of $\eta$ to $U$. We define a functor $f^* \colon \cF(V) \arr \cF(U)$ by sending each object $\eta$ of $\cF(V)$ to $f^*\eta $, and each arrow $\beta\colon \eta \arr \eta'$ of $\cF(V)$ to the unique arrow $f^*\beta \colon f^*\eta \arr f^*\eta'$ in $\cF(U)$ making the diagram
    \[
@@ -2538,6 +2602,10 @@ Despite this, every fibered category is equivalent to a split fibered category (
 
 
 \subsection{The fibered category associated with a pseudo-functor} \label{subsec:presheaf-cat}
+\hfil
+\begin{shaded}
+There is a way to get a fibered category with a cleavage back from a pseudo-functor, but it threatens to be a bit confusing, so I'm moving on.
+\end{shaded}
 
 So a fibered category with a cleavage defines a pseudo-functor. Conversely, from a pseudo-functor on $\cC$ one gets a fibered category over $\cC$ with a cleavage. First of all, let us analyze the case that the pseudo-functor is simply a functor $\Phi \colon \cC\op \arr \cat{Cat}$  into the category of categories, considered as a 1-category. This means that with each object $U$ of $\cC$ we associate a category $\Phi U$, and with each arrow $f \colon U \arr V$ a functor $\Phi f \colon \Phi V \arr \Phi U$, in such a way that $\Phi\id_U \colon \Phi U \arr \Phi U$ is the identity, and $\Phi(g\circ f) = \Phi f \circ \Phi g$ every time we have two composable arrows $f$ and $g$ in $\cC$.
 
@@ -2691,6 +2759,9 @@ On the other hand, since cartesian pullbacks are unique up to a unique isomorphi
 The functor $\p_{\Arr \cC}\colon \Arr \cC\arr \cC$ sends each arrow $S \arr U$ to its codomain $U$, and each commutative diagram to its bottom row.
 
 I claim that $\Arr \cC$ is a fibered category over $\cC$. In fact, it easy to check that the cartesian diagrams are precisely the cartesian squares, so the statement follows from the fact that $\cC$ has fibered products.
+\begin{shaded}
+Suppose that $\calC$ has fibered products. Then $\textup{`codomain'}:\Arr\calC\to\calC$ makes $\Arr\calC$ a fibered category over $\calC$. The same holds for the full subcategory of $\Arr\calC$ consisting of a stable class of arrows, where we define:
+\end{shaded}
 
 \end{example}
 
@@ -2735,6 +2806,11 @@ It is easy to see that this is a fibered category over $\cC$; the cartesian arro
    }
    \]
 where the function $\phi$ is $G$-equivariant. The functor $\cB G \arr \cattop$ sends a principal bundle $P \arr U$ into the topological space $U$,  and an arrow $(\phi, f)$ into $f$.
+\begin{shaded}
+Let $\calB G$ be the category of principal $G$-bundles, with morphisms the $G$-equivariant bundle maps. Sending a bundle to its base space gives a fibered category structure $\calB G\to\cattop$ --- the pullbacks can be taken to be the pullback of $G$-bundles.
+
+In fact, every morphism is cartesian. This fibered category is called the \textbf{classifying stack} of $G$.
+\end{shaded}
 
 This fibered category $\cB G \arr \cattop$ has the property that each of its arrows is cartesian.
 \end{example}
@@ -2747,6 +2823,10 @@ I claim that this makes $\cattop$ fibered over $\catset$. Suppose that you have 
 The fiber of $\cattop$ over a set $U$ is the partially ordered set of topologies on $U$, made into a category in the usual way.
 
 Notice that in this example the category $\cattop$ has a canonical splitting over $\catset$.
+\begin{shaded}
+This cool example showed that $\cattop$ is fibered over $\catset$, via the forgetful functor.
+\end{shaded}
+
 \end{example}
 
 We are interested in categories of sheaves. The simplest example is the fibered category of sheaves on objects of a site, defined as follows.
@@ -2768,6 +2848,10 @@ If $U \arr X$ and $V \arr X$ are objects of $(\cC/X)$ and $\phi \colon U \arr V$
 If $\phi \colon F \arr G$ is a natural transformation of sheaves on $(\cC/Y)$, there is an induced natural transformation $f^*\phi \colon f^*F \arr f^*G$ of sheaves on $(\cC/X)$, defined in the obvious way. This defines a functor $f^* \colon \sh Y \arr \sh X$.
 
 It is immediate to check that, if $f \colon X \arr Y$ and $g \colon Y \arr Z$ are arrows in $\cC$, we have an \emph{equality} of functors $(gf)^* = f^*g^* \colon (\cC/Z) \arr (\cC/X)$. Furthermore $\id_X^* \colon \sh X \arr \sh X$ is the identity. This means that we have defined a functor from $\cC$ to the category of categories, sending an object $X$ into the category of sheaves on $(\cC/X)$. According to the result of \S\ref{subsec:presheaf-cat}, this yields a category $\catsh{\cC} \arr \cC$, whose fiber over $X$ is $\sh{X}$.
+\begin{shaded}
+Suppose that $\calC$ is a site, and $X\in\calC$ an object. A \textbf{sheaf on $X$} is just a sheaf on the comma site $(\calC/X)$.
+\end{shaded}
+
 \end{example}
 
 There are many variants on this example, by considering sheaves in abelian groups, rings, and so on.
