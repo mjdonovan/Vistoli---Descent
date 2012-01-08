@@ -1,32 +1,34 @@
 % !TEX root = descent.tex
+\newcommand{\iver}[1]{\includeversion{#1}}
+\newcommand{\xver}[1]{\excludeversion{#1}}
 
 %%%%%%%%
-\excludeversion{0   INTRODUCTION}
+\xver{0   INTRODUCTION}
 %%%%%%%%
-\excludeversion{1   PRELIMINARY NOTIONS}
-\includeversion{1.1 Algebraic geometry}
-\includeversion{1.2 Category theory}
+\xver{1   PRELIMINARY NOTIONS}
+\iver{1.1 Algebraic geometry}
+\iver{1.2 Category theory}
 %%%%%%%%
-\excludeversion{2   CONTRAVARIANT FUNCTORS}
-\includeversion{2.1 Yoneda Lemma}
-\includeversion{2.2 Group objects}
-\includeversion{2.3 Sheaves in Grothendieck topologies}
+\xver{2   CONTRAVARIANT FUNCTORS}
+\iver{2.1 Yoneda Lemma}
+\iver{2.2 Group objects}
+\iver{2.3 Sheaves in Grothendieck topologies}
 %%%%%%%%
-\includeversion{3   FIBERED CATEGORIES}
-\excludeversion{3.1 Fibered categories}
-\includeversion{3.2 Examples of fibered categories}
-\excludeversion{3.3 Categories fibered in groupoids}
-\excludeversion{3.4 Functors and cats fibered in sets}
-\excludeversion{3.5 Equivalences of fibered categories}
-\excludeversion{3.6 Objects as fibcats and the 2-Yoneda}
-\excludeversion{3.7 The functors of arrows of a fibcat}
-\excludeversion{3.8 Equivariant objects in fibcats}
+\iver{3   FIBERED CATEGORIES}
+\xver{3.1 Fibered categories}
+\xver{3.2 Examples of fibered categories}
+\xver{3.3 Categories fibered in groupoids}
+\xver{3.4 Functors and cats fibered in sets}
+\iver{3.5 Equivalences of fibered categories}
+\iver{3.6 Objects as fibcats and the 2-Yoneda}
+\iver{3.7 The functors of arrows of a fibcat}
+\iver{3.8 Equivariant objects in fibcats}
 %%%%%%%%
-\excludeversion{4   STACKS}
-\excludeversion{4.1 Descent of objects of fibcats}
-\excludeversion{4.2 Descent for quasi-coherent sheaves}
-\includeversion{4.3 Descent for morphisms of schemes}
-\excludeversion{4.4 Descent along torsors}
+\xver{4   STACKS}
+\xver{4.1 Descent of objects of fibcats}
+\xver{4.2 Descent for quasi-coherent sheaves}
+\xver{4.3 Descent for morphisms of schemes}
+\xver{4.4 Descent along torsors}
 %%%%%%%%
 
 \begin{0   INTRODUCTION}
@@ -2850,6 +2852,9 @@ If $\phi \colon F \arr G$ is a natural transformation of sheaves on $(\cC/Y)$, t
 It is immediate to check that, if $f \colon X \arr Y$ and $g \colon Y \arr Z$ are arrows in $\cC$, we have an \emph{equality} of functors $(gf)^* = f^*g^* \colon (\cC/Z) \arr (\cC/X)$. Furthermore $\id_X^* \colon \sh X \arr \sh X$ is the identity. This means that we have defined a functor from $\cC$ to the category of categories, sending an object $X$ into the category of sheaves on $(\cC/X)$. According to the result of \S\ref{subsec:presheaf-cat}, this yields a category $\catsh{\cC} \arr \cC$, whose fiber over $X$ is $\sh{X}$.
 \begin{shaded}
 Suppose that $\calC$ is a site, and $X\in\calC$ an object. A \textbf{sheaf on $X$} is just a sheaf on the comma site $(\calC/X)$.
+Denote by $\sh{X}$ the category of sheaves on $X$.
+
+Then the assignment $U\mapsto \sh{U}$ gives a \emph{functor} from $\calC$ to the category of categories, which yields a category $\catsh{\cC} \arr \cC$, whose fiber over $X$ is $\sh{X}$.
 \end{shaded}
 
 \end{example}
@@ -2863,7 +2868,12 @@ Let us consider directly the example we are interested in, that is, fibered cate
 \subsection{The fibered category of \qc sheaves}
 \label{subsec:fibered-quasi-coherent}
 \index{fibered!category!of quasi-coherent sheaves}
-\index{category!fibered!of quasi-coherent sheaves}
+\index{category!fibered!of quasi-coherent sheaves}\hfil
+\begin{shaded}
+One can form a category fibered over $\catsch{S}$, whose fiber over $U$ is the category $\qcoh U$. The construction is a little tricky, and $U\mapsto \qcoh U$ is only a lax 2-functor. The resulting category  fibered over $\catsch{S}$ will be denoted by $\catqc{S} \arr \catsch{S}$.
+\end{shaded}
+
+
 Here $\cC$ will be the category $\catsch{S}$ of schemes over a fixed base scheme $S$. For each scheme $U$ we define $\qcoh U$ to be the category of \qc sheaves on $U$. Given a morphism $f \colon U \arr V$, we have a functor $f^* \colon \qcoh V \arr \qcoh U$. Unfortunately, given two morphisms $U \xrightarrow{f} V \xrightarrow{g} W$, the pullback $(gf)^* \colon \qcoh W \arr \qcoh U$ does not coincide with the composite $f^*g^* \colon \qcoh W \arr \qcoh U$, but it is only  canonically isomorphic to it. This may induce one to suspect that we are in the presence of a pseudo-functor; and this is indeed the case.
 
 The neatest way to prove this is probably by exploiting the fact that the pushforward $f_* \colon \qcoh U \arr \qcoh V$ is functorial, that is, $(gf)_*$ equals $g_* f_*$ on the nose, and $f^*$ is a left adjoint to $f_*$. This means that, given \qc sheaves $\cM$ on $U$ and $\cN$ on $V$, there is a canonical isomorphism of groups
@@ -2999,6 +3009,27 @@ There are many variants on  this example. For example, one can define the fibere
 \setcounter{section}{2}
 \section{Categories fibered in groupoids}
 \setcounter{theorem}{20}
+\hfil
+\begin{shaded}
+A \emph{category fibered in groupoids over $\cC$} is a fibered category whose fibers are all groupoids. 
+
+An arbitrary category $\calF$ over $\calC$ is fibered in groupoids \Iff:
+\begin{enumerate}\squishlist
+\item every arrow of $\calF$ is cartesian; and
+\item every %possible pullback
+ diagram
+\raisebox{2.5mm}{\scalebox{.4}{\smash{$\xymatrix@R=.4cm{
+&\eta\xymapsto[d]\\
+U\ar[r]&V
+}$}}}  has a pullback
+\raisebox{2.5mm}{\scalebox{.4}{\smash{$\xymatrix@R=.4cm{
+\xi\xymapsto[d]\ar@{..>}[r]_{\exists}&\eta\xymapsto[d]\\
+U\ar[r]&V
+}$}}}.
+\end{enumerate}
+The classifying stack $\calB G\to\cattop$ of a topological group $G$ is fibered in groupoids: the fiber over $U\in\cattop$ is the category of principal $G$-bundles over $U$, and one recalls that any bundle map is an isomorphism.
+\end{shaded}
+
 \begin{definition} A \emph{category fibered in groupoids over $\cC$}%
 \index{category!fibered!in groupoids}%
 \index{fibered!category!in groupoids} is a category $\cF$ fibered over $\cC$, such that the category $\cF(U)$ is a groupoid for any object $U$ of $\cC$.
@@ -3036,6 +3067,40 @@ Of the examples of Section~\ref{sec:examples-fibered}, \ref{ex:arrows} and \ref{
 \setcounter{section}{3}
 \section{Functors and categories fibered in sets}\label{sec:fiberedsets}
 \setcounter{theorem}{23}
+\begin{shaded}
+A category $\calF$ over $\calC$ is \emph{fibered in sets} if it is fibered and each fiber is a \textbf{set}: a category in which every arrow is an identity.
+
+An arbitrary category $\calF$ over $\calC$ is fibered in sets \Iff:
+\begin{enumerate}\squishlist
+\item every %possible pullback
+ diagram
+\raisebox{2.5mm}{\scalebox{.4}{\smash{$\xymatrix@R=.4cm{
+&\eta\xymapsto[d]\\
+U\ar[r]&V
+}$}}}  has a \textbf{unique} pullback
+\raisebox{2.5mm}{\scalebox{.4}{\smash{$\xymatrix@R=.4cm{
+\xi\xymapsto[d]\ar@{..>}[r]_{\exists!}&\eta\xymapsto[d]\\
+U\ar[r]&V
+}$}}}.
+\end{enumerate}
+
+The category of categories fibered in sets over $\cC$ is equivalent to the category $\func{\cC}$ of functors $\cC\op \arr \catset$. {\small (Indeed, as there are no choices to make, $\calF$ corresponds to a strict 2-functor, etc.)}
+
+It would be interesting to identify which categories $\calF$ fibered in sets over $\calC$ map into the essential image of the Yoneda embedding $\calC\to\func{\cC}$. That is, to see what $\calF$ correspond to a representable functor $F$.
+
+\[\xymatrix@R=.1cm{
+\calC\xycofib[r]&\func{\cC}\ar@{=}[r]&
+\cat{CatFibInSet\textup{$/\calC$}}\xycofib[r]&
+\cat{FibCat\textup{$/\calC$}}\\
+X\xymapsto[r]&\h_X\xymapsto[r]&
+(\calC/X)&
+}\]
+
+It turns out that the essential image of $\cC$ in $\cat{CatFibInSet\textup{$/\calC$}}$ consists of those categories $\calF\to\calC$ such that $\calF$ has a terminal object.
+
+From not on we will happily confuse functors $\calC\op\to\catset$ with categories fibered in sets over $\calC$. We will sometimes call the latter simply ``a functor''.
+\end{shaded}
+
 The notion of category generalizes the notion of set: a set can be thought of as a category in which every arrow is an identity. Furthermore functors between sets are simply functions.
 
 Similarly, fibered categories are generalizations of functors.
@@ -3118,6 +3183,10 @@ From now we will identify a functor $F \colon \cC\op \arr \catset$ with the corr
 \subsection{Categories fibered over an object}
 \label{subsec:fibered-over}
 
+\hfil
+\begin{shaded}
+I didn't read from here until 3.5 --- I was a bit tired of it.
+\end{shaded}
 
 \begin{proposition}\label{prop:fibered-over}
 
