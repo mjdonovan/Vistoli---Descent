@@ -2,6 +2,8 @@
 \newcommand{\iver}[1]{\includeversion{#1}}
 \newcommand{\xver}[1]{\excludeversion{#1}}
 
+%\def\excludeversion#1{\includeversion{#1}}
+
 %%%%%%%%
 \xver{0   INTRODUCTION}
 %%%%%%%%
@@ -21,8 +23,8 @@
 \xver{3.4 Functors and cats fibered in sets}
 \iver{3.5 Equivalences of fibered categories}
 \iver{3.6 Objects as fibcats and the 2-Yoneda}
-\iver{3.7 The functors of arrows of a fibcat}
-\iver{3.8 Equivariant objects in fibcats}
+\xver{3.7 The functors of arrows of a fibcat}
+\xver{3.8 Equivariant objects in fibcats}
 %%%%%%%%
 \xver{4   STACKS}
 \xver{4.1 Descent of objects of fibcats}
@@ -3185,7 +3187,53 @@ From now we will identify a functor $F \colon \cC\op \arr \catset$ with the corr
 
 \hfil
 \begin{shaded}
-I didn't read from here until 3.5 --- I was a bit tired of it.
+Suppose that we have a (strictly) commuting diagram of functors
+\[
+\xymatrix@R=.6cm{
+\ar@{~>}[dr]\calF\ar@{~>}[r]&%r1c1
+\calG\ar[d]^-{\textup{f.i.s.}}\\%r1c2
+&%r2c1
+\calC%r2c2
+}\]
+Suppose that $\calG$ is fibered in sets over $\calC$. Then one wavy arrow is
+\begin{itemise}
+\item fibered
+\item fibered in sets
+\item fibered in groupoids
+\end{itemise}
+\Iff the other wavy arrow has the same property.
+
+We have two applications of this fact: \begin{itemize}\squishlist
+\item A category fibered in sets over $(\calC/S)$:
+\[
+\xymatrix@R=.6cm{
+\calF\ar@{~>}[r]&(C/S)%r1c1
+}\]
+is the same as a category $\calF$ fibered in sets over $\calC$, with a morphism of fibered categories $\calF\to(\calC/S)$:
+\[
+\xymatrix@R=.6cm{
+\ar[dr]_-{\textup{f.i.s.}}\calF \ar[r]^-{\textup{fibcats}}&%r1c1
+(\calC/S)\ar[d]\\%r1c2
+&%r2c1
+\calC%r2c2
+}\]
+which is the same as a natural transformation
+\[F\nt\h_S\textup{\quad of functors\quad }\calC\op\to\catset.\]
+\item Suppose now that we start with a functor $F:(\calC/S)\op\to\catset$. We can view it as a category fibered in sets:
+\[
+\xymatrix@R=.6cm{
+\calF\ar[r]^-{\textup{f.i.s.}}&(C/S)%r1c1
+}\]
+and compose, to obtain 
+$\xymatrix@1{
+\calF\ar[r]^-{\textup{f.i.s.}} \ar@/_1em/[rr]_-{\textup{f.i.s.}}&%r1c1
+(\calC/S)\ar[r]^-{\textup{f.i.s.}}&%r1c2
+\calC%r1c3
+}$, i.e.\ a functor
+\[F':\calC\op\to\catset\textup{\quad which we identify as\quad }F'(U)=\prod_{U\to S}F'(U\to S).\]
+
+\end{itemize}
+
 \end{shaded}
 
 \begin{proposition}\label{prop:fibered-over}
@@ -3217,6 +3265,16 @@ Let $\cF\arr \cC$ be a fibered category. A \emph{fibered subcategory}%
 \index{subcategory!fibered}%
 \index{fibered!subcategory} $\cG$ of $\cF$ is a subcategory of $\cF$, such that the composite $\cG \into \cF \arr \cC$ makes $\cG$ into a fibered category over $\cC$, and such that any cartesian arrow in $\cG$ is also cartesian in $\cF$.
 \end{definition}
+\begin{shaded}
+A fibered subcategory of a fibered category $\calF\to\calC$ is a subcategory $\calG$ of $\calF$ such that
+\begin{itemize}\squishlist
+\item the composite $\calG\to\calC$ makes $\calG$ fibered over $\calC$
+\item cartesian arrows in $\calG$ are cartesian in $\calF$.
+\end{itemize}
+If $\calG$ is a full subcategory of $\calF$ which is closed under pullbacks in $\calF$, then it's a fibered subcategory.
+
+In particular, the category of locally free sheaves is a fibered subcategory of $\catqc{S}$ over $\catsch{S}$. Note that the fiber of $\catqc{S}$ over $U$ is the category $\qcoh U$.
+\end{shaded}
 
 The last condition is equivalent to requiring that the inclusion
 $\cG \into \cF$ is a morphism of fibered categories.
@@ -3243,6 +3301,9 @@ Furthermore, if $F\colon \cG \arr \cF$ is a morphism of fibered categories and $
 \end{proposition}
 
 The proof is immediate from Proposition~\ref{prop:char-fibered-in-groupoids} and from Proposition \refall{prop:comp-cartesian}{4}.
+\begin{shaded}
+The subcategory $\cF\cart$ of a fibered category $\calF\to\calC$ with the same objects but only the cartesian arrows is a fibered subcategory, fibered in groupoids over $\calC$. It is the universal category fibered in groupoids mapping into $\calF$.
+\end{shaded}
 
 
 \end{3.4 Functors and cats fibered in sets}
@@ -3261,6 +3322,42 @@ The fact that fibered categories are categories, and not functors, has strong im
 An \emph{isomorphism of $F$ with $G$} is a base-preserving natural transformation $F \arr G$ which is an isomorphism of functors. 
 \end{definition}
 
+\begin{shaded}
+Suppose that we have two morphisms $F$ and $G$ of fibered categories, as shown.
+\[\xymatrix@R=.7cm@C=.3cm{
+\calF\ar[dr]_{\p_\calG} \rrtwocell<2>^F_G{\alpha}&%r1c1
+&%r1c2
+\calG\ar[dl]^{\p_\calF}\\%r1c3
+&%r2c1
+\calC&%r2c2
+%r2c3
+}\]
+We wish to define a notion of a natural transformation $\alpha$ being \textbf{base-preserving}. Given an object $\xi\in\calF$ mapping to $U\in\calC$, we'll have a diagram:
+%\[\xymatrix@R=.5cm@C=1.5cm@!0{
+%&%r1c1
+%F\xi\ar@{|->}[ddddl]\ar[dd]^-{\alpha_\xi}\\%r1c2
+%\xi\ar@{|->}[rd]\ar@{|->}[ddd]\ar@{|->}[ur]&%r2c1
+%\\%r2c2
+%&%r3c1
+%G\xi\ar@{|->}[ddl]\\%r3c2
+%&%r4c1
+%\\%r4c2
+%U&%r5c1
+%%r5c2
+%}\]
+
+\[ \xymatrix@R=.4cm@C=.6cm{&&
+F\xi  \ar[rd]^{\alpha_\xi}\ar@{|->}[dd]\\
+\xi  \ar@{|->}[dd]\ar@{|->}^F[rru]\ar@{|->}[rrr]^(.45)G&&&
+G\xi  \ar@{|->}[dd]\\&&
+U \ar[rd]^(.35){\p_\calG\alpha_\xi}\\
+U \ar@{|->}[rru]^{\id_U}\ar@{|->}[rrr]^{\id_U}&&&
+U 
+}\]
+and we demand that $\alpha_\xi$ maps down to $\id_U$ (i.e.\ $\alpha_\xi\in\calG(U)$).
+
+There is a category whose objects are the morphism from $\cF$ to $\cG$, and the arrows are base-preserving natural transformations; we denote it by $\hom_\cC(\cF, \cG)$.
+\end{shaded}
 
 It is immediate to check that the inverse of a base-preserving isomorphism is also base-preserving.
 
@@ -3268,7 +3365,15 @@ There is a category whose objects are the morphism from $\cF$ to $\cG$, and the 
 
 
 
-\subsection{Equivalences}
+\subsection{Equivalences}\hfil
+\begin{shaded}
+We give the standard 2-categorical definition of \textbf{equivalence} of fibered categories --- $\calF$ and $\calG$ are equivalent \Iff there are morphisms $F:\calF\longleftrightarrow \calG:G$ with the two composites isomorphic to the identity.
+
+\begin{itemise}
+\item Suppose that $\calF$ is equivalent to $\calF'$ and $\calG$ is equivalent to $\calG'$ (as categories fibered over $\calC$). Then the categories $\hom_{\cC}(\cF, \cG)$ and $\hom_{\cC}(\cF', \cG')$ are equivalent.
+\item A morphism $\calF\to\calG$ of fibered categories is equivalent \Iff the functors $\calF(U)\to\calG(U)$ are equivalences of categories for all $U\in\calC$.
+\end{itemise}
+\end{shaded}
 
 \begin{definition} Let $\cF$ and $\cG$ be two fibered categories over $\cC$. An \emph{equivalence}%
 \index{equivalence!of fibered categories}, of $\cF$ with $\cG$ is a morphism $F \colon \cF \arr \cG$, such that there exists another morphism $G \colon \cG \arr \cF$, together with isomorphisms of $G \circ F$ with $\id_\cF$ and of $F \circ G$ with $\id_\cG$.
@@ -3327,6 +3432,17 @@ Fix an object $\xi'$ of $\cF$ over an object $U$ of $\cC$; we have a canonical i
 
 
 \subsection{Categories fibered in equivalence relations}\label{subsec:fibered-eq-relations}
+\hfil
+\begin{shaded}
+An \textbf{equivalence relation} is:
+\begin{itemise}
+\item  a category such that
+there is either zero or one map between any two objects; i.e.
+\item a groupoid in which the only arrow from an object to itself is the identity.
+\end{itemise}
+A category is equivalent to a set \Iff it's an equivalence relation.
+\end{shaded}
+
 
 As we remarked in \S\ref{sec:fiberedsets}, the notion of category generalizes the notion of set.
 
@@ -3346,6 +3462,39 @@ A category is equivalent to a set if and only if it is an equivalence relation.
 If a category is equivalent to a set, it is immediate to see that it is an equivalence relation. If $(X, R)$  is an equivalence relation and $X/R$ is the set of isomorphism classes of objects, that is, the set of equivalence classes, one checks easily that the function $X \arr X/R$ gives a functor that is fully faithful and essentially surjective, so it is an equivalence.
 \end{proof}
 
+\begin{shaded}
+A category $\calF$ over $\calC$ is a \textbf{quasi-functor} \Iff it is fibered in equivalence relations. This occurs \Iff:
+\begin{enumerate}\squishlist
+\item[(i)] every %possible pullback
+ diagram
+\raisebox{2.5mm}{\scalebox{.4}{\smash{$\xymatrix@R=.4cm{
+&\eta\xymapsto[d]\\
+U\ar[r]^f&V
+}$}}}  admits object $\xi$ and an arrow $\phi$ completing
+\raisebox{2.5mm}{\scalebox{.4}{\smash{$\xymatrix@R=.4cm{
+\xi\xymapsto[d]\ar@{..>}[r]_{\exists}^\phi&\eta\xymapsto[d]\\
+U\ar[r]&V
+}$}}}, and any two arrows are related by a commuting diagram:
+\[ \xymatrix@R=.2cm@C=.53cm{&
+\xi'  \ar[rrd]^{\phi'}\ar@{|->}'[d][dd]&\\
+\xi  \ar@{|->}[dd]\ar[ru]^(.50006){\alpha}\ar[rrr]^(.56){\phi}&&&
+\eta  \ar@{|->}[dd]\\&
+U \ar[rrd]^f&\\
+U \ar[ru]^(.6){\id_U}\ar[rrr]^f&&&
+V 
+}\]
+\item[(ii)]every %possible pullback
+ diagram
+\raisebox{2.5mm}{\scalebox{.4}{\smash{$\xymatrix@R=.4cm{
+\xi\xymapsto[d]&\eta\xymapsto[d]\\
+U\ar[r]&V
+}$}}}  has at most one completion to a diagram \raisebox{2.5mm}{\scalebox{.4}{\smash{$\xymatrix@R=.4cm{
+\xi\ar@{..>}[r]\xymapsto[d]&\eta\xymapsto[d]\\
+U\ar[r]&V
+}$}}}.
+\end{enumerate}
+Moreover, a fibered category is a quasifunctor \Iff it is equivalent to a functor.
+\end{shaded}
 
 There is an analogous result for fibered categories.
 
@@ -3384,7 +3533,9 @@ Conversely, assume that $\cF$ is fibered in equivalence relations. In particular
 
 
 
+\begin{shaded}
 Here are a few useful facts.
+\end{shaded}
 
 \begin{proposition}\call{prop:->hom}\hfil
 \begin{enumeratei}
@@ -3408,6 +3559,29 @@ In 2-categorical terms, part \refpart{prop:->hom}{3} says that the 2-category of
 \section{Objects as fibered categories and the 2-Yoneda Lemma}
 \setcounter{theorem}{42}
 \subsection{Representable fibered categories}
+\hfil
+\begin{shaded}
+Recall the embeddings:
+\[\xymatrix@R=.1cm{
+\calC\xycofib[r]&\func{\cC}\ar@{=}[r]&
+\cat{CatFibInSet\textup{$/\calC$}}\xycofib[r]&
+\cat{FibCat\textup{$/\calC$}}\\
+X\xymapsto[r]&\h_X\xymapsto[r]&
+(\calC/X)&
+}\]
+Now $\cat{FibCat\textup{$/\calC$}}$ is a 2-category, and we have:
+\begin{named}{The weak 2-Yoneda Lemma}
+The function that sends each arrow $f \colon X \arr Y$ to the morphism $(\cC/f) \colon (\cC/X) \arr (\cC/Y)$ is a bijection.
+\end{named}
+Now we'll call a fibered category over $\calC$ \textbf{representable} if it is \emph{equivalent} to one of the form $(\calC/X)$.
+
+Note then that the representable fibcats are exactly the quasifunctors (i.e.\ categories fibered in equivalence relations), as these are the fibcats which are equivalent to functors (i.e.\ categories fibered in sets).
+
+Suppose that $\calF$ and $\calG$ are representable fibered categories, represented by objects $X$ and $Y$ of $\calC$. Then we have
+\[\hom(X, Y) = \hom\bigl( (\cC/X),
+   (\cC/Y)\bigr)\simeq\hom_{\cC}(\cF, \cG)\]
+but the latter need not be a set, only an equivalence relation.
+\end{shaded}
 
 In \S\ref{sec:repfunctors} we have seen how we can embed a category $\cC$ into the functor category $\func{\cC}$, while in \S\ref{sec:fiberedsets} we have seen how to embed the category $\func{\cC}$ into the 2-category of fibered categories over $\cC$. By composing these embeddings we have embedded $\cC$ into the 2-category of fibered categories: an object $X$ of $\cC$ is sent to the fibered category $(\cC/X) \arr \cC$. Furthermore, an arrow $f \colon X \arr Y$ goes to the morphism of fibered categories $(\cC/f) \colon (\cC/X) \arr (\cC/Y)$ that sends an object $U \arr X$ of $(\cC/X)$ to the composite $U \to X \overset f \to Y$. The functor $(\cC/f)$ sends an arrow
    \[
