@@ -21,10 +21,10 @@
 \xver{3.2 Examples of fibered categories}
 \xver{3.3 Categories fibered in groupoids}
 \xver{3.4 Functors and cats fibered in sets}
-\iver{3.5 Equivalences of fibered categories}
-\iver{3.6 Objects as fibcats and the 2-Yoneda}
-\xver{3.7 The functors of arrows of a fibcat}
-\xver{3.8 Equivariant objects in fibcats}
+\xver{3.5 Equivalences of fibered categories}
+\xver{3.6 Objects as fibcats and the 2-Yoneda}
+\iver{3.7 The functors of arrows of a fibcat}
+\iver{3.8 Equivariant objects in fibcats}
 %%%%%%%%
 \xver{4   STACKS}
 \xver{4.1 Descent of objects of fibcats}
@@ -2466,7 +2466,7 @@ U  \ar[rd] \\&
 V \ar@{=}[rr] &&
 V
 }\]
-We would like this to give us a functor from $\calC$ to the category of categories, but we made too many choices. Instead, given a cleavage of $\calF\to\calC$, we obtain a \emph{contavariant lax 2-functor} from $\calC$ to the 2-category of categories (a.k.a.\ a pseudo-functor). That is, 
+We would like this to give us a functor from $\calC$ to the category of categories, but we made too many choices. Instead, given a cleavage of $\calF\to\calC$, we obtain a \emph{contavariant lax 2-functor} from $\calC$ to the 2-category of categories (a.k.a.\ a \textbf{pseudo-functor}). That is, 
 \begin{itemize}\squishlist
 \item an object $U$ is sent to the category $\calF(U)$;
 \item a morphism $f:U\to V$ is sent to the functors $f^*:\calF(V)\to\calF(U)$;
@@ -3095,7 +3095,7 @@ It would be interesting to identify which categories $\calF$ fibered in sets ove
 \cat{CatFibInSet\textup{$/\calC$}}\xycofib[r]&
 \cat{FibCat\textup{$/\calC$}}\\
 X\xymapsto[r]&\h_X\xymapsto[r]&
-(\calC/X)&
+(\calC/X)\ar@{=}[r]&(\calC/X)
 }\]
 
 It turns out that the essential image of $\cC$ in $\cat{CatFibInSet\textup{$/\calC$}}$ consists of those categories $\calF\to\calC$ such that $\calF$ has a terminal object.
@@ -3567,7 +3567,7 @@ Recall the embeddings:
 \cat{CatFibInSet\textup{$/\calC$}}\xycofib[r]&
 \cat{FibCat\textup{$/\calC$}}\\
 X\xymapsto[r]&\h_X\xymapsto[r]&
-(\calC/X)&
+(\calC/X)\ar@{=}[r]&(\calC/X)
 }\]
 Now $\cat{FibCat\textup{$/\calC$}}$ is a 2-category, and we have:
 \begin{named}{The weak 2-Yoneda Lemma}
@@ -3580,7 +3580,7 @@ Note then that the representable fibcats are exactly the quasifunctors (i.e.\ ca
 Suppose that $\calF$ and $\calG$ are representable fibered categories, represented by objects $X$ and $Y$ of $\calC$. Then we have
 \[\hom(X, Y) = \hom\bigl( (\cC/X),
    (\cC/Y)\bigr)\simeq\hom_{\cC}(\cF, \cG)\]
-but the latter need not be a set, only an equivalence relation.
+but the latter category need not be a set, only an equivalence relation.
 \end{shaded}
 
 In \S\ref{sec:repfunctors} we have seen how we can embed a category $\cC$ into the functor category $\func{\cC}$, while in \S\ref{sec:fiberedsets} we have seen how to embed the category $\func{\cC}$ into the 2-category of fibered categories over $\cC$. By composing these embeddings we have embedded $\cC$ into the 2-category of fibered categories: an object $X$ of $\cC$ is sent to the fibered category $(\cC/X) \arr \cC$. Furthermore, an arrow $f \colon X \arr Y$ goes to the morphism of fibered categories $(\cC/f) \colon (\cC/X) \arr (\cC/Y)$ that sends an object $U \arr X$ of $(\cC/X)$ to the composite $U \to X \overset f \to Y$. The functor $(\cC/f)$ sends an arrow
@@ -3621,6 +3621,47 @@ but $\hom_{\cC}(\cF, \cG)$ need not be a set, it could very well be an equivalen
 
 
 \subsection{The 2-categorical Yoneda lemma}
+\hfil
+\begin{shaded}
+We would like to give an equivalence of categories:
+\[
+   \hom_{\cC}\bigl((\cC/X), \cF\bigr)
+   \simeq \cF(X),
+   \]
+whenever $\calF$ is a fibered category over $\calC$. We describe the functors visually:
+\[\xymatrix@R=0cm{
+&%r2c1
+&%r2c2
+&%r2c3
+&%r2c4
+F(\id_X)\makebox[0cm][l]{\,$\in\calF(X)$}\ar[dd]^-{\alpha_{\id_X}}\\%r2c5
+(\calC/X)
+\xtwocell[rr]{}^F_{G}{{\alpha}}&%r1c1
+&%r1c2
+\calF&%r1c3
+\mapsto&%r1c4
+\\%r1c5
+&%r2c1
+&%r2c2
+&%r2c3
+&%r2c4
+G(\id_X)\makebox[0cm][l]{\,$\in\calF(X)$}
+}\qquad\qquad  \]
+The first functor is straightforward. For the second, we give in the next diagram the definition on \emph{objects}. [Recall that the pullback $\psi^*\xi$ is defined up to isomorphism in $(\calF/\xi)$.]
+   \[
+   \xymatrix@R=6pt{{\phi^* \xi}{}\ar@{|->}[dd]
+   \ar@{-->}[rd]_\theta
+   \ar@/^/[rrd]&& \\
+   & \psi^*\xi\ar@{|->}[dd]\ar[r]
+   &\xi\ar@{|->}[dd] \\
+   U\ar[rd]_f\ar@/^/[rrd]|(.505)\hole^>>>>>\phi&&&\mapsfrom& U\ar[rd]_f\ar@/^/[rrd]^\phi\\
+   & V \ar[r]_\psi
+   & X&&   & V \ar[r]_\psi
+   & X
+   }
+   \]
+\end{shaded}
+
 
 As in the case of functors, we have a stronger version of the 2-categorical Yoneda lemma. Suppose that $\cF$ is a category fibered over $\cC$, and that $X$ is an object of $\cC$. Let there be given a morphism $F \colon (\cC/X) \arr \cF$; with this we can associate an object $F(\id_X) \in \cF(X)$. Also, to each base-preserving natural transformation $\alpha\colon F \arr G$ of functors $F, G \colon (\cC/X) \arr \cF$ we associate the arrow $\alpha_{\id_X} \colon F(\id_X) \arr G(\id_X)$. This defines a functor
    \[
@@ -3640,7 +3681,7 @@ in $(\cC/X)$ we associate the only arrow $\theta \colon \phi^* \xi \arr \psi^* \
    \xymatrix@R=6pt{{\phi^* \xi}{}\ar@{|->}[dd]
    \ar@{-->}[rd]_\theta
    \ar@/^/[rrd] \\
-   & \psi^*\xi\ar@{|->}[dd]\ar[r]s
+   & \psi^*\xi\ar@{|->}[dd]\ar[r]
    &\xi\ar@{|->}[dd] \\
    U\ar[rd]_f\ar@/^/[rrd]|(.505)\hole^>>>>>\phi\\
    & V \ar[r]_\psi
@@ -3678,6 +3719,24 @@ For the composite
 take a morphism $F \colon (\cC/X) \arr \cF$ and set $\xi = F(\id_X)$. We need to produce a base-preserving isomorphism of functors of $F$ with $F_\xi$. The identity $\id_X$ is a terminal object in the category $(\cC/X)$, hence for any object $\phi \colon U \arr X$ there is a unique arrow $\phi \arr \id_X$, which is clearly cartesian. Hence it will remain cartesian after applying $F$, because $F$ is a morphism: this means that $F(\phi)$ is a pullback of $\xi = F(\id_X)$ along $\phi \colon U \arr X$, so there is a canonical isomorphism $F_\xi(\phi) = \phi^*\xi \simeq F(\phi)$ in $\cF(U)$. It is easy to check that this defines a base-preserving isomorphism of functors, and this ends the proof.
 \end{proof}
 
+\begin{shaded}
+Under the embeddings
+\[\xymatrix@R=.1cm{
+\calC\xycofib[r]&\func{\cC}\ar@{=}[r]&
+\cat{CatFibInSet\textup{$/\calC$}}\xycofib[r]&
+\cat{FibCat\textup{$/\calC$}}\\
+X\xymapsto[r]&\h_X\xymapsto[r]&
+(\calC/X)\ar@{=}[r]&(\calC/X)
+}\]
+we identify $X$, $h_X$ and $(\calC/X)$ together, writing $X$ for $(\calC/X)$.
+
+One finds that if $\cF \arr \cC$ is a fibered category:
+\begin{itemize}\squishlist
+\item $\cF$ is representable \Iff $\cF$ is fibered in groupoids, and there is an object $U$ of $\cC$ and an object $\xi$ of $\cF(U)$, such that for any object $\rho$ of $\cF$ there exists a unique arrow $\rho \arr \xi$ in $\cF$.
+\item There exists a canonically defined split fibered category $\widetilde{\cF} \arr \cC$ and an equivalence of fibered categories of $\widetilde{\cF}$ with $\cF$.
+\end{itemize}
+
+\end{shaded}
 
 
 We have identified an object $X$ with the functor $\h_X \colon \cC\op \arr \catset$ it represents, and we have identified the functor $\h_X$ with the corresponding category $(\cC/X)$: so, to be consistent, we have to identify $X$ and $(\cC/X)$. So, we will write $X$ for $(\cC/X)$.
