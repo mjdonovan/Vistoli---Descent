@@ -2,7 +2,7 @@
 \newcommand{\iver}[1]{\includeversion{#1}}
 \newcommand{\xver}[1]{\excludeversion{#1}}
 
-%\def\excludeversion#1{\includeversion{#1}}
+\def\excludeversion#1{\includeversion{#1}}
 
 %%%%%%%%
 \xver{0   INTRODUCTION}
@@ -1510,7 +1510,7 @@ If $F$ and $G$ are sheaves on a site $\cC$, a \emph{morphism of sheaves}%
 
 A sheaf on a site is clearly separated.
 \begin{shaded}
-The definition of a sheaf on a site is the same as the one we're all used to --- either a unique gluing condition, or equivalently we need an equalizer diagram.
+The definition of a sheaf on a site is the same as the one we're all used to --- either a unique gluing condition, or equivalently an equalizer diagram.
 \end{shaded}
 
 Of course one can also define sheaves of groups, rings, and so on, as usual: a functor from $\cC\op$ to the category of groups, or rings, is a sheaf if its composite with the forgetful functor to the category of sets is a sheaf.
@@ -1551,7 +1551,7 @@ is defined similarly.
 
 One immediately sees that $F$ is a sheaf if and only if the diagram (\ref{eq:equalizer-sheaves}) is an equalizer for all coverings $\{U_i \to U\}$ in $\cC$.
 
-\begin{shaded}Suppose that $\cU = \{U_{i} \to U\}$ in a set of arrows, and $F \colon \cC\op \arr \catset$ a functor. We define $F\cU$ as the following equaliser. It comes equipped with a map (which I write as `$\textup{split}_\calU$') from $FU$, induced by the restrictions $FU \arr FU_i$:
+\begin{shaded}Suppose that $\cU = \{U_{i} \to U\}$ is a set of arrows, and $F \colon \cC\op \arr \catset$ a functor. We define $F\cU$ as the following equaliser. It comes equipped with a map (which I write as `$\textup{split}_\calU$') from $FU$, induced by the restrictions $FU \arr FU_i$:
 \[\textup{split}_\calU:FU\to F\cU\eqdef\textup{eq}\left(\prod_i
    FU_i\doublelong{\pr_1^*}{\pr_2^*}
    \prod_{i,j} F(U_i \times_U U_j)\right)\]
